@@ -1,9 +1,7 @@
 <template>
     <header class="header" v-if="Object.keys(songHead).length">
       <div class="header_bgc" :style="{backgroundImage:`url(${songHead.urlImg})`}"></div>
-      <div class="getBack" @click="handleClick">
-        <h2>返回</h2>
-      </div>
+      <common-go-back :pathStr="'/recommend'"/>
       <div class="content">
         <div class="content_img">
           <img :src="songHead.urlImg" :alt="songHead.name">
@@ -17,14 +15,10 @@
 </template>
 
 <script>
+// 引入适用性比较高的组件
+import CommonGoBack from '../../../components/common/GoBack'
 export default {
   name: 'SongHead',
-  methods: {
-    // 使用编导式导航跳转到recommend组件模块部分
-    handleClick () {
-      this.$router.push('/recommend').catch(e => {})
-    }
-  },
   // props教验传递过来的数据
   props: {
     songHead: {
@@ -33,6 +27,9 @@ export default {
         return {}
       }
     }
+  },
+  components: {
+    CommonGoBack
   }
 }
 </script>
@@ -51,29 +48,6 @@ export default {
       background-position: 50%;
       filter: blur(20px);
       transform: scale(1.5);
-    }
-    .getBack {
-      position: relative;
-      color: #fff;
-      padding-left: 13px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      &::before {
-        content: "";
-        position: absolute;
-        width: 7px;
-        height: 7px;
-        border: solid #fff;
-        border-width: 3px 0 0 3px;
-        transform: rotate(315deg);
-        top: 7px;
-        left: 0;
-      }
-      h2 {
-        font-weight: bolder;
-        font-size: 15px;
-        line-height: 26px;
-      }
     }
     .content {
       display: flex;
