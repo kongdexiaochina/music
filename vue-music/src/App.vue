@@ -35,5 +35,8 @@ export default {
       width: 100%;
       height: 108px;
     }
+    & ~ div {
+      display: none;
+    }
   }
 </style>
