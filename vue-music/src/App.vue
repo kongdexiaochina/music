@@ -28,10 +28,10 @@ export default {
     font: 14px/1.5 Helvetica, sans-serif;
     color: #333;
     section {
-      /*position: fixed;*/
-      /*top: 0;*/
-      /*left: 0;*/
-      /*z-index: 100;*/
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
       width: 100%;
       height: 108px;
     }
