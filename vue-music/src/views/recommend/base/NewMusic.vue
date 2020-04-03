@@ -1,25 +1,18 @@
 <template>
     <ul v-if="Object.keys(newmusic.length)" class="newmusic_list">
       <li class="item" v-for="(item, index) in newmusic" :key="index">
-        <div class="content">
-          <div class="song_paly">
-            <h3 class="title">{{item.name}}</h3>
-            <div class="song_detail">
-              <i></i>
-              <span v-for="(songName, key) in item.song.album.artists" :key="key">
-                {{songName.name}}
-              </span> / {{item.song.name}}
-            </div>
-          </div>
-          <div class="song_info">
-            <span></span>
-          </div>
-        </div>
+        <!-- 我们使用SongListItem组件显示歌曲的内容 并且插入一些不同的结构 -->
+        <common-song-list-item :item="item">
+          <template #num></template>
+          <template #modifier> / </template>
+        </common-song-list-item>
       </li>
     </ul>
 </template>
 
 <script>
+// 引入适用性比较高的组件
+import CommonSongListItem from '../../../components/common/SongListItem'
 export default {
   name: 'NewMusic',
   // props教验传递过来的数据
@@ -30,6 +23,9 @@ export default {
         return []
       }
     }
+  },
+  components: {
+    CommonSongListItem
   }
 }
 </script>
@@ -39,69 +35,6 @@ export default {
     .item {
       display: flex;
       padding-left: 10px;
-      color: #333;
-      .content {
-        position: relative;
-        display: flex;
-        flex: 1 1 auto;
-        .song_paly {
-          text-align: left;
-          flex: 1 1 auto;
-          padding: 6px 0;
-          width: 0;
-          .title {
-            font-size: 17px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            word-break: normal;
-          }
-          .song_detail {
-            font-size: 12px;
-            color: #888;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            word-break: normal;
-            i {
-              display: inline-block;
-              width: 12px;
-              height: 8px;
-              margin-right: 4px;
-              background: url('../../../assets/images/hot_icon.png') no-repeat;
-              background-size: 166px 97px;
-            }
-          }
-        }
-        .song_info {
-          display: flex;
-          padding: 0 10px;
-          align-items: center;
-          span {
-            display: inline-block;
-            width: 22px;
-            height: 22px;
-            background: url('../../../assets/images/hot_icon.png') no-repeat;
-            background-position: -24px 0;
-            background-size: 166px 97px;
-          }
-        }
-        &::after {
-          width: 300%;
-          height: 300%;
-          transform: scale(.333333);
-          position: absolute;
-          z-index: 20;
-          content: " ";
-          top: 0;
-          left: 0;
-          pointer-events: none;
-          box-sizing: border-box;
-          transform-origin: top left;
-          border: 0 solid rgba(0,0,0,.1);
-          border-bottom-width: 2px;
-        }
-      }
     }
   }
 </style>

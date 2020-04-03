@@ -1,13 +1,13 @@
 <template>
   <ul class="list" v-if="Object.keys(list.length)">
     <li class="list_row" v-for="(item, index) in listData" :key="index">
-      <div class="item" v-for="(song, key) in item" :key="key">
+      <router-link tag="div" :to="{path:'/detail', query: {id: song.id}}" class="item" v-for="(song, key) in item" :key="key">
         <div class="item_img">
           <img :src="song.picUrl" alt="pic">
           <span>{{String(song.playCount).slice(0,2)}}万</span>
         </div>
         <p class="text">{{song.name}}</p>
-      </div>
+      </router-link>
     </li>
   </ul>
 </template>

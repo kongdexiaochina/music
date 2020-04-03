@@ -51,4 +51,13 @@ export default {
     bottom: 0;
     overflow: hidden;
   }
+  // 推荐歌单详情数据
+  .detail_wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
 </style>

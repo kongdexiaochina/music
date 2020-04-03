@@ -35,12 +35,14 @@ export default {
   },
   // 请求对应的数据
   created () {
-    this.getRecommendListData()
+    this.getData()
   },
   methods: {
     // 请求数据的函数
-    async getRecommendListData () {
+    async getData () {
+      // 请求推荐歌单数据
       const list = await recommendListData(6) // 6表示请求几条推荐歌单的数据
+      // 请求最新音乐数据
       const newmusic = await recommendNewMusic()
       this.list = list.result
       this.newmusic = newmusic.result
