@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="recommend">
       recommend推荐组件
     </div>
 </template>
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+  .recommend {
+    padding-top: 20px;
+  }
 </style>
