@@ -1,5 +1,5 @@
 <template>
-  <div class="getBack" @click="handleClick">
+  <div :class="className" @click="handleClick">
     <h2>返回</h2>
   </div>
 </template>
@@ -18,18 +18,17 @@ export default {
     pathStr: {
       type: String,
       default: '/'
+    },
+    className: {
+      type: String,
+      default: 'detail_goback'
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .getBack {
-    position: relative;
-    color: #fff;
-    padding-left: 13px;
-    margin-bottom: 10px;
-    cursor: pointer;
+  .detail_goback, .player_goback, .comment_goback {
     &::before {
       content: "";
       position: absolute;
@@ -46,5 +45,34 @@ export default {
       font-size: 15px;
       line-height: 26px;
     }
+  }
+  // 详情组件当中的goback
+  .detail_goback {
+    position: relative;
+    color: #fff;
+    padding-left: 13px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  // 播放器组件当中的goback
+  .player_goback {
+    position: absolute;
+    top: 3vw;
+    left: 3vw;
+    color: #fff;
+    padding-left: 13px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  // 评论组件当中的goback
+  .comment_goback {
+    position: absolute;
+    top: 3vw;
+    left: 3vw;
+    color: #fff;
+    padding-left: 13px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    z-index: 200;
   }
 </style>

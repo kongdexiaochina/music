@@ -1,7 +1,7 @@
 <template>
     <header class="header" v-if="Object.keys(songHead).length">
       <div class="header_bgc" :style="{backgroundImage:`url(${songHead.urlImg})`}"></div>
-      <common-go-back :pathStr="'/recommend'"/>
+      <common-go-back :pathStr="'/recommend'" :className="'detail_goback'"/>
       <div class="content">
         <div class="content_img">
           <img :src="songHead.urlImg" :alt="songHead.name">

@@ -27,7 +27,7 @@ export default {
     $route: {
       handler (to, from) {
         // 如果我们to(要去的路径) 等于Detail那么就不显示头部组件，反之显示
-        if (to.name === 'Detail') {
+        if (to.name === 'Detail' || to.name === 'Player' || to.name === 'Comment') {
           this.isShow = false
         } else {
           this.isShow = true
