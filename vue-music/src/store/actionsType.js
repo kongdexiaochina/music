@@ -6,3 +6,5 @@ export const openPlayer = 'openPlayer'
 export const isMusic = 'isMusic'
 // 获取播放速度的动作
 export const speedTime = 'speedTime'
+// 获取视频的总播放时间
+export const speedDuration = 'speedDuration'

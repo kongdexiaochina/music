@@ -7,7 +7,7 @@
             class="icon_center_img_content"
             :style="{animationPlayState: !isOpen ? 'paused' : 'inherit'}">
             <img :src="urlImg" alt="歌曲图片" @click="handleClick(false)">
-            <common-frequency :id="id"/>
+            <common-frequency :id="id" ref="minus"/>
           </div>
         </div>
       </div>
@@ -24,10 +24,10 @@ import CommonFrequency from '../../../components/common/Frequency'
 export default {
   name: 'Icon',
   mounted () {
-    console.log(this.isOpen)
+    this.$refs.minus.$el.currentTime = this.time
   },
   computed: {
-    ...mapState(['isOpen'])
+    ...mapState(['isOpen', 'time'])
   },
   methods: {
     ...mapMutations([isMusic]),

@@ -7,19 +7,23 @@
       <content-nav-bar />
     </section>
     <router-view></router-view>
+    <common-small-player v-if="isSmallPlayer"/>
   </div>
 </template>
 
 <script>
 // 引入适用性比较低的组件
-import ContentHeaderTop from './components/content/header/HeaderTop'
-import ContentNavBar from './components/content/navbar/NavBar'
+import ContentHeaderTop from './components/content/HeaderTop'
+import ContentNavBar from './components/content/NavBar'
+// 引入适用性比较高的组件
+import CommonSmallPlayer from './components/common/SmallPlayer'
 export default {
   name: 'app',
   data () {
     return {
       // 控制头部组件的状态
-      isShow: true
+      isShow: true,
+      isSmallPlayer: false
     }
   },
   watch: {
@@ -32,13 +36,20 @@ export default {
         } else {
           this.isShow = true
         }
+        // 如何去Palyer和comment组件那么我们就不让小播放器组件显示
+        if (to.name === 'Player' || to.name === 'Comment') {
+          this.isSmallPlayer = false
+        } else {
+          this.isSmallPlayer = true
+        }
       },
       deep: true
     }
   },
   components: {
     ContentHeaderTop,
-    ContentNavBar
+    ContentNavBar,
+    CommonSmallPlayer
   }
 }
 </script>
