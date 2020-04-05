@@ -10,7 +10,8 @@ export function ConformityDetailData (list) {
         album: {
           artists: item.ar
         },
-        name: item.ar[0].name
+        alia: item.alia,
+        name: item.al || item.ar[0].name
       }
     })
   }

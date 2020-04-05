@@ -2,14 +2,21 @@
   <div class="content">
     <slot name="num"></slot>
     <div class="song_paly">
-      <h3 class="title">{{item.name}}</h3>
+      <h3 class="title">
+        {{item.name}}
+        <span v-if="item.song.alia">
+            <em v-for="(value, key) in item.song.alia" :key="key">
+              {{value}}
+            </em>
+        </span>
+      </h3>
       <div class="song_detail">
         <i></i>
         <span v-for="(songName, key) in item.song.album.artists" :key="key">
-                {{songName.name}}
+          {{songName.name}}
         </span>
         <slot name="modifier"></slot>
-        {{item.song.name}}
+        {{item.song.name.name || item.song.name}}
       </div>
     </div>
     <div class="song_info">
@@ -50,6 +57,9 @@ export default {
         text-overflow: ellipsis;
         white-space: nowrap;
         word-break: normal;
+        em {
+          color: #888;
+        }
       }
       .song_detail {
         font-size: 12px;

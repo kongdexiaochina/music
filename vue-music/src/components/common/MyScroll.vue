@@ -85,4 +85,13 @@ export default {
     margin: auto;
     overflow: hidden;
   }
+  // 热歌榜样式部分
+  .hotsong_wrapper {
+    position: absolute;
+    top: 108px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
 </style>
