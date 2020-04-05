@@ -1,5 +1,4 @@
-// 用于处理歌词的数据 我们把歌词数据返回一个数组的形式来呈现
-export function lyricParser (lrc) {
+export default function lyricParser (lrc) {
   return parseLyric(lrc || '')
 }
 

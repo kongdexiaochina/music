@@ -24,7 +24,12 @@ import CommonFrequency from '../../../components/common/Frequency'
 export default {
   name: 'Icon',
   mounted () {
-    this.$refs.minus.$el.currentTime = this.time
+    // 我们利用每个音乐的id值来判断是不是同一首音乐
+    if (this.id === +localStorage.getItem('id')) { // 如果是
+      this.$refs.minus.$el.currentTime = this.time
+    } else {
+      this.$refs.minus.$el.currentTime = 0 // 如果不是
+    }
   },
   computed: {
     ...mapState(['isOpen', 'time'])

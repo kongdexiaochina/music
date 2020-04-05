@@ -20,7 +20,7 @@
 // 引入对应的API请求接口
 import { playerLyricData } from '../../../api/player'
 // 引入对应的工具类函数，用于处理我们歌词的数据
-import { lyricParser } from '../../../utils/lyric'
+import lyricParser from '../../../utils/lyric'
 // 引入对应的vuex辅助函数
 import { mapState } from 'vuex'
 // 引用适用性比较高的组件

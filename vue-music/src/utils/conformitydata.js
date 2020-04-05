@@ -12,7 +12,8 @@ export function ConformityDetailData (list) {
         },
         alia: item.alia,
         name: item.al || item.ar[0].name
-      }
+      },
+      id: item.id
     })
   }
   list.forEach(item => {

@@ -5,20 +5,20 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'GoBack',
   methods: {
     // 使用编导式导航跳转到recommend组件模块部分
     handleClick () {
-      this.$router.push(this.pathStr).catch(e => {})
+      this.$router.push(this.pathname).catch(e => {})
     }
+  },
+  computed: {
+    ...mapState(['pathname'])
   },
   // props教验传递过来的数据
   props: {
-    pathStr: {
-      type: String,
-      default: '/'
-    },
     className: {
       type: String,
       default: 'detail_goback'
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .detail_goback, .player_goback, .comment_goback {
+  .detail_goback, .comment_goback, .player_goback {
     &::before {
       content: "";
       position: absolute;
@@ -54,16 +54,6 @@ export default {
     margin-bottom: 10px;
     cursor: pointer;
   }
-  // 播放器组件当中的goback
-  .player_goback {
-    position: absolute;
-    top: 3vw;
-    left: 3vw;
-    color: #fff;
-    padding-left: 13px;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
   // 评论组件当中的goback
   .comment_goback {
     position: absolute;
@@ -74,5 +64,15 @@ export default {
     margin-bottom: 10px;
     cursor: pointer;
     z-index: 200;
+  }
+  // 播放器当中的goback
+  .player_goback {
+    position: absolute;
+    top: 3vw;
+    left: 3vw;
+    color: #fff;
+    padding-left: 13px;
+    margin-bottom: 10px;
+    cursor: pointer;
   }
 </style>

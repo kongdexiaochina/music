@@ -1,13 +1,16 @@
 <template>
     <ul class="list">
-      <li v-for="(item, index) in tracks" :key="index">
+      <router-link
+        :to="{name: 'Player', params: {index: index, bol: true, path: '/hotsong'}}"
+        tag="li"
+        v-for="(item, index) in tracks" :key="index">
         <common-song-list-item :item="item">
           <template #num>
             <div class="num" :class="{on: index < 3}">{{handletoTwo(index + 1)}}</div>
           </template>
           <template #modifier>-</template>
         </common-song-list-item>
-      </li>
+      </router-link>
     </ul>
 </template>
 

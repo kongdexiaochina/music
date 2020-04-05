@@ -58,6 +58,7 @@ export default {
     play () {
       this.$nextTick(() => {
         this.speedDuration(this.$refs.audioDom.duration)
+        localStorage.setItem('id', this.id)
       })
     },
     ...mapMutations([speedTime, speedDuration])
@@ -65,6 +66,9 @@ export default {
   computed: {
     // 我们把vuex当中的state数据映射成computed的计算性属性
     ...mapState(['isOpen'])
+  },
+  beforeDestroy () {
+    this.speedDuration(this.$refs.audioDom.duration)
   },
   // props教验传递过来的数据
   props: {

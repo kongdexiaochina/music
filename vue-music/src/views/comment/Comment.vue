@@ -2,7 +2,7 @@
   <div class="comment">
     <div class="player_bgc" :style="{backgroundImage:`url(${obj.picUrl})`}"></div>
     <div class="top">
-      <common-go-back :pathStr="'/player'" :className="'comment_goback'"/>
+      <common-go-back :className="'comment_goback'"/>
       <h3 class="title">⭐ 热门评论 ⭐</h3>
     </div>
       <common-my-scroll :className="'comment_wrapper'" v-if="hotComments.length">

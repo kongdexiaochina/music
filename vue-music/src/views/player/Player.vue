@@ -3,9 +3,9 @@
       <div class="player_bgc" :style="{backgroundImage:`url(${playerObj.picUrl})`}"></div>
       <div class="wrapper">
         <common-go-back :className="'player_goback'"/>
-        <player-icon :urlImg="playerObj.picUrl" :id="playerObj.id"/>
+        <player-icon :urlImg="playerObj.picUrl" :id="playerObj.id" ref="dom"/>
         <player-song-text :title="playerObj.name" :artists="playerObj.artists" :id="playerObj.id"/>
-        <div class="link_comment" @click="handleClick(playerObj.id)">查看歌曲评论</div>
+        <router-link :to="{path: '/comment', query: {id: playerObj.id}}" tag="div" class="link_comment">查看歌曲评论</router-link>
       </div>
     </div>
 </template>
@@ -14,8 +14,7 @@
 // 引入对应的vuex辅助函数
 import { mapState, mapMutations } from 'vuex'
 // 引用对应的vuex同步方法的动作
-import { openPlayer } from '../../store/actionsType'
-// 引入适用性比较高的组件
+import { openPlayer, speedDuration } from '../../store/actionsType'
 import CommonGoBack from '../../components/common/GoBack'
 // 引入当中组件模块下面的子组件
 import PlayerIcon from './base/Icon'
@@ -28,19 +27,18 @@ export default {
   },
   computed: {
     // 把vuex当中的state数据映射在computed选项当中
-    ...mapState(['playerArr']),
+    ...mapState(['playerArr', 'time']),
     playerObj () {
       const index = this.$route.params.index
       // 判断加载的时候是不是数组为空 如果不是空那么就返回我们整合好的数据
       if (this.playerArr.length !== 0) {
         const obj = this.playerArr[index]
         if (obj) {
-          console.log(obj)
           const objData = {
             id: obj.id,
-            picUrl: obj.picUrl,
+            picUrl: obj.song.name.picUrl || obj.picUrl,
             name: obj.name,
-            artists: obj.song.artists
+            artists: obj.song.album.artists || obj.song.artists
           }
           localStorage.setItem('playerObj', JSON.stringify(objData))
           return objData
@@ -52,15 +50,7 @@ export default {
   },
   methods: {
     // 我们把vuex当中的同步方法映射成当前组件当中的methods选项里面方法
-    ...mapMutations([openPlayer]),
-    handleClick (id) {
-      this.$router.push({
-        path: '/comment',
-        query: {
-          id
-        }
-      })
-    }
+    ...mapMutations([openPlayer, speedDuration])
   },
   components: {
     CommonGoBack,
