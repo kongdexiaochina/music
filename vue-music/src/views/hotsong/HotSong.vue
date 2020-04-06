@@ -31,6 +31,9 @@ export default {
   created () {
     this.getHotSongData()
   },
+  activated () {
+    this.getHotSongData()
+  },
   methods: {
     // 请求数据的函数方法
     async getHotSongData () {

@@ -20,7 +20,9 @@
         </div>
       </div>
     </router-link>
-    <common-frequency :id="obj.id" ref="minus"/>
+    <keep-alive>
+      <common-frequency :id="obj.id" ref="minus"/>
+    </keep-alive>
   </div>
 </template>
 

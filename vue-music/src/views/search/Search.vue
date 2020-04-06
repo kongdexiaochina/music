@@ -25,6 +25,9 @@ export default {
   created () {
     this.getHotListData()
   },
+  activated () {
+    this.getHotListData()
+  },
   methods: {
     // 请求数据的函数
     async getHotListData () {

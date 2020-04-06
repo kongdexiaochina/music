@@ -7,7 +7,9 @@
             class="icon_center_img_content"
             :style="{animationPlayState: !isOpen ? 'paused' : 'inherit'}">
             <img :src="urlImg" alt="歌曲图片" @click="handleClick(false)">
-            <common-frequency :id="id" ref="minus"/>
+            <keep-alive>
+              <common-frequency :id="id" ref="minus"/>
+            </keep-alive>
           </div>
         </div>
       </div>

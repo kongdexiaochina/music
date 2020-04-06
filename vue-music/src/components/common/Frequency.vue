@@ -25,6 +25,9 @@ export default {
   created () {
     this.getPlayerSong()
   },
+  activated () {
+    this.getPlayerSong()
+  },
   // 我们首先加载的时候用autoplay属性动态绑定来完成
   // 但是我们发现不能实时更新，那么我就在beforeUpDate
   // 生命周期函数里面直接回去音频DOM并且是否播让他播放
@@ -69,6 +72,7 @@ export default {
   },
   beforeDestroy () {
     this.speedDuration(this.$refs.audioDom.duration)
+    this.$refs.audioDom.pause()
   },
   // props教验传递过来的数据
   props: {

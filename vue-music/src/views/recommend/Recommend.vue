@@ -37,6 +37,9 @@ export default {
   created () {
     this.getData()
   },
+  activated () {
+    this.getData()
+  },
   methods: {
     // 请求数据的函数
     async getData () {

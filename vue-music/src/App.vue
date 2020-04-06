@@ -6,7 +6,9 @@
       <!-- 导航 -->
       <content-nav-bar />
     </section>
-    <router-view></router-view>
+    <keep-alive :include="['Recommend', 'HotSong', 'Search']">
+      <router-view></router-view>
+    </keep-alive>
     <common-small-player v-if="isSmallPlayer"/>
   </div>
 </template>
