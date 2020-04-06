@@ -1,5 +1,5 @@
 <template>
-    <ul v-if="Object.keys(newmusic.length)" class="newmusic_list">
+    <ul class="newmusic_list">
       <router-link
         :to="{name: 'Player', params: {index: index, bol: true}}"
         tag="li" class="item"

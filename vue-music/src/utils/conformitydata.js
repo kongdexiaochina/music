@@ -16,7 +16,7 @@ export function ConformityDetailData (list) {
       id: item.id // 歌曲ID
     })
   }
-  list.forEach(item => {
+  (list || []).forEach(item => {
     disposeArr(item)
   })
   return newArr

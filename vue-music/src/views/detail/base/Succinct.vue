@@ -1,5 +1,5 @@
 <template>
-    <div class="succinct" v-if="Object.keys(succinct).length">
+    <div class="succinct">
       <nav class="succinct_tags">
         标签:
         <em v-for="(tag, index) in succinct.tags" :key="index" class="tag">{{tag}}</em>

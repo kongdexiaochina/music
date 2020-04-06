@@ -1,7 +1,10 @@
 <template>
   <div class="search">
-    <search-control :msg="msg" @handleValue="handleValue" @handleKeyDown="handleKeyDown"/>
-    <search-hot-list :hotList="hotList" :msg="msg" @getListPlayer="getListPlayer" :songsList="songsList"/>
+    <div v-if="hotList.length">
+      <search-control :msg="msg" @handleValue="handleValue" @handleKeyDown="handleKeyDown"/>
+      <search-hot-list :hotList="hotList" :msg="msg" @getListPlayer="getListPlayer" :songsList="songsList"/>
+    </div>
+    <content-loading v-else/>
   </div>
 </template>
 
@@ -9,6 +12,8 @@
 // 引入对应的API数据请求接口
 import { hotListData, hotSearch } from '../../api/search'
 import { ConformityDetailData } from '../../utils/conformitydata'
+// 引入适用性不是很高的组件
+import ContentLoading from '../../components/content/Loading'
 // 引入当前组件下面的子组件
 import SearchControl from './base/Control'
 import SearchHotList from './base/HotList'
@@ -57,6 +62,7 @@ export default {
     }
   },
   components: {
+    ContentLoading,
     SearchControl,
     SearchHotList
   }

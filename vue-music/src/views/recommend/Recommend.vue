@@ -1,7 +1,7 @@
 <template>
     <div class="recommend">
       <!-- 把需要滚动的内容插入到MyScroll组件当中 -->
-      <comment-my-scroll :className="'recommend_wrapper'">
+      <comment-my-scroll :className="'recommend_wrapper'" v-if="newmusic.length">
         <template #content>
           <h2 class="title">推荐歌单</h2>
           <recommend-list :list="list"/>
@@ -10,6 +10,7 @@
           <recommend-foot />
         </template>
       </comment-my-scroll>
+      <content-loading v-else/>
     </div>
 </template>
 
@@ -18,6 +19,8 @@
 import { recommendListData, recommendNewMusic } from '../../api/recommend'
 // 引入适用性比较高的组件
 import CommentMyScroll from '../../components/common/MyScroll'
+// 引入适用性不是很高的组件
+import ContentLoading from '../../components/content/Loading'
 // 引入当中模块下面的子组件
 import RecommendList from './base/List'
 import RecommendNewMusic from './base/NewMusic'
@@ -53,6 +56,7 @@ export default {
   },
   components: {
     CommentMyScroll,
+    ContentLoading,
     RecommendList,
     RecommendNewMusic,
     RecommendFoot

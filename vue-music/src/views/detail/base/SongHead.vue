@@ -1,5 +1,5 @@
 <template>
-    <header class="header" v-if="Object.keys(songHead).length">
+    <header class="header">
       <div class="header_bgc" :style="{backgroundImage:`url(${songHead.urlImg})`}"></div>
       <common-go-back :className="'detail_goback'"/>
       <div class="content">

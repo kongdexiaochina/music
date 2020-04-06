@@ -1,5 +1,5 @@
 <template>
-    <div class="list" v-if="list.length">
+    <div class="list">
       <h3 class="title">歌曲列表</h3>
       <ul class="title_song">
         <router-link :to="{name: 'Player', params: {index: index, bol: true}}" tag="li" class="title_song_item" v-for="(item, index) in list" :key="index">

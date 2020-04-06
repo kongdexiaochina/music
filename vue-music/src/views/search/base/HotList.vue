@@ -7,8 +7,7 @@
         </li>
       </ul>
       <section v-else>
-        <h3 v-if="!songsList.length">暂无搜索数据</h3>
-        <common-my-scroll :className="'hotlist_wrapper'">
+        <common-my-scroll :className="'hotlist_wrapper'" v-if="songsList.length">
           <template #content>
             <ul>
               <router-link
@@ -23,6 +22,7 @@
             </ul>
           </template>
         </common-my-scroll>
+        <content-loading v-else/>
       </section>
     </div>
 </template>
@@ -35,6 +35,8 @@ import { playerChange } from '../../../store/actionsType'
 // 引入适用性比较高的组件
 import CommonSongListItem from '../../../components/common/SongListItem'
 import CommonMyScroll from '../../../components/common/MyScroll'
+// 引入适用性不是很高的组件
+import ContentLoading from '../../../components/content/Loading'
 export default {
   name: 'HotList',
   methods: {
@@ -75,6 +77,7 @@ export default {
     }
   },
   components: {
+    ContentLoading,
     CommonSongListItem,
     CommonMyScroll
   }

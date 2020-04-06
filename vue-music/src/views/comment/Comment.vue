@@ -1,10 +1,11 @@
 <template>
   <div class="comment">
     <div class="player_bgc" :style="{backgroundImage:`url(${obj.picUrl})`}"></div>
-    <div class="top">
-      <common-go-back :className="'comment_goback'"/>
-      <h3 class="title">⭐ 热门评论 ⭐</h3>
-    </div>
+    <div v-if="hotComments.length">
+        <div class="top">
+        <common-go-back :className="'comment_goback'"/>
+        <h3 class="title">⭐ 热门评论 ⭐</h3>
+      </div>
       <common-my-scroll :className="'comment_wrapper'" v-if="hotComments.length">
         <template #content>
           <ul class="list">
@@ -34,6 +35,8 @@
         </template>
       </common-my-scroll>
     </div>
+    <content-loading v-else/>
+  </div>
 </template>
 
 <script>
@@ -44,6 +47,8 @@ import { formateDate } from '../../utils/time'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../components/common/GoBack'
 import CommonMyScroll from '../../components/common/MyScroll'
+// 引入适用性不是很高的组件
+import ContentLoading from '../../components/content/Loading'
 export default {
   name: 'Comment',
   data () {
@@ -69,6 +74,7 @@ export default {
     }
   },
   components: {
+    ContentLoading,
     CommonGoBack,
     CommonMyScroll
   }

@@ -1,5 +1,5 @@
 <template>
-  <ul class="list" v-if="Object.keys(list.length)">
+  <ul class="list">
     <li class="list_row" v-for="(item, index) in listData" :key="index">
       <router-link tag="div" :to="{path:'/detail', query: {id: song.id}}" class="item" v-for="(song, key) in item" :key="key">
         <div class="item_img">

@@ -1,12 +1,13 @@
 <template>
     <div class="detail">
-      <common-my-scroll :className="'detail_wrapper'">
+      <common-my-scroll :className="'detail_wrapper'" v-if="list.length">
         <template #content>
           <detail-song-head :songHead="songHead"/>
           <detail-succinct :succinct="succinct"/>
           <detail-list :list="list"/>
         </template>
       </common-my-scroll>
+      <content-loading v-else/>
     </div>
 </template>
 
@@ -15,6 +16,8 @@
 import { DetailSong, DetailSongHeadData, DetailSuccinctData, DetailSongList } from '../../api/detail'
 // 引入适用性比较高的组件
 import CommonMyScroll from '../../components/common/MyScroll'
+// 引入适用性不是很高的组件
+import ContentLoading from '../../components/content/Loading'
 // 引入当前组件模块下面的子组件
 import DetailSongHead from './base/SongHead'
 import DetailSuccinct from './base/Succinct'
@@ -48,6 +51,7 @@ export default {
   },
   components: {
     CommonMyScroll,
+    ContentLoading,
     DetailSongHead,
     DetailSuccinct,
     DetailList

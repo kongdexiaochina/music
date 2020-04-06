@@ -1,11 +1,12 @@
 <template>
   <div class="hotsong">
-    <common-my-scroll :className="'hotsong_wrapper'">
+    <common-my-scroll :className="'hotsong_wrapper'" v-if="tracks.length">
       <template #content>
         <hot-song-banner :description="description"/>
         <hot-song-list :tracks="tracks"/>
       </template>
     </common-my-scroll>
+    <content-loading v-else/>
   </div>
 </template>
 
@@ -14,8 +15,10 @@
 import { hotSongData } from '../../api/hotsong'
 // 引入工具类函数用于整合数据
 import { ConformityDetailData } from '../../utils/conformitydata'
-// 引入适用性比较好的组件
+// 引入适用性比较搞的组件
 import CommonMyScroll from '../../components/common/MyScroll'
+// 引入适用性不是很高的组件
+import ContentLoading from '../../components/content/Loading'
 // 引入当前模块下面的子组件
 import HotSongBanner from './base/Banner'
 import HotSongList from './base/List'
@@ -45,6 +48,7 @@ export default {
   },
   components: {
     CommonMyScroll,
+    ContentLoading,
     HotSongBanner,
     HotSongList
   }
