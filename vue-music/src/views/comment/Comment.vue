@@ -10,7 +10,7 @@
           <ul class="list">
             <li class="item" v-for="(item, index) in hotComments" :key="index">
               <div class="item_img">
-                <img :src="item.user.avatarUrl" alt="头像">
+                <img v-lazy="item.user.avatarUrl" alt="头像">
               </div>
               <div class="item_wrap">
                 <div class="item_header">

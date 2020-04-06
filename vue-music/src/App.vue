@@ -6,6 +6,7 @@
       <!-- 导航 -->
       <content-nav-bar />
     </section>
+    <!-- 缓存指定的多个组件 -->
     <keep-alive :include="['Recommend', 'HotSong', 'Search']">
       <router-view></router-view>
     </keep-alive>
