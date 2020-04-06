@@ -1,7 +1,7 @@
 <template>
     <ul class="list">
       <router-link
-        :to="{name: 'Player', params: {index: index, bol: true, path: '/hotsong'}}"
+        :to="{name: 'Player', params: {index: index, bol: true}}"
         tag="li"
         v-for="(item, index) in tracks" :key="index">
         <common-song-list-item :item="item">

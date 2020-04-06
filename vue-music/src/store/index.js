@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 // 引入动作函数
-import { playerChange, openPlayer, isMusic, speedTime, speedDuration, getPathName } from './actionsType'
+import { playerChange, openPlayer, isMusic, speedTime, speedDuration } from './actionsType'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -12,8 +12,7 @@ export default new Vuex.Store({
     isOpen: false,
     // 音频的播放实时的时间（点击开始或者是关闭音乐按钮的时候）
     time: 0,
-    duration: 1, // 获取视频的总播放时间
-    pathname: '/' // pathname 的值
+    duration: 1 // 获取视频的总播放时间
   },
   mutations: {
     // 把传递出来的数据辅助到state当中
@@ -41,11 +40,6 @@ export default new Vuex.Store({
     // 获取音频的总播放时间
     [speedDuration] (state, time) {
       state.duration = time
-    },
-    // 获取pathname的值
-    [getPathName] (state, pathname) {
-      state.pathname = pathname
-      console.log(state.pathname)
     }
   },
   actions: {

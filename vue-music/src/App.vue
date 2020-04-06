@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-import { getPathName } from './store/actionsType'
 // 引入适用性比较低的组件
 import ContentHeaderTop from './components/content/HeaderTop'
 import ContentNavBar from './components/content/NavBar'
@@ -44,14 +42,12 @@ export default {
         } else {
           this.isSmallPlayer = true
         }
-        // 默认跳转到/recommend路径
-        this.getPathName('/recommend')
+        if (to.name !== 'Player') {
+          localStorage.setItem('search', window.location.search)
+        }
       },
       deep: true
     }
-  },
-  methods: {
-    ...mapMutations([getPathName])
   },
   components: {
     ContentHeaderTop,

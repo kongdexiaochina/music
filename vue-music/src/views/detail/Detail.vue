@@ -31,7 +31,6 @@ export default {
   // 请求对应的数据
   created () {
     this.getData()
-    localStorage.setItem('search', window.location.search)
   },
   methods: {
     // 请求对应的函数

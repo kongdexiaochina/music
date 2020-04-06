@@ -5,7 +5,7 @@
          @click="handleClick"
          :style="{backgroundPosition: isOpen ? '0 -165px' : '0 -204px'}"
     ></div>
-    <router-link :to="{name: 'Player', params: {bol: true, path: pathname}}" tag="div"  class="musicInfo">
+    <router-link :to="{name: 'Player', params: {bol: true}}" tag="div"  class="musicInfo">
       <img :src="obj.picUrl" alt="歌曲图片">
       <p>
         <span>{{obj.name}}</span>
@@ -76,7 +76,7 @@ export default {
   },
   // 把vuex当中的state映射成当前组件当中的computed
   computed: {
-    ...mapState(['isOpen', 'time', 'duration', 'pathname'])
+    ...mapState(['isOpen', 'time', 'duration'])
   },
   components: {
     CommonFrequency

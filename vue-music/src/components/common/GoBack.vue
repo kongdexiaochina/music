@@ -9,9 +9,9 @@ import { mapState } from 'vuex'
 export default {
   name: 'GoBack',
   methods: {
-    // 使用编导式导航跳转到recommend组件模块部分
+    // 使用编导式导航跳转到上一个历史页面部分
     handleClick () {
-      this.$router.push(this.pathname).catch(e => {})
+      this.$router.go(-1)
     }
   },
   computed: {

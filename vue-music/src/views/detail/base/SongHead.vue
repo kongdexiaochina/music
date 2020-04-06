@@ -1,10 +1,7 @@
 <template>
     <header class="header" v-if="Object.keys(songHead).length">
       <div class="header_bgc" :style="{backgroundImage:`url(${songHead.urlImg})`}"></div>
-<!--      <common-go-back :pathStr="'/recommend'" :className="'detail_goback'"/>-->
-      <router-link :to="pathname" tag="div" class="goback">
-        <h2>返回</h2>
-      </router-link>
+      <common-go-back :className="'detail_goback'"/>
       <div class="content">
         <div class="content_img">
           <img :src="songHead.urlImg" :alt="songHead.name">
@@ -20,7 +17,7 @@
 <script>
 import { mapState } from 'vuex'
 // 引入适用性比较高的组件
-// import CommonGoBack from '../../../components/common/GoBack'
+import CommonGoBack from '../../../components/common/GoBack'
 export default {
   name: 'SongHead',
   computed: {
@@ -34,6 +31,9 @@ export default {
         return {}
       }
     }
+  },
+  components: {
+    CommonGoBack
   }
 }
 </script>
@@ -98,29 +98,6 @@ export default {
           font-weight: bolder;
         }
       }
-    }
-  }
-  .goback {
-    position: relative;
-    color: #fff;
-    padding-left: 13px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    &::before {
-      content: "";
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border: solid #fff;
-      border-width: 3px 0 0 3px;
-      transform: rotate(315deg);
-      top: 7px;
-      left: 0;
-    }
-    h2 {
-      font-weight: bolder;
-      font-size: 15px;
-      line-height: 26px;
     }
   }
 </style>

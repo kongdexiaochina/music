@@ -8,5 +8,3 @@ export const isMusic = 'isMusic'
 export const speedTime = 'speedTime'
 // 获取视频的总播放时间
 export const speedDuration = 'speedDuration'
-// 获取pathname值
-export const getPathName = 'getPathName'
