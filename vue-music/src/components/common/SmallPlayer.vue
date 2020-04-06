@@ -86,7 +86,7 @@ export default {
 <style scoped lang="scss">
 .small_player {
   position: fixed;
-  bottom: 0;
+  bottom: -5px;
   left: 0;
   z-index: 99;
   height: 53px;

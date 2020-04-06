@@ -88,7 +88,7 @@ export default {
   // 热歌榜样式部分
   .hotsong_wrapper {
     position: absolute;
-    top: 108px;
+    top: 100px;
     right: 0;
     left: 0;
     bottom: 0;
