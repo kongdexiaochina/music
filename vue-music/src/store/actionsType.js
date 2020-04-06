@@ -8,3 +8,5 @@ export const isMusic = 'isMusic'
 export const speedTime = 'speedTime'
 // 获取视频的总播放时间
 export const speedDuration = 'speedDuration'
+// 获取迷你播放器的数据
+export const getMusicData = 'getMusicData'

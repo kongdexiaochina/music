@@ -4,7 +4,8 @@ import {
   openPlayer,
   isMusic,
   speedTime,
-  speedDuration
+  speedDuration,
+  getMusicData
 } from './actionsType'
 
 export default {
@@ -33,5 +34,9 @@ export default {
   // 获取音频的总播放时间
   [speedDuration] (state, time) {
     state.duration = time
+  },
+  // 获取迷你播放器的数据
+  [getMusicData] (state, musicData) {
+    state.musicData = musicData
   }
 }

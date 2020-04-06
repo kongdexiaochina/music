@@ -1,16 +1,16 @@
 <template>
 <!--  本地存储里面没有我们当前要播放的音乐那么我们就让当前的播放器组件不显示-->
-  <div class="small_player" v-if="Object.keys(obj).length">
+  <div class="small_player" v-if="Object.keys(musicData).length">
     <div class="play_icon"
          @click="handleClick"
          :style="{backgroundPosition: isOpen ? '0 -165px' : '0 -204px'}"
     ></div>
     <router-link :to="{name: 'Player', params: {bol: true}}" tag="div"  class="musicInfo">
-      <img :src="obj.picUrl" alt="歌曲图片">
+      <img :src="musicData.picUrl" alt="歌曲图片">
       <p>
-        <span>{{obj.name}}</span>
+        <span>{{musicData.name}}</span>
         -
-        <span v-for="(item, index) in obj.artists" :key="index">
+        <span v-for="(item, index) in musicData.artists" :key="index">
           <em v-if="index === 0 || index === 1">{{item.name}} </em>
         </span>
       </p>
@@ -21,7 +21,7 @@
       </div>
     </router-link>
     <keep-alive>
-      <common-frequency :id="obj.id" ref="minus"/>
+      <common-frequency :id="musicData.id" ref="minus"/>
     </keep-alive>
   </div>
 </template>
@@ -34,11 +34,6 @@ import { mapState, mapMutations } from 'vuex'
 import { openPlayer, isMusic } from '../../store/actionsType'
 export default {
   name: 'SmallPlayer',
-  data () {
-    return {
-      obj: JSON.parse(localStorage.getItem('playerObj')) || {}
-    }
-  },
   mounted () {
     const minus = this.$refs.minus
     if (minus) {
@@ -80,7 +75,7 @@ export default {
   },
   // 把vuex当中的state映射成当前组件当中的computed
   computed: {
-    ...mapState(['isOpen', 'time', 'duration'])
+    ...mapState(['isOpen', 'time', 'duration', 'musicData'])
   },
   components: {
     CommonFrequency

@@ -10,7 +10,6 @@
     <keep-alive :include="['Recommend', 'HotSong', 'Search']">
       <router-view></router-view>
     </keep-alive>
-    <common-small-player />
   </div>
 </template>
 
@@ -18,14 +17,11 @@
 // 引入适用性比较低的组件
 import ContentHeaderTop from '../../components/content/HeaderTop'
 import ContentNavBar from '../../components/content/NavBar'
-// 引入适用性比较高的组件
-import CommonSmallPlayer from '../../components/common/SmallPlayer'
 export default {
   name: 'Home',
   components: {
     ContentHeaderTop,
-    ContentNavBar,
-    CommonSmallPlayer
+    ContentNavBar
   }
 }
 </script>

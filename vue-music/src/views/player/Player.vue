@@ -14,7 +14,7 @@
 // 引入对应的vuex辅助函数
 import { mapState, mapMutations } from 'vuex'
 // 引用对应的vuex同步方法的动作
-import { openPlayer, speedDuration } from '../../store/actionsType'
+import { openPlayer, speedDuration, getMusicData } from '../../store/actionsType'
 import CommonGoBack from '../../components/common/GoBack'
 // 引入当中组件模块下面的子组件
 import PlayerIcon from './base/Icon'
@@ -40,6 +40,7 @@ export default {
             name: obj.name,
             artists: obj.song.album.artists || obj.song.artists
           }
+          this.getMusicData(objData)
           localStorage.setItem('playerObj', JSON.stringify(objData))
           return objData
         }
@@ -50,7 +51,7 @@ export default {
   },
   methods: {
     // 我们把vuex当中的同步方法映射成当前组件当中的methods选项里面方法
-    ...mapMutations([openPlayer, speedDuration])
+    ...mapMutations([openPlayer, speedDuration, getMusicData])
   },
   components: {
     CommonGoBack,
@@ -62,6 +63,12 @@ export default {
 
 <style scoped lang="scss">
   .player {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
     .player_bgc {
       background-color: #161824;
       background-position: 50%;
