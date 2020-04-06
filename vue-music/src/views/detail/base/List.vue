@@ -30,8 +30,7 @@ export default {
     // 把vuex里面的同步动作映射成methods当中的方法
     ...mapMutations([playerChange])
   },
-  // 挂载完成之前访问现有DOM 的时候进行向vuex当中发送数据
-  beforeUpdate () {
+  created () {
     this.playerChange(this.list)
   },
   // props教验传递过来的数据
