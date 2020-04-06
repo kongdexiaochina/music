@@ -15,6 +15,10 @@
 </template>
 
 <script>
+// 引入对应的vuex辅助函数
+import { mapMutations } from 'vuex'
+// 引用对应的vuex同步方法的动作
+import { playerChange } from '../../../store/actionsType'
 // 引入适用性比较高的组件
 import CommonSongListItem from '../../../components/common/SongListItem'
 export default {
@@ -23,6 +27,14 @@ export default {
     handletoTwo () {
       return num => num < 10 ? '0' + num : num
     }
+  },
+  methods: {
+    // 把vuex里面的同步动作映射成methods当中的方法
+    ...mapMutations([playerChange])
+  },
+  // 挂载完成之前访问现有DOM 的时候进行向vuex当中发送数据
+  beforeUpdate () {
+    this.playerChange(this.tracks)
   },
   // props教验传递过来的数据
   props: {

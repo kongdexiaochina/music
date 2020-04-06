@@ -5,15 +5,15 @@ export function ConformityDetailData (list) {
   const newArr = []
   const disposeArr = (item) => {
     newArr.push({
-      name: item.name,
-      song: {
-        album: {
-          artists: item.ar
+      name: item.name, // 歌曲名字
+      song: { // 歌曲简绍
+        album: { // 歌曲其他歌手名字
+          artists: item.artists || item.ar
         },
-        alia: item.alia,
-        name: item.al || item.ar[0].name
+        alia: item.alia, // 歌曲副名字
+        name: (item.album ? item.album.name : '') || item.al || (item.ar[0] ? item.al[0].name : '') // 歌曲简介名字
       },
-      id: item.id
+      id: item.id // 歌曲ID
     })
   }
   list.forEach(item => {

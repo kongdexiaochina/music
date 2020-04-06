@@ -2,14 +2,37 @@
   <div class="control">
     <img src="../../../assets/images/find.svg" alt="搜索">
     <div class="box">
-      <input type="text" placeholder="搜索歌曲、歌手、专辑">
+      <input type="text" v-model="msgValue" placeholder="搜索歌曲、歌手、专辑" @input="sayInput" @keydown.enter="$emit('handleKeyDown')">
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Control'
+  name: 'Control',
+  data () {
+    return {
+      msgValue: ''
+    }
+  },
+  watch: {
+    msg (val) {
+      this.msgValue = val
+    }
+  },
+  methods: {
+    // 向父级发射一个事件 并且把input框当中的value值给传送进入
+    sayInput ($event) {
+      this.$emit('handleValue', $event.target.value)
+    }
+  },
+  // props教验传递过来的数据
+  props: {
+    msg: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

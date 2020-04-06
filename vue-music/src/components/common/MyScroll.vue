@@ -94,4 +94,15 @@ export default {
     bottom: 0;
     overflow: hidden;
   }
+  // 搜索歌词样式部分
+  .hotlist_wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 175px;
+    bottom: 65px;
+    overflow: hidden;
+    padding: 15px 10px 0;
+    text-align: left;
+  }
 </style>

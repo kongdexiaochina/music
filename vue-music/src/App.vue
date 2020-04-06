@@ -42,9 +42,6 @@ export default {
         } else {
           this.isSmallPlayer = true
         }
-        if (to.name !== 'Player') {
-          localStorage.setItem('search', window.location.search)
-        }
       },
       deep: true
     }
@@ -61,7 +58,7 @@ export default {
   #app {
     font: 14px/1.5 Helvetica, sans-serif;
     color: #333;
-    section {
+    & > section {
       position: fixed;
       top: 0;
       left: 0;

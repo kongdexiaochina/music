@@ -65,13 +65,15 @@ export default {
     // 点击切换歌曲的播放状态
     handleClick () {
       const minus = this.$refs.minus
-      if (!this.isOpen) { // 播放
-        this.isMusic(true)
-        minus.$el.play()
-      } else { // 不播放
-        this.isMusic(false)
-        minus.$el.pause()
-      }
+      this.$nextTick(() => {
+        if (!this.isOpen) { // 播放
+          this.isMusic(true)
+          minus.$el.play()
+        } else { // 不播放
+          this.isMusic(false)
+          minus.$el.pause()
+        }
+      })
     }
   },
   // 把vuex当中的state映射成当前组件当中的computed

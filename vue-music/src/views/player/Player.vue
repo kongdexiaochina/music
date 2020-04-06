@@ -36,7 +36,7 @@ export default {
         if (obj) {
           const objData = {
             id: obj.id,
-            picUrl: obj.song.name.picUrl || obj.picUrl,
+            picUrl: obj.picUrl || obj.song.album.artists[0].img1v1Url || obj.song.name.picUrl,
             name: obj.name,
             artists: obj.song.album.artists || obj.song.artists
           }

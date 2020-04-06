@@ -37,7 +37,6 @@ export default {
       const { playlist: { description, tracks } } = await hotSongData(1)
       this.description = description
       tracks.length = 25 // 显示数组的长度
-      console.log(tracks)
       this.tracks = ConformityDetailData(tracks)
     }
   },
