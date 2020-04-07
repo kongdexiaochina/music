@@ -16,7 +16,7 @@
       </p>
       <div class="process">
         <div class="bar">
-          <div class="on" :style="{width: (time/duration)*100+'%'}"></div>
+          <div class="on" :style="{width}"></div>
         </div>
       </div>
     </router-link>
@@ -36,11 +36,6 @@ export default {
   name: 'SmallPlayer',
   mounted () {
     const minus = this.$refs.minus
-    if (minus) {
-      // 设置播放的时间
-      minus.$el.currentTime = this.time
-    }
-    // console.log('播放')
     this.$nextTick(() => {
       if (minus) {
         const promise = minus.$el.play()
@@ -75,7 +70,10 @@ export default {
   },
   // 把vuex当中的state映射成当前组件当中的computed
   computed: {
-    ...mapState(['isOpen', 'time', 'duration', 'musicData'])
+    ...mapState(['isOpen', 'time', 'duration', 'musicData']),
+    width () {
+      return (this.time / this.duration) * 100 + '%'
+    }
   },
   components: {
     CommonFrequency

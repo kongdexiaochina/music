@@ -3,7 +3,7 @@
          loop
          :autoplay="isOpen"
          @timeupdate="handleTimeupdate"
-         @play="play"
+         @canplay="canplay"
          ref="audioDom"></audio>
 </template>
 
@@ -35,8 +35,9 @@ export default {
     this.minusPlay()
   },
   watch: {
+    // 当id值发送变化的时候 那么我们就认为要加载新的音频了
+    // 那么我们就去请求对应的音频数据 并且对应的音频节点的currentTime值为0
     id () {
-      console.log('监听到了id', this.id)
       this.getPlayerSong()
     }
   },
@@ -63,12 +64,10 @@ export default {
         this.speedTime(this.$refs.audioDom.currentTime)
       } catch (e) {}
     },
-    // 当音频可以播放的时候 我们向vuex发射当前音频的duration属性并且是异步发送
-    play () {
-      this.$nextTick(() => {
-        this.speedDuration(this.$refs.audioDom.duration)
-        localStorage.setItem('id', this.id)
-      })
+    // 当音频可以加载完毕的时候 我们向vuex发射当前音频的duration属性
+    canplay () {
+      this.speedDuration(this.$refs.audioDom.duration)
+      localStorage.setItem('id', this.id)
     },
     ...mapMutations([speedTime, speedDuration])
   },

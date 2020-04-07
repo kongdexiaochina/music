@@ -15,6 +15,7 @@
 import { mapState, mapMutations } from 'vuex'
 // 引用对应的vuex同步方法的动作
 import { openPlayer, speedDuration, getMusicData } from '../../store/actionsType'
+// 引入适用性比较高的组件
 import CommonGoBack from '../../components/common/GoBack'
 // 引入当中组件模块下面的子组件
 import PlayerIcon from './base/Icon'
