@@ -34,6 +34,12 @@ export default {
   beforeUpdate () {
     this.minusPlay()
   },
+  watch: {
+    id () {
+      console.log('监听到了id', this.id)
+      this.getPlayerSong()
+    }
+  },
   methods: {
     // 请求数据的函数
     async getPlayerSong () {

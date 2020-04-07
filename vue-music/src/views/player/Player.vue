@@ -3,7 +3,7 @@
       <div class="player_bgc" :style="{backgroundImage:`url(${playerObj.picUrl})`}"></div>
       <div class="wrapper">
         <common-go-back :className="'player_goback'"/>
-        <player-icon :urlImg="playerObj.picUrl" :id="playerObj.id" ref="dom"/>
+        <player-icon :urlImg="playerObj.picUrl" />
         <player-song-text :title="playerObj.name" :artists="playerObj.artists" :id="playerObj.id"/>
         <router-link :to="{path: '/comment', query: {id: playerObj.id}}" tag="div" class="link_comment">查看歌曲评论</router-link>
       </div>
@@ -23,7 +23,7 @@ export default {
   name: 'Player',
   // 到DOM挂载完毕的时候 我们让音乐播放
   mounted () {
-    this.openPlayer(this.$route.params.bol)
+    this.openPlayer(this.$route.params.bol || true)
   },
   computed: {
     // 把vuex当中的state数据映射在computed选项当中

@@ -7,13 +7,13 @@
       <content-nav-bar />
     </section>
       <!-- 缓存指定的多个组件 -->
-    <keep-alive :include="['Recommend', 'HotSong', 'Search']">
-      <content-slide-translate :name="name">
-        <template #slide>
+    <content-slide-translate :name="name">
+      <template #slide>
+        <keep-alive>
           <router-view></router-view>
-        </template>
-      </content-slide-translate>
-    </keep-alive>
+        </keep-alive>
+      </template>
+    </content-slide-translate>
   </div>
 </template>
 

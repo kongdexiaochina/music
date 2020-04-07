@@ -5,7 +5,7 @@
         <router-view></router-view>
       </template>
     </content-slide-translate>
-    <common-small-player v-if="isShow"/>
+    <common-small-player v-show="isShow"/>
   </div>
 </template>
 

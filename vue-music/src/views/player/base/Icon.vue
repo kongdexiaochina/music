@@ -7,9 +7,6 @@
             class="icon_center_img_content"
             :style="{animationPlayState: !isOpen ? 'paused' : 'inherit'}">
             <img :src="urlImg" alt="歌曲图片" @click="handleClick(false)">
-            <keep-alive>
-              <common-frequency :id="id" ref="minus"/>
-            </keep-alive>
           </div>
         </div>
       </div>
@@ -21,20 +18,10 @@
 // 引入对应的vuex辅助函数和对应的动作
 import { mapState, mapMutations } from 'vuex'
 import { isMusic } from '../../../store/actionsType'
-// 引入适用性比较高的组件
-import CommonFrequency from '../../../components/common/Frequency'
 export default {
   name: 'Icon',
-  mounted () {
-    // 我们利用每个音乐的id值来判断是不是同一首音乐
-    if (this.id === +localStorage.getItem('id')) { // 如果是
-      this.$refs.minus.$el.currentTime = this.time
-    } else {
-      this.$refs.minus.$el.currentTime = 0 // 如果不是
-    }
-  },
   computed: {
-    ...mapState(['isOpen', 'time'])
+    ...mapState(['isOpen'])
   },
   methods: {
     ...mapMutations([isMusic]),
@@ -47,14 +34,7 @@ export default {
     urlImg: {
       type: String,
       default: ' '
-    },
-    id: {
-      type: Number,
-      default: 0
     }
-  },
-  components: {
-    CommonFrequency
   }
 }
 </script>
