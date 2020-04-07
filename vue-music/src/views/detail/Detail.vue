@@ -61,6 +61,12 @@ export default {
 
 <style scoped lang="scss">
   .detail {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
     background-color: #F8F8F8;
   }
 </style>

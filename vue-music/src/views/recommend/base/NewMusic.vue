@@ -24,6 +24,9 @@ import { mapMutations } from 'vuex'
 import CommonSongListItem from '../../../components/common/SongListItem'
 export default {
   name: 'NewMusic',
+  mounted () {
+    this.playerChange(this.newmusic)
+  },
   methods: {
     // 把vuex里面的同步动作映射成methods当中的方法
     ...mapMutations([playerChange])

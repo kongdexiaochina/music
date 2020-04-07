@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <content-slide-translate :name="name">
+      <template #slide>
+        <router-view></router-view>
+      </template>
+    </content-slide-translate>
     <common-small-player v-if="isShow"/>
   </div>
 </template>
@@ -8,11 +12,14 @@
 <script>
 // 引入适用性比较高的组件
 import CommonSmallPlayer from './components/common/SmallPlayer'
+// 引入适用性比较低的组件
+import ContentSlideTranslate from './components/content/SlideTranslate'
 export default {
   name: 'app',
   data () {
     return {
-      isShow: true
+      isShow: true,
+      name: ''
     }
   },
   watch: {
@@ -25,18 +32,35 @@ export default {
         } else { // 反之显示并且播放
           this.isShow = true
         }
+        // 根据to和from的值设置不同的动画跳转类名
+        if (to.name === 'Detail' && from.name === 'Recommend') {
+          this.name = 'left'
+        } else if (to.name === 'Recommend' && from.name === 'Detail') {
+          this.name = 'right'
+        } else if (to.name === 'Player' || from.name === 'Player') {
+          this.name = 'scale'
+        } else {
+          this.name = ''
+        }
       },
-      immediate: true // immediate 数据初始化(created)的时候也会检测到数据的变化
+      depp: true // immediate 数据初始化(created)的时候也会检测到数据的变化
     }
   },
   components: {
-    CommonSmallPlayer
+    CommonSmallPlayer,
+    ContentSlideTranslate
   }
 }
 </script>
 
 <style lang="scss">
   #app {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
     font: 14px/1.5 Helvetica, sans-serif;
     color: #333;
   }

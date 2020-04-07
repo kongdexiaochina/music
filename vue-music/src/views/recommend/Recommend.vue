@@ -66,7 +66,11 @@ export default {
 
 <style scoped lang="scss">
   .recommend {
-    padding-top: 127px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     .title {
       display: block;
       position: relative;

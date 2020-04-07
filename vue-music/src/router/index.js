@@ -20,17 +20,26 @@ const routes = [
       {
         path: '/recommend',
         name: 'Recommend',
-        component: () => import('../views/recommend/Recommend')
+        component: () => import('../views/recommend/Recommend'),
+        meta: {
+          index: 1
+        }
       },
       {
         path: '/hotsong',
         name: 'HotSong',
-        component: () => import('../views/hotsong/HotSong')
+        component: () => import('../views/hotsong/HotSong'),
+        meta: {
+          index: 2
+        }
       },
       {
         path: '/search',
         name: 'Search',
-        component: () => import('../views/search/Search')
+        component: () => import('../views/search/Search'),
+        meta: {
+          index: 3
+        }
       }
     ]
   },

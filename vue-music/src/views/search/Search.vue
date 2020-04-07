@@ -71,6 +71,10 @@ export default {
 
 <style scoped lang="scss">
   .search {
-    padding-top: 108px;
+    position: absolute;
+    top: 105px;
+    right: 0;
+    left: 0;
+    bottom: 0;
   }
 </style>

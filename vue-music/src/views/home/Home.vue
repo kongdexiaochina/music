@@ -8,7 +8,11 @@
     </section>
       <!-- 缓存指定的多个组件 -->
     <keep-alive :include="['Recommend', 'HotSong', 'Search']">
-      <router-view></router-view>
+      <content-slide-translate :name="name">
+        <template #slide>
+          <router-view></router-view>
+        </template>
+      </content-slide-translate>
     </keep-alive>
   </div>
 </template>
@@ -17,17 +21,46 @@
 // 引入适用性比较低的组件
 import ContentHeaderTop from '../../components/content/HeaderTop'
 import ContentNavBar from '../../components/content/NavBar'
+import ContentSlideTranslate from '../../components/content/SlideTranslate'
 export default {
   name: 'Home',
+  data () {
+    return {
+      name: ''
+    }
+  },
+  watch: {
+    // 实时监测路由对象 并且修改对应的translate动画类名
+    $route: {
+      handler (to, from) {
+        if (from.path === '/') {
+          return
+        }
+        if (to.meta.index > from.meta.index) {
+          this.name = 'left'
+        } else {
+          this.name = 'right'
+        }
+      },
+      deep: true
+    }
+  },
   components: {
     ContentHeaderTop,
-    ContentNavBar
+    ContentNavBar,
+    ContentSlideTranslate
   }
 }
 </script>
 
 <style lang="scss" scoped>
   .home {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
     & > section {
       position: fixed;
       top: 0;

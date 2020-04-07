@@ -75,11 +75,11 @@ export default {
   }
   // 热歌榜样式部分
   .hotsong_wrapper {
-    @include wrapper(100px,0);
+    @include wrapper(105px,0);
   }
   // 搜索歌词样式部分
   .hotlist_wrapper {
-    @include wrapper(175px,65px);
+    @include wrapper(65px,65px);
     padding: 15px 10px 0;
     text-align: left;
   }
