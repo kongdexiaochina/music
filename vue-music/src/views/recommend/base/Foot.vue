@@ -1,4 +1,4 @@
-<template>
+<template functional>
     <footer class="footer">
       <div class="content">
         <div class="logo">

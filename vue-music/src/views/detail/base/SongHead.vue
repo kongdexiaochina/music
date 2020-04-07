@@ -15,14 +15,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../../components/common/GoBack'
 export default {
   name: 'SongHead',
-  computed: {
-    ...mapState(['pathname'])
-  },
   // props教验传递过来的数据
   props: {
     songHead: {

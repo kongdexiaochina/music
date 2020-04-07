@@ -1,14 +1,14 @@
-<template>
+<template functional>
     <div class="succinct">
       <nav class="succinct_tags">
         标签:
-        <em v-for="(tag, index) in succinct.tags" :key="index" class="tag">{{tag}}</em>
+        <em v-for="(tag, index) in props.succinct.tags" :key="index" class="tag">{{tag}}</em>
       </nav>
       <div class="text">
         <span>
           简介:
-          {{succinct.description.substring(0, 100)}}
-          <span v-if="succinct.description.length > 100">......</span>
+          {{props.succinct.description.substring(0, 100)}}
+          <span v-if="props.succinct.description.length > 100">......</span>
         </span>
       </div>
     </div>

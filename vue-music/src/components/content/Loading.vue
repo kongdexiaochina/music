@@ -1,4 +1,4 @@
-<template>
+<template functional>
     <div class="lds-roller">
       <div></div>
       <div></div>

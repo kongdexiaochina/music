@@ -37,13 +37,13 @@ export default {
     // 请求数据的函数
     async getHotListData () {
       const { result: { hots } } = await hotListData()
-      this.hotList = hots
+      this.hotList = Object.freeze(hots)
     },
     async getHotSearch () {
       // 判断是否是空格串 如果是那么就不获取数据 反之获取数据
       if (this.msg.replace(/(^\s*)|(\s*$)/g, '')) {
         const { result: { songs } } = await hotSearch(this.msg)
-        this.songsList = ConformityDetailData(songs)
+        this.songsList = Object.freeze(ConformityDetailData(songs))
       }
     },
     // 接受父级传递过来的getListPlayer事件 并且对data选项当中的属性赋值 并且获取数据

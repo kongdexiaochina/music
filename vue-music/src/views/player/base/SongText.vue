@@ -40,7 +40,7 @@ export default {
     // 获取歌词数据的函数
     async getPlayerLyricData () {
       const { lrc: { lyric } } = await playerLyricData(this.id)
-      this.lyric = lyricParser(lyric)
+      this.lyric = Object.freeze(lyricParser(lyric))
     }
   },
   computed: {

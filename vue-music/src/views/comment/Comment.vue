@@ -54,7 +54,7 @@ export default {
   data () {
     return {
       hotComments: [], // 评论数据
-      obj: JSON.parse(localStorage.getItem('playerObj'))
+      obj: Object.freeze(JSON.parse(localStorage.getItem('playerObj')))
     }
   },
   // 请求数据
@@ -65,7 +65,7 @@ export default {
     // 请求数据函数
     async getPlayerComment () {
       const { hotComments } = await playerComment(this.$route.query.id)
-      this.hotComments = hotComments
+      this.hotComments = Object.freeze(hotComments)
     }
   },
   computed: {

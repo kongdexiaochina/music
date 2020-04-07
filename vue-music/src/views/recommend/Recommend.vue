@@ -50,8 +50,8 @@ export default {
       const list = await recommendListData(6) // 6表示请求几条推荐歌单的数据
       // 请求最新音乐数据
       const newmusic = await recommendNewMusic()
-      this.list = list.result
-      this.newmusic = newmusic.result
+      this.list = Object.freeze(list.result)
+      this.newmusic = Object.freeze(newmusic.result)
     }
   },
   components: {

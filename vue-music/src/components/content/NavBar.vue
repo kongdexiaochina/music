@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <ul class="nav">
     <router-link to="/recommend" tag="li" class="item">推荐音乐</router-link>
     <router-link to="/hotsong" tag="li" class="item">热歌榜</router-link>

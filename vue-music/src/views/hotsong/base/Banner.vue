@@ -1,9 +1,9 @@
-<template>
+<template functional>
     <div class="banner">
       <div class="banner_flex">
         <div class="banner_icon"></div>
         <div class="banner_time">
-          {{description}}
+          {{props.description}}
         </div>
       </div>
     </div>

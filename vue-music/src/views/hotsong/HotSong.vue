@@ -41,9 +41,9 @@ export default {
     // 请求数据的函数方法
     async getHotSongData () {
       const { playlist: { description, tracks } } = await hotSongData(1)
-      this.description = description
+      this.description = Object.freeze(description)
       tracks.length = 25 // 显示数组的长度
-      this.tracks = ConformityDetailData(tracks)
+      this.tracks = Object.freeze(ConformityDetailData(tracks))
     }
   },
   components: {

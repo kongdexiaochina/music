@@ -1,4 +1,4 @@
-<template>
+<template functional>
     <div class="header_top">
       <img src="../../assets/images/logo.svg" alt="log">
       <div class="hint">Vue.js</div>

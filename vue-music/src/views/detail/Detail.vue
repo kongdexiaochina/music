@@ -41,12 +41,12 @@ export default {
       // 解构我们需要使用的数据
       const { playlist } = await DetailSong(this.$route.query.id)
       // 整合头部的数据
-      this.songHead = new DetailSongHeadData(playlist.coverImgUrl, playlist.name)
+      this.songHead = Object.freeze(new DetailSongHeadData(playlist.coverImgUrl, playlist.name))
       // 整合简绍部分的数据
-      this.succinct = new DetailSuccinctData(playlist.tags, playlist.description)
+      this.succinct = Object.freeze(new DetailSuccinctData(playlist.tags, playlist.description))
       // 整合歌曲列表部分的数据
       playlist.tracks.length = 25 // 限制请求完成返回来数组的length长度
-      this.list = new DetailSongList(playlist.tracks).list
+      this.list = Object.freeze(new DetailSongList(playlist.tracks).list)
     }
   },
   components: {
