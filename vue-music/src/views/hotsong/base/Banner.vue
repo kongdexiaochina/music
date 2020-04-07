@@ -23,6 +23,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @mixin position  {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
   .banner {
     position: relative;
     padding-top: 38.9%;
@@ -30,11 +37,7 @@ export default {
     background: url('../../../assets/images/hot_bg.jpg') no-repeat;
     background-size: contain;
     .banner_flex {
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
+      @include position;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -58,11 +61,7 @@ export default {
       }
       &::after {
         content: " ";
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
+        @include position;
         z-index: -10;
         background-color: rgba(0, 0, 0, 0.2);
       }

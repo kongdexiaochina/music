@@ -28,13 +28,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  $color: #ffffff;
+  @mixin goBack($type, $top, $left) {
+    position: $type;
+    top: $top;
+    left: $left;
+    color: $color;
+    padding-left: 13px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
   .detail_goback, .comment_goback, .player_goback {
     &::before {
       content: "";
       position: absolute;
       width: 7px;
       height: 7px;
-      border: solid #fff;
+      border: solid $color;
       border-width: 3px 0 0 3px;
       transform: rotate(315deg);
       top: 7px;
@@ -48,31 +58,16 @@ export default {
   }
   // 详情组件当中的goback
   .detail_goback {
-    position: relative;
-    color: #fff;
-    padding-left: 13px;
-    margin-bottom: 10px;
-    cursor: pointer;
+    @include goBack(relative, inherit, inherit);
   }
   // 评论组件当中的goback
   .comment_goback {
-    position: absolute;
-    top: 3vw;
-    left: 3vw;
-    color: #fff;
-    padding-left: 13px;
-    margin-bottom: 10px;
-    cursor: pointer;
+    @include goBack(absolute, 3vw, 3vw);
     z-index: 200;
   }
   // 播放器当中的goback
   .player_goback {
-    position: absolute;
-    top: 3vw;
-    left: 3vw;
-    color: #fff;
-    padding-left: 13px;
-    margin-bottom: 10px;
+    @include goBack(absolute, 3vw, 3vw);
     cursor: pointer;
   }
 </style>

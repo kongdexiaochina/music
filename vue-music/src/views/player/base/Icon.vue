@@ -60,13 +60,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  $hundred: 100%;
+  @mixin positionType ($type) {
+    position: $type;
+  }
   .icon {
-    position: relative;
+    @include positionType(relative);
     margin: 0 auto;
     height: 342px;
     width: 342px;
     .needle {
-      position: absolute;
+      @include positionType(absolute);
       width: 110px;
       height: 157px;
       top: -80px;
@@ -76,11 +80,11 @@ export default {
       z-index: 2;
     }
     .icon_center {
-      width: 100%;
-      height: 100%;
+      width: $hundred;
+      height: $hundred;
       &::before {
         content: " ";
-        position: absolute;
+        @include positionType(absolute);
         left: 0;
         right: 0;
         top: 0;
@@ -90,17 +94,17 @@ export default {
         background-size: contain;
       }
       .icon_center_img {
-        position: absolute;
-        left: 50%;
-        top: 50%;
+        @include positionType(absolute);
+        left: $hundred / 2;
+        top: $hundred / 2;
         width: 212px;
         height: 212px;
         margin: -106px 0 0 -106px;
         z-index: 1;
         .icon_center_img_content {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
+          width: $hundred;
+          height: $hundred;
+          border-radius: $hundred / 2;
           overflow: hidden;
           background: url('../../../assets/images/disc_default.png') no-repeat;
           background-size: contain;
@@ -114,20 +118,20 @@ export default {
             }
           }
           img {
-            width: 100%;
+            width: $hundred;
           }
         }
       }
     }
     .btn {
-      position: absolute;
-      left: 50%;
-      top: 50%;
+      @include positionType(absolute);
+      left: $hundred / 2;
+      top: $hundred / 2;
       width: 65px;
       height: 65px;
       background-image: url('../../../assets/images/play_btn.png');
       background-size: contain;
-      transform: translate(-50%, -50%);
+      transform: translate(-$hundred / 2, -$hundred / 2);
       z-index: 10;
     }
   }

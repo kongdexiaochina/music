@@ -84,8 +84,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@mixin positionType($type) {
+  position: $type;
+}
 .small_player {
-  position: fixed;
+  @include positionType(fixed);
   bottom: -5px;
   left: 0;
   z-index: 99;
@@ -93,7 +96,7 @@ export default {
   width: 100vw;
   background: url('../../assets/images/playbar.png') repeat-x;
   .play_icon {
-    position: absolute;
+    @include positionType(absolute);
     left: 4%;
     top: 2vw;
     width: 36px;
@@ -102,18 +105,18 @@ export default {
     background-position: 0 -204px;
   }
   .musicInfo {
-    position: relative;
+    @include positionType(relative);
     max-width: 80%;
     margin-left: 18%;
     img {
-      position: absolute;
+      @include positionType(absolute);
       width: 13vw;
       height: 13vw;
       top: -3vw;
       left: 0;
     }
     p {
-      position: absolute;
+      @include positionType(absolute);
       left: 15vw;
       top: 2vw;
       color: #e8e8e8;
@@ -122,7 +125,7 @@ export default {
       overflow: hidden;
     }
     .process {
-      position: absolute;
+      @include positionType(absolute);
       top: 8vw;
       left: 15vw;
       width: 60vw;

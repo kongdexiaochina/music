@@ -49,6 +49,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @mixin displayType () {
+    display: flex;
+  }
   .title {
     height: 23px;
     line-height: 23px;
@@ -63,14 +66,14 @@ export default {
     height: 100%;
     padding-bottom: 85px;
     .title_song_item {
-      display: flex;
+      @include displayType;
       padding-left: 10px;
       .num {
+        @include displayType;
         color: #999;
         align-items: center;
         width: 28px;
         font-size: 17px;
-        display: flex;
       }
     }
   }

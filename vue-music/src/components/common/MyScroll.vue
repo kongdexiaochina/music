@@ -32,32 +32,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  // 默认的滚动样式
-  .wrapper {
+  @mixin wrapper($top, $left) {
     position: absolute;
     left: 0;
     right: 0;
-    top: 125px;
-    bottom: 0;
+    top: $top;
+    bottom: $left;
     overflow: hidden;
+  }
+  // 默认的滚动样式
+  .wrapper {
+    @include wrapper(125px,0);
   }
   // 推荐音乐的滚动样式
   .recommend_wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 125px;
-    bottom: 0;
-    overflow: hidden;
+    @include wrapper(125px,0);
   }
   // 推荐歌单详情样式
   .detail_wrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
+    @include wrapper(0,0);
   }
   // 歌曲歌词的样式
   .text_wrapper {
@@ -75,33 +68,18 @@ export default {
   }
   // 歌曲评论的样式
   .comment_wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 52px;
-    bottom: 0;
+    @include wrapper(52px,0);
     z-index: 20;
     width: 100%;
     margin: auto;
-    overflow: hidden;
   }
   // 热歌榜样式部分
   .hotsong_wrapper {
-    position: absolute;
-    top: 100px;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
+    @include wrapper(100px,0);
   }
   // 搜索歌词样式部分
   .hotlist_wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 175px;
-    bottom: 65px;
-    overflow: hidden;
+    @include wrapper(175px,65px);
     padding: 15px 10px 0;
     text-align: left;
   }

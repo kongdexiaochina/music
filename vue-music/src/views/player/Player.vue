@@ -62,12 +62,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .player {
-    position: absolute;
+  @mixin position ($type) {
+    position: $type;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
+  }
+  .player {
+    @include position(absolute);
     z-index: 100;
     .player_bgc {
       background-color: #161824;
@@ -77,7 +80,7 @@ export default {
       transform: scale(1.2);
       transform-origin: center;
       filter: blur(10px);
-      position: fixed;
+      @include position(fixed);
       left: 0;
       right: 0;
       top: 0;
@@ -87,11 +90,7 @@ export default {
       animation: bgchange 50s linear infinite;
       &::before {
         content: " ";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
+        @include position(absolute);
         background-color: rgba(0, 0, 0, 0.5);
       }
     }

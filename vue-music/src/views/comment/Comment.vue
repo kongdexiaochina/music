@@ -82,48 +82,52 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  $percent: 100%;
+  @mixin positionType ($type) {
+    position: $type;
+  }
+  @mixin displayType ($type) {
+    display: $type;
+  }
+  @mixin location ($type) {
+    @include positionType($type);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
   .comment {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    @include positionType(absolute);
+    width: $percent;
+    height: $percent;
   }
   .player_bgc {
     background-color: #161824;
-    background-position: 50%;
+    background-position: $percent / 2;
     background-repeat: no-repeat;
     background-size: auto 100%;
     transform: scale(1.2);
     transform-origin: center;
     filter: blur(10px);
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    height: 100%;
+    @include location(absolute);
+    height: $percent;
     overflow: hidden;
     z-index: 1;
     animation: bgchange 50s linear infinite;
     &::before {
       content: " ";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
+      @include location(absolute);
       background-color: rgba(0, 0, 0, 0.5);
     }
   }
   .top {
-    position: fixed;
-    top: 0;
-    left: 0;
+    @include location(fixed);
     z-index: 100;
-    width: 100%;
+    width: $percent;
     height: 42px;
     .title {
-      position: absolute;
-      width: 95%;
+      @include positionType(absolute);
+      width: $percent - 5%;
       z-index: 20;
       margin: 3vw 0;
       font-size: 18px;
@@ -133,35 +137,35 @@ export default {
   }
     .list {
       .item {
-        position: relative;
+        @include positionType(relative);
         padding-top: 10px;
-        width: 100%;
-        display: flex;
+        width: $percent;
+        @include displayType(flex);
         .item_img {
           height: 35px;
           margin: 0 10px;
           img {
-            display: block;
-            border-radius: 50%;
+            @include displayType(block);
+            border-radius: $percent / 2;
             width: 30px;
             height: 30px;
             border: none;
           }
         }
         .item_wrap {
-          position: relative;
+          @include positionType(relative);
           padding-right: 10px;
           padding-bottom: 11px;
           flex: 1;
           .item_header {
-            display: flex;
+            @include displayType(flex);
             .item_header_info {
               flex: 1;
-              display: flex;
+              @include displayType(flex);
               flex-direction: column;
               .username {
                 font-size: 14px;
-                color: hsla(0, 0%, 100%, .7);
+                color: hsla(0, 0%, $percent, .7);
                 line-height: 20px;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -173,7 +177,7 @@ export default {
               }
             }
             .link {
-              display: inline-block;
+              @include displayType(inline-block);
               min-width: 30px;
               padding-left: 5px;
               width: 65px;
@@ -184,7 +188,7 @@ export default {
               flex: none;
               text-align: right;
               i {
-                display: inline-block;
+                @include displayType(inline-block);
                 width: 14px;
                 height: 18px;
                 margin-left: 6px;
@@ -196,7 +200,7 @@ export default {
           }
           .item_content {
             color: #fff;
-            position: relative;
+            @include positionType(relative);
             font-size: 15px;
             line-height: 22px;
             margin-top: 5px;

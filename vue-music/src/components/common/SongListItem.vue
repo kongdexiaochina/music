@@ -41,6 +41,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @mixin textOverflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+  }
   .content {
     position: relative;
     display: flex;
@@ -53,10 +59,7 @@ export default {
       width: 0;
       .title {
         font-size: 17px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        word-break: normal;
+        @include textOverflow;
         em {
           color: #888;
         }
@@ -64,10 +67,7 @@ export default {
       .song_detail {
         font-size: 12px;
         color: #888;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        word-break: normal;
+        @include textOverflow;
         i {
           display: inline-block;
           width: 12px;

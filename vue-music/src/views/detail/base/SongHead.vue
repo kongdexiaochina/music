@@ -39,12 +39,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @mixin positionType ($type) {
+    position: $type;
+  }
   .header {
-    position: relative;
+    @include positionType(relative);
     padding: 5px 10px 24px 15px;
     overflow: hidden;
     .header_bgc {
-      position: absolute;
+      @include positionType(absolute);
       height: 126px;
       width: 100%;
       background-repeat: no-repeat;
@@ -55,19 +58,19 @@ export default {
     }
     .content {
       display: flex;
-      position: relative;
+      @include positionType(relative);
       z-index: 2;
       .content_img {
         width: 126px;
         height: 126px;
-        position: relative;
+        @include positionType(relative);
         background-color: #e2e2e3;
         img {
           width: 100%;
           vertical-align: middle;
         }
         span {
-          position: absolute;
+          @include positionType(absolute);
           z-index: 3;
           top: 10px;
           left: 0;
