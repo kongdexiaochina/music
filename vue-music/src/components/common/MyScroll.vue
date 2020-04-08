@@ -17,8 +17,10 @@ export default {
   },
   // 在DOM挂载完毕的时候 我们使用BScroll插件进行滚动
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper, {
-      click: true
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.wrapper, {
+        click: true
+      })
     })
   },
   // props教验传递过来的数据
