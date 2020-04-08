@@ -46,6 +46,9 @@ export default {
     async getPlayerSong () {
       const { data } = await playerSong(this.id)
       this.url = data[0].url
+      if (!this.url) {
+        alert('该歌曲没有加载成功，请选择其他的歌曲')
+      }
     },
     minusPlay () {
       const promise = this.$refs.audioDom.play()
