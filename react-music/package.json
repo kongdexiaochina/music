@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "antd": "^4.1.1",
+    "antd-mobile": "^2.3.1",
     "axios": "^0.19.2",
     "node-sass": "^4.13.1",
     "r-img-lazyload": "^1.1.0",
@@ -17,6 +17,7 @@
     "react-router-cache-route": "^1.8.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-sticky": "^6.0.3",
     "redux": "^4.0.5"
   },
   "scripts": {
