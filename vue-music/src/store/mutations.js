@@ -5,7 +5,8 @@ import {
   isMusic,
   speedTime,
   speedDuration,
-  getMusicData
+  getMusicData,
+  getIsError
 } from './actionsType'
 
 export default {
@@ -38,5 +39,9 @@ export default {
   // 获取迷你播放器的数据
   [getMusicData] (state, musicData) {
     state.musicData = musicData
+  },
+  // 是否加载出来音乐
+  [getIsError] (state, bol) {
+    state.isError = bol
   }
 }

@@ -1,24 +1,17 @@
 # vue-music
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Vue-Cli安装与使用
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 需要使用第三方库
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 项目结构
+
+## 关于vue项目的优化问题？？？
+
+## 我认为该项目需要的知识点
+
+## 采过的坑
+
+## 总结

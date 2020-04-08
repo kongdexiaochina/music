@@ -10,3 +10,5 @@ export const speedTime = 'speedTime'
 export const speedDuration = 'speedDuration'
 // 获取迷你播放器的数据
 export const getMusicData = 'getMusicData'
+// 是否加载出来歌曲
+export const getIsError = 'getIsError'

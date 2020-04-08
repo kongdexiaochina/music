@@ -11,7 +11,8 @@ const state = {
   // 音频的播放实时的时间（点击开始或者是关闭音乐按钮的时候）
   time: 0,
   duration: 1, // 获取视频的总播放时间
-  musicData: JSON.parse(localStorage.getItem('playerObj')) || {} // 迷你播放器的数据
+  musicData: JSON.parse(localStorage.getItem('playerObj')) || {}, // 迷你播放器的数据
+  isError: true // 是否加载出来歌曲
 }
 export default new Vuex.Store({
   state,

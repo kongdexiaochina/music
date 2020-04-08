@@ -69,5 +69,6 @@ export default {
   .player_goback {
     @include goBack(absolute, 3vw, 3vw);
     cursor: pointer;
+    z-index: 100;
   }
 </style>

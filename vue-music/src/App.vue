@@ -5,11 +5,17 @@
         <router-view></router-view>
       </template>
     </content-slide-translate>
-    <common-small-player v-show="isShow"/>
+    <div v-show="isError">
+      <common-small-player v-show="isShow"/>
+    </div>
+    <div  v-show="!isError" class="error">
+      <h1>歌曲没有获取到</h1>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 // 引入适用性比较高的组件
 import CommonSmallPlayer from './components/common/SmallPlayer'
 // 引入适用性比较低的组件
@@ -46,6 +52,9 @@ export default {
       depp: true // immediate 数据初始化(created)的时候也会检测到数据的变化
     }
   },
+  computed: {
+    ...mapState(['isError'])
+  },
   components: {
     CommonSmallPlayer,
     ContentSlideTranslate
@@ -63,5 +72,15 @@ export default {
     overflow: hidden;
     font: 14px/1.5 Helvetica, sans-serif;
     color: #333;
+  }
+  .error {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #545454;
+    color: #ffffff;
+    text-align: center;
+    line-height: 40px;
   }
 </style>

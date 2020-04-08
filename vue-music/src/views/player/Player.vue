@@ -1,11 +1,15 @@
 <template>
     <div class="player">
       <div class="player_bgc" :style="{backgroundImage:`url(${playerObj.picUrl})`}"></div>
-      <div class="wrapper">
+      <div class="wrapper" v-if="isError">
         <common-go-back :className="'player_goback'"/>
         <player-icon :urlImg="playerObj.picUrl" />
         <player-song-text :title="playerObj.name" :artists="playerObj.artists" :id="playerObj.id"/>
         <router-link :to="{path: '/comment', query: {id: playerObj.id}}" tag="div" class="link_comment">查看歌曲评论</router-link>
+      </div>
+      <div v-else>
+        <common-go-back :className="'player_goback'"/>
+        <content-minus-error/>
       </div>
     </div>
 </template>
@@ -17,6 +21,8 @@ import { mapState, mapMutations } from 'vuex'
 import { openPlayer, speedDuration, getMusicData } from '../../store/actionsType'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../components/common/GoBack'
+// 引入适用性比较低的组件
+import ContentMinusError from '../../components/content/MinusError'
 // 引入当中组件模块下面的子组件
 import PlayerIcon from './base/Icon'
 import PlayerSongText from './base/SongText'
@@ -28,7 +34,7 @@ export default {
   },
   computed: {
     // 把vuex当中的state数据映射在computed选项当中
-    ...mapState(['playerArr', 'time']),
+    ...mapState(['playerArr', 'time', 'isError']),
     playerObj () {
       const index = this.$route.params.index
       // 判断加载的时候是不是数组为空 如果不是空那么就返回我们整合好的数据
@@ -56,6 +62,7 @@ export default {
   },
   components: {
     CommonGoBack,
+    ContentMinusError,
     PlayerIcon,
     PlayerSongText
   }
