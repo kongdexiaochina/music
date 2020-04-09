@@ -6,10 +6,8 @@ import App from './App';
 import './style/reset.css'
 import './style/App.scss'
 ReactDOM.render(
-  <React.StrictMode>
     <BrowserRouter>
         <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
   document.getElementById('root')
 );

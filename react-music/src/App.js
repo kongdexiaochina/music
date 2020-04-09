@@ -1,11 +1,15 @@
 import React, {Component, Fragment} from 'react';
-// 引入对应的react路由
-import IndexRouter from "./router/IndexRouter";
+import {Switch, Route, Redirect} from 'react-router-dom'
+import Home from './views/Home/Home'
 class App extends Component {
   render () {
     return (
         <Fragment>
-          <IndexRouter />
+            {/*一级路由*/}
+            <Switch>
+                <Route path={"/home"} component={Home}/>
+                <Redirect to={"/home"}/>
+            </Switch>
         </Fragment>
     )
   }
