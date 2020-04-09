@@ -7,6 +7,7 @@ import './style/reset.css'
 import './style/recommend.scss'
 import './style/songhot.scss'
 import './style/public.scss'
+import './style/search.scss'
 ReactDOM.render(
     <BrowserRouter>
         <App />
