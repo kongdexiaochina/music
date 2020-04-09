@@ -1,0 +1,201 @@
+body {
+  font: 14px/1.5 Helvetica, sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+// 头部
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 108px;
+  // TopHeader 头部组件的样式
+  .top_header {
+    height: 64px;
+    padding: 0 20px;
+    background-color: #d43c33;
+    .top_header_icon {
+      width: 142px;
+      height: 25px;
+      overflow: hidden;
+    }
+    .top_header_title {
+      width: 55px;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 10px;
+      color: #fff;
+      font-size: 15px;
+      border: 1px solid white;
+      border-radius: 37.5%/100%;
+      cursor: pointer;
+    }
+    .am-flexbox-item {
+      flex: inherit;
+      margin-left: 0;
+    }
+  }
+
+  // tab_bar组件的样式
+  .tab_bar {
+    font-size: 15px;
+    color: #666;
+    .am-tabs-default-bar-underline {
+      border: 1.8px rgb(212, 60, 51) solid;
+    }
+  }
+}
+
+// 推荐音乐部分
+.recommend {
+  // 标题部分
+  .title {
+    display: block;
+    position: relative;
+    padding-left: 9px;
+    margin-bottom: 14px;
+    font-size: 17px;
+    font-weight: 400;
+    height: 20px;
+    line-height: 20px;
+    &::after {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -9px;
+      width: 2px;
+      height: 16px;
+      background-color: #d33a31;
+    }
+  }
+  // 推荐歌单部分
+  .song_blank {
+    padding-bottom: 24px;
+  }
+  .grid {
+    .am-wingblank {
+      width: 40%;
+      height: 170px;
+      margin: 0;
+      padding: 0 2px;
+    }
+    .am-card-header-content img {
+      width: 100%;
+    }
+    .list {
+      padding-bottom: 16px;
+      .am-card-header,.am-card-body, .am-card {
+        padding: 0;
+      }
+      .am-card-header-content {
+        flex: inherit;
+        width: 100%;
+      }
+      .am-card-header-extra span {
+        position: absolute;
+        right: 5px;
+        top: 2px;
+        z-index: 3;
+        padding-left: 13px;
+        color: #fff;
+        font-size: 12px;
+        background-position: 0;
+        background-image: url("../images/icon.svg");
+        background-repeat: no-repeat;
+        background-size: 11px 10px;
+        text-shadow: 1px 0 0 rgba(0,0,0,.15);
+      }
+      .am-card-body div{
+        overflow: hidden;
+        padding: 6px 2px 0 6px;
+        line-height: 1.2;
+        font-size: 13px;
+        max-height: 30px;
+        color: black;
+      }
+    }
+    .am-whitespace, .am-whitespace-lg {
+      display: none;
+    }
+  }
+  // 最新音乐样式部分
+  .song_title {
+    font-size: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+  }
+  .am-list-line .am-list-extra {
+    flex-basis: initial;
+  }
+  .song_play {
+    display: flex;
+    align-items: center;
+    span {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      background: url("../images/hot_icon.png") no-repeat;
+      background-position: -24px 0;
+      background-size: 166px 97px;
+    }
+  }
+  .song_detail {
+    font-size: 12px;
+    color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+    background-color: white;
+    i {
+      display: inline-block;
+      width: 12px;
+      height: 8px;
+      margin-right: 4px;
+      background: url("../images/hot_icon.png") no-repeat;
+      background-size: 166px 97px;
+    }
+  }
+}
+
+// foot脚部组件部分
+.foot {
+  position: relative;
+  padding-top: 53.3%;
+  margin-top: 4px;
+  background: url("../images/footbg.png") no-repeat;
+  background-size: contain;
+  .foot_wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 1;
+    text-align: center;
+    .foot_logo {
+      padding-top: 12.5%;
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 230px;
+        height: 44px;
+      }
+    }
+  }
+}
+
+// recommend组件需要用BScroll滚动的区域样式
+.recommend_wrapper {
+  position: absolute;
+  top: 128px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
