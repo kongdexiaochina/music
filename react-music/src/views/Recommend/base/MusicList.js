@@ -5,15 +5,14 @@ import CommentMusicListItem from "../../../component/common/MusicListItem";
 class MusicList extends Component {
     render() {
         const {newMusic} = this.props
-        console.log(newMusic)
         return (
             <Fragment>
                 <h3 className={"title"}>最新音乐</h3>
                 <List>
                     {
-                        newMusic.map(item => {
+                        newMusic.map((item, index) => {
                             return (
-                                <CommentMusicListItem key={item.id} item={item}/>
+                                <CommentMusicListItem key={index} item={item}/>
                             )
                         })
                     }

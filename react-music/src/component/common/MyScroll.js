@@ -6,7 +6,6 @@ class MyScroll extends Component {
         this.wrapper =  createRef()
     }
     componentDidMount() {
-        console.log(this.wrapper.current)
         const scroll = new BScroll(this.wrapper.current, {
             click: true
         })

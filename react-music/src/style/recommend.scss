@@ -121,46 +121,6 @@ body {
       display: none;
     }
   }
-  // 最新音乐样式部分
-  .song_title {
-    font-size: 17px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-break: normal;
-  }
-  .am-list-line .am-list-extra {
-    flex-basis: initial;
-  }
-  .song_play {
-    display: flex;
-    align-items: center;
-    span {
-      display: inline-block;
-      width: 22px;
-      height: 22px;
-      background: url("../images/hot_icon.png") no-repeat;
-      background-position: -24px 0;
-      background-size: 166px 97px;
-    }
-  }
-  .song_detail {
-    font-size: 12px;
-    color: #888;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-break: normal;
-    background-color: white;
-    i {
-      display: inline-block;
-      width: 12px;
-      height: 8px;
-      margin-right: 4px;
-      background: url("../images/hot_icon.png") no-repeat;
-      background-size: 166px 97px;
-    }
-  }
 }
 
 // foot脚部组件部分

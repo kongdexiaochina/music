@@ -4,7 +4,7 @@ import { Tabs } from 'antd-mobile';
 // Tabs组件需要的一些数据
 const  tabs = [
     {title: "推荐音乐", to: "/home/recommend"},
-    {title: "热歌榜", to: "/home/sonhot"},
+    {title: "热歌榜", to: "/home/songhot"},
     {title: "搜索", to: "/home/search"}
 ]
 

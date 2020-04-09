@@ -1,0 +1,57 @@
+// 热歌榜组件
+.songhot {
+  // banner组件部分样式
+  .banner {
+    position: relative;
+    padding-top: 38.9%;
+    overflow: hidden;
+    background: url("../images/hot_bg.jpg") no-repeat;
+    background-size: contain;
+    .banner_flex {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+      padding-left: 20px;
+      box-sizing: border-box;
+      &::after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+      .banner_flex_icon {
+        width: 142px;
+        height: 67px;
+        background-image: url("../images/hot_icon.png");
+        background-position: -24px -30px;
+        background-size: 166px 97px;
+      }
+      .banner_flex_time {
+        text-align: left;
+        margin-top: 10px;
+        color: hsla(0, 0%, 100%, 0.8);
+        font-size: 12px;
+        transform: scale(0.91);
+        transform-origin: left top;
+      }
+    }
+  }
+}
+.songhot_wrapper {
+  position: absolute;
+  top: 105px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}

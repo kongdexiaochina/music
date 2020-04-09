@@ -3,7 +3,7 @@ import React, {Component, Fragment} from "react";
 import {Switch, Route, Redirect} from 'react-router-dom'
 // 引入路由组件
 import Recommend from '../Recommend/Recommend'
-import SonHot from '../SonHot/SonHot'
+import SongHot from '../SongHot/SongHot'
 import Search from '../Search/Search'
 // 引入适用性比较低的组件
 import ContentTopHeader from '../../component/content/TopHeader'
@@ -27,7 +27,7 @@ class Home extends Component{
                 {/*二级路由*/}
                 <Switch>
                     <Route exact path={"/home/recommend"} component={Recommend}/>
-                    <Route path={"/home/sonhot"} component={SonHot}/>
+                    <Route path={"/home/songhot"} component={SongHot}/>
                     <Route path={"/home/search"} component={Search}/>
                     <Redirect to={"/home/recommend"}/>
                 </Switch>

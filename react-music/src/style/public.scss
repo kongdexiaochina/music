@@ -1,0 +1,57 @@
+// 音乐展示列表样式部分
+  .song_title {
+    font-size: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+    color: #333;
+  }
+  .num {
+    color: #999;
+    align-items: center;
+    width: 28px;
+    font-size: 17px;
+    display: flex;
+    &.on {
+      color: red;
+    }
+  }
+  .am-list-item .am-list-line .am-list-content {
+    display: flex;
+  }
+  .am-list-body .am-list-line .am-list-extra {
+    flex-basis: initial;
+  }
+  .am-list-item .am-list-line-multiple {
+    padding: 8px 15px 8px 0;
+  }
+  .song_play {
+    display: flex;
+    align-items: center;
+    span {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      background: url("../images/hot_icon.png") no-repeat;
+      background-position: -24px 0;
+      background-size: 166px 97px;
+    }
+  }
+  .song_detail {
+    font-size: 12px;
+    color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+    background-color: white;
+    i {
+      display: inline-block;
+      width: 12px;
+      height: 8px;
+      margin-right: 6px;
+      background: url("../images/hot_icon.png") no-repeat;
+      background-size: 166px 97px;
+    }
+  }
