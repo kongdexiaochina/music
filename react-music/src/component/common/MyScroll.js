@@ -5,9 +5,15 @@ class MyScroll extends Component {
         super(...arguments);
         this.wrapper =  createRef()
     }
+    state = {
+        scroll: null
+    }
     componentDidMount() {
         const scroll = new BScroll(this.wrapper.current, {
             click: true
+        })
+        this.setState({
+            scroll
         })
     }
     render() {

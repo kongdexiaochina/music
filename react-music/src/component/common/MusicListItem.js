@@ -24,12 +24,17 @@ class MusicListItem extends Component {
                             item.song.artists.map((item, index) => {
                                 if (index === 1 || index === 0) {
                                     return (
-                                        <span key={index}>{item.name} - </span>
+                                        <span key={index}>
+                                            {item.name}
+                                        </span>
                                     )
+                                } else {
+                                    return <Fragment key={index}></Fragment>
                                 }
                             })
                         }
-                        {item.song.name}
+                        <em> - </em>
+                        {item.song.name.name || item.song.name}
                     </div>
                 </div>
             </List.Item>

@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import { SearchBar } from 'antd-mobile';
+
 class SearchMusic extends Component {
-    onChange= (value) => {
-        this.setState({ value });
-    }
     render() {
+        const {changeVal, val} = this.props
         return (
             <div className={"search_music"}>
                 <SearchBar
+                    value={val}
                     placeholder="搜索歌曲、歌手、专辑"
                     onSubmit={value => console.log(value, 'onSubmit')}
                     onClear={value => console.log(value, 'onClear')}
@@ -15,7 +15,7 @@ class SearchMusic extends Component {
                     onBlur={() => console.log('onBlur')}
                     onCancel={() => console.log('onCancel')}
                     showCancelButton
-                    onChange={this.onChange}
+                    onChange={changeVal}
                 />
             </div>
         );

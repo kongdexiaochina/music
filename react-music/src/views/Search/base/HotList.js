@@ -1,11 +1,23 @@
-import React, {Component, Fragment} from 'react'
-import { Tag } from 'antd-mobile';
+import React, {Component} from 'react'
+import { Tag, List } from 'antd-mobile';
+import CommonMusicListItem from '../../../component/common/MusicListItem'
+import CommonMyScroll from '../../../component/common/MyScroll'
 class HotList extends Component {
     render() {
-        const {hots} = this.props
-        console.log(hots)
-        return (
-            <Fragment>
+        const {hots, handleClickTab, hotsList, val} = this.props
+        const content = (
+            <List>
+                {
+                    hotsList.map((item, index) => {
+                        return (
+                            <CommonMusicListItem key={index} item={item}/>
+                        )
+                    })
+                }
+            </List>
+        )
+        if (!val.replace(/(^\s*)|(\s*$)/g, '')) {
+            return (
                 <div className="hot_list">
                     <h3>热门搜索</h3>
                     <div className={"list"}>
@@ -13,15 +25,17 @@ class HotList extends Component {
                             hots.map((item, index) => {
                                 return (
                                     <Tag key={index} onChange={() => {
-                                        console.log('onChange')
+                                        handleClickTab(item.first)
                                     }}>{item.first}</Tag>
                                 )
                             })
                         }
                     </div>
                 </div>
-            </Fragment>
-        )
+            )
+        } else {
+            return <CommonMyScroll content={content} className={"hotlist_wrapper"}/>
+        }
     }
 }
 

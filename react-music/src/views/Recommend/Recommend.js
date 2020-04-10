@@ -4,6 +4,7 @@ import { SongListData, NewMusicData } from '../../api/recommend'
 // 引入适用性比较高的组件
 import CommonMyScroll from '../../component/common/MyScroll'
 import conformityData from '../../utils/conformity'
+
 // 引入当当前组件下面的子组件
 import RecommendSongList from "./base/SongList";
 import RecommendMusicList from "./base/MusicList";
@@ -46,6 +47,11 @@ class Recommend extends Component {
             </Fragment>
 
         )
+    }
+    componentWillUnmount = () => {
+        this.setState = (s)=>{
+            return;
+        };
     }
 }
 

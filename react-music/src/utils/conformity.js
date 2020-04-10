@@ -6,7 +6,8 @@
 *               song: { 歌曲的简绍 如歌曲的作者和歌曲的详细设计师
 *                   artists： 歌曲的设计师,
 *                   name: 歌曲的作者
-*               }
+*               },
+*               id: 歌曲的id
 *           }
 * */
 export default function conformityData (arr) {
@@ -15,9 +16,10 @@ export default function conformityData (arr) {
         newArr.push({
             name: item.name,
             song: {
-                artists: item.ar || item.song.artists,
-                name: (item.al ? item.al.name : '') || item.song.album.name
-            }
+                artists: item.ar || (item.song ? item.song.artists : item.artists),
+                name: item.album || (item.al ? item.al.name : '') || item.song.album.name
+            },
+            id: item.id
         })
     })
     return newArr

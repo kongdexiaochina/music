@@ -38,6 +38,12 @@ class SongHot extends Component {
             </Fragment>
         )
     }
+
+    componentWillUnmount = () => {
+        this.setState = (s)=>{
+            return;
+        };
+    }
 }
 
 export default SongHot
