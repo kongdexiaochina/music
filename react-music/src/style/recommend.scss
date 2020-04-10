@@ -83,7 +83,7 @@ body {
     padding-bottom: 24px;
   }
   .grid {
-    .am-wingblank {
+    .item {
       width: 40%;
       height: 170px;
       margin: $zero;
@@ -96,6 +96,9 @@ body {
       padding-bottom: 16px;
       .am-card-header,.am-card-body, .am-card {
         padding: $zero;
+      }
+      .am-wingblank.am-wingblank-lg {
+        margin:0;
       }
       .am-card-header-content {
         flex: inherit;

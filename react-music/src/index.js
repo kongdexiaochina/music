@@ -8,6 +8,7 @@ import './style/recommend.scss'
 import './style/songhot.scss'
 import './style/public.scss'
 import './style/search.scss'
+import './style/detail.scss'
 ReactDOM.render(
     <BrowserRouter>
         <App />

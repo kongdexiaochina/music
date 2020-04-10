@@ -18,7 +18,8 @@
     "react-router-cache-route": "^1.8.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "url": "^0.11.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react'
+import {Link} from 'react-router-dom'
 // 引入对应的UI组件
 import { Card, WingBlank, WhiteSpace,  Flex } from 'antd-mobile';
 // 引入工具类函数，把一维数组转换成二维数组
@@ -19,23 +20,25 @@ class SongList extends Component {
                                        {
                                            item.map(value => {
                                                return (
-                                                   <WingBlank size="lg" key={value.id}>
-                                                       <WhiteSpace size="lg" />
-                                                       <Card>
-                                                           <Card.Header
-                                                               thumb={value.picUrl}
-                                                               extra={
-                                                                   <Fragment>
-                                                                       <span>{String(value.playCount).slice(0,2) + '万'}</span>
-                                                                   </Fragment>
-                                                               }
-                                                           />
-                                                           <Card.Body>
-                                                               <div>{value.name}</div>
-                                                           </Card.Body>
-                                                       </Card>
-                                                       <WhiteSpace size="lg" />
-                                                   </WingBlank>
+                                                   <Link to={`/detail?id=${value.id}`} className={"item"} key={value.id}>
+                                                       <WingBlank size="lg">
+                                                           <WhiteSpace size="lg" />
+                                                           <Card>
+                                                               <Card.Header
+                                                                   thumb={value.picUrl}
+                                                                   extra={
+                                                                       <Fragment>
+                                                                           <span>{String(value.playCount).slice(0,2) + '万'}</span>
+                                                                       </Fragment>
+                                                                   }
+                                                               />
+                                                               <Card.Body>
+                                                                   <div>{value.name}</div>
+                                                               </Card.Body>
+                                                           </Card>
+                                                           <WhiteSpace size="lg" />
+                                                       </WingBlank>
+                                                   </Link>
                                                )
                                            })
                                        }

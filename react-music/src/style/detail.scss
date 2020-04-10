@@ -1,0 +1,166 @@
+// 详情组件部分样式
+@mixin positionType ($type) {
+  position: $type;
+}
+@mixin backgroundColor ($color) {
+  background-color: $color;
+}
+$seven: 7px;
+.detail {
+  @include backgroundColor(#F8F8F8);
+  // goback组件
+  .goback {
+    @include positionType(absolute);
+    left: 10px;
+    top: 10px;
+    z-index: 100;
+    width: 100%;
+    padding-left: 13px;
+    margin-bottom: 10px;
+    color: #fff;
+    cursor: pointer;
+    h3 {
+      font-weight: bolder;
+      font-size: 16.5px;
+    }
+    &::after {
+      content: "";
+      @include positionType(absolute);
+      top: $seven;
+      left: 0;
+      width: $seven;
+      height: $seven;
+      border: solid #fff;
+      border-width: 3px 0 0 3px;
+      transform: rotate(315deg);
+    }
+  }
+  // 头部
+  .songhead {
+    @include positionType(relative);
+    padding: 40px 10px 24px 15px;
+    overflow: hidden;
+    .songhead_bgc {
+      @include positionType(absolute);
+      height: 126px;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50%;
+      filter: blur(20px);
+      transform: scale(1.5);
+    }
+    .songheader_content {
+      display: flex;
+      @include positionType(relative);
+      z-index: 2;
+      .songheader_content_img {
+        @include positionType(relative);
+        width: 126px;
+        height: 126px;
+        @include backgroundColor(#e2e2e3);
+        img {
+          width: 100%;
+          vertical-align: middle;
+        }
+        .icon {
+          @include positionType(absolute);
+          z-index: 3;
+          top: 10px;
+          left: 0;
+          padding: 0 8px;
+          height: $seven + 10px;
+          color: #fff;
+          font-size: 9px;
+          text-align: center;
+          line-height: $seven + 10px;
+          @include backgroundColor(rgba(217,48,48,.8));
+          border-top-right-radius: $seven + 10px;
+          border-bottom-right-radius: $seven + 10px;
+        }
+      }
+      .songheader_content_name {
+        flex: 1 1 auto;
+        width: 1%;
+        margin-left: 16px;
+        h3 {
+          display: flex;
+          padding-top: 1px;
+          font-size: $seven + 10px;
+          line-height: 1.3;
+          color: #fefefe;
+          height: 44px;
+        }
+      }
+    }
+  }
+  // 歌曲简绍图标样式
+  .succinct_icon {
+    @include positionType(relative);
+    margin: 0 10px 0 15px;
+    padding-top: 10px;
+    line-height: 19px;
+    color: #666;
+    .succinct_icon_tabs {
+      width: 100%;
+      margin-bottom: 10px;
+      line-height: 20px;
+      margin-right: -10px;
+      em {
+        display: inline-block;
+        @include positionType(relative);
+        margin-right: 10px;
+        padding: 1px 8px;
+        font-size: 12px;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 50%;
+        font-style: normal;
+      }
+    }
+    .text {
+      @include positionType(relative);
+      padding-bottom: 18px;
+      line-height: 19px;
+      color: #666;
+      span {
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: normal;
+      }
+    }
+  }
+  .song_list {
+    h3 {
+      height: 23px;
+      line-height: 23px;
+      padding: 0 10px;
+      font-size: 14px;
+      color: #666;
+      @include backgroundColor(#eeeff0);
+      font-weight: bolder;
+    }
+  }
+  .am-list-body {
+    @include backgroundColor(initial);
+    div {
+      @include backgroundColor(initial);
+      .item {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: normal;
+      }
+      .on {
+        color: #999;
+      }
+    }
+  }
+}
+.detail_wrapper {
+  @include positionType(absolute);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
