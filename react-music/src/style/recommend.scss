@@ -1,3 +1,10 @@
+@mixin displayType ($type) {
+  display: $type;
+}
+@mixin positionType ($type) {
+  position: $type;
+}
+$zero: 0;
 body {
   font: 14px/1.5 Helvetica, sans-serif;
   color: #333;
@@ -5,27 +12,27 @@ body {
 }
 // 头部
 .top {
-  position: fixed;
-  top: 0;
-  left: 0;
+  @include positionType(fixed);
+  top: $zero;
+  left: $zero;
   z-index: 100;
   width: 100%;
   height: 108px;
   // TopHeader 头部组件的样式
   .top_header {
     height: 64px;
-    padding: 0 20px;
+    padding: $zero 20px;
     background-color: #d43c33;
     .top_header_icon {
+      overflow: hidden;
       width: 142px;
       height: 25px;
-      overflow: hidden;
     }
     .top_header_title {
       width: 55px;
       height: 30px;
       line-height: 30px;
-      padding: 0 10px;
+      padding: $zero 10px;
       color: #fff;
       font-size: 15px;
       border: 1px solid white;
@@ -34,7 +41,7 @@ body {
     }
     .am-flexbox-item {
       flex: inherit;
-      margin-left: 0;
+      margin-left: $zero;
     }
   }
 
@@ -52,8 +59,8 @@ body {
 .recommend {
   // 标题部分
   .title {
-    display: block;
-    position: relative;
+    @include displayType(block);
+    @include positionType(relative);
     padding-left: 9px;
     margin-bottom: 14px;
     font-size: 17px;
@@ -62,8 +69,8 @@ body {
     line-height: 20px;
     &::after {
       content: " ";
-      position: absolute;
-      left: 0;
+      @include positionType(absolute);
+      left: $zero;
       top: 50%;
       margin-top: -9px;
       width: 2px;
@@ -79,8 +86,8 @@ body {
     .am-wingblank {
       width: 40%;
       height: 170px;
-      margin: 0;
-      padding: 0 2px;
+      margin: $zero;
+      padding: $zero 2px;
     }
     .am-card-header-content img {
       width: 100%;
@@ -88,14 +95,14 @@ body {
     .list {
       padding-bottom: 16px;
       .am-card-header,.am-card-body, .am-card {
-        padding: 0;
+        padding: $zero;
       }
       .am-card-header-content {
         flex: inherit;
         width: 100%;
       }
       .am-card-header-extra span {
-        position: absolute;
+        @include positionType(absolute);
         right: 5px;
         top: 2px;
         z-index: 3;
@@ -118,31 +125,31 @@ body {
       }
     }
     .am-whitespace, .am-whitespace-lg {
-      display: none;
+      @include displayType(none);
     }
   }
 }
 
 // foot脚部组件部分
 .foot {
-  position: relative;
+  @include positionType(relative);
   padding-top: 53.3%;
   margin-top: 4px;
   background: url("../images/footbg.png") no-repeat;
   background-size: contain;
   .foot_wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
+    @include positionType(absolute);
+    left: $zero;
+    right: $zero;
+    bottom: $zero;
+    top: $zero;
     z-index: 1;
     text-align: center;
     .foot_logo {
       padding-top: 12.5%;
       img {
-        display: block;
-        margin: 0 auto;
+        @include displayType(block);
+        margin: $zero auto;
         width: 230px;
         height: 44px;
       }
@@ -152,10 +159,10 @@ body {
 
 // recommend组件需要用BScroll滚动的区域样式
 .recommend_wrapper {
-  position: absolute;
+  @include positionType(absolute);
   top: 128px;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  right: $zero;
+  bottom: $zero;
+  left: $zero;
   overflow: hidden;
 }

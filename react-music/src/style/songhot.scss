@@ -1,3 +1,10 @@
+@mixin positionType ($top) {
+  position: absolute;
+  left:0;
+  top: $top;
+  right: 0;
+  bottom: 0;
+}
 // 热歌榜组件
 .songhot {
   // banner组件部分样式
@@ -8,11 +15,7 @@
     background: url("../images/hot_bg.jpg") no-repeat;
     background-size: contain;
     .banner_flex {
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
+      @include positionType(0);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -21,11 +24,7 @@
       box-sizing: border-box;
       &::after {
         content: " ";
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
+        @include positionType(0);
         z-index: -1;
         background-color: rgba(0, 0, 0, 0.2);
       }
@@ -48,10 +47,6 @@
   }
 }
 .songhot_wrapper {
-  position: absolute;
-  top: 105px;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  @include positionType(105px);
   overflow: hidden;
 }

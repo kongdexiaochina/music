@@ -48,6 +48,7 @@ class Recommend extends Component {
 
         )
     }
+    //  当组件销毁的时候 我们要通过以下代码防止出现内存泄漏
     componentWillUnmount = () => {
         this.setState = (s)=>{
             return;
