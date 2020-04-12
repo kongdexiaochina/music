@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
+import {NavLink} from 'react-router-dom'
 // 引入对应的API请求函数
 import {playerLyricData} from '../../api/player'
 // 引入connect用于解耦react+redux代码
 import {connect} from 'react-redux'
 // 引入对应的actions
 import {getMusicObj, getIsSmallMusic, getIsMusic} from '../../redux/actions'
-// 引入对应的UI组件
-import { Button, WhiteSpace } from 'antd-mobile';
 // 引入适用性比较高的组件
 import CommonGoBack from '../../component/common/GoBack'
 // 引入当前组件下面的子组件
@@ -55,7 +54,9 @@ class Player extends Component{
                     <CommonGoBack handleClick={this.handleClick}/>
                     <PlayerIconMusic url={music_obj.picUrl}/>
                     <PlayerSongLyric titleObj={music_obj.song} lyric={lyric}/>
-                    <Button type="warning">查看歌曲评论</Button><WhiteSpace />
+                    <NavLink to={"/comment/" + music_obj.id} className={"link"}>
+                        查看歌曲评论
+                    </NavLink>
                 </div>
             </div>
         )

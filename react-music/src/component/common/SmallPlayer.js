@@ -86,10 +86,11 @@ class SmallPlayer extends Component {
     render() {
         // 解构props的属性和方法
         const {music_obj, is_Music, is_small_music} = this.props
+        const pathname = window.location.pathname.split('/')[1]
         // 解构state当中的数据
         const {url, index, width} = this.state
         return (
-            <div className={"small_palyer"} style={{display: is_small_music ? 'block' : 'none'}}>
+            <div className={"small_palyer"} style={{display: is_small_music && pathname !== 'comment' ? 'block' : 'none'}}>
                 <span className={"small_palyer_icon"}
                       onClick={this.toggleIcon.bind(this)}
                       style={{backgroundPosition: is_Music ? '0 -165px' : '0 -204px'}}

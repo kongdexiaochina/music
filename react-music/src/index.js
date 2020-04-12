@@ -12,6 +12,7 @@ import './style/public.scss'
 import './style/search.scss'
 import './style/detail.scss'
 import './style/player.scss'
+import './style/commen.scss'
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>

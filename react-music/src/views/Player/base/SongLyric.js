@@ -18,12 +18,15 @@ class SongLyric extends Component {
         const {getLyric, lyric, activate_index} = nextProps
         // 向redux当中发送当前的歌词 他是一个数组
         getLyric(lyricParser(lyric))
-        const item = this.content.current.children[activate_index]
-        // 获取scroll
-        const scroll = this.lyricScroll.current.state.scroll
-        if (scroll) {
-            // 进行歌词的滚动
-            scroll.scrollToElement(item, 200, 0, true)
+        const content = this.content.current
+        if (content) {
+            const item = content.children[activate_index]
+            // 获取scroll
+            const scroll = this.lyricScroll.current.state.scroll
+            if (scroll) {
+                // 进行歌词的滚动
+                scroll.scrollToElement(item, 200, 0, true)
+            }
         }
     }
     render() {

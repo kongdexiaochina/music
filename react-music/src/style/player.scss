@@ -1,39 +1,45 @@
+@mixin background($color) {
+  background: $color;
+}
+@mixin positionType ($type) {
+  position: $type;
+}
 // player组件模块的样式
 .player {
   .player_bgc {
-    background-color: #161824;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    transform: scale(1.2);
-    transform-origin: center;
-    filter: blur(10px);
-    position: fixed;
+    @include positionType(fixed);
     left: 0;
     right: 0;
     top: 0;
     height: 100%;
     overflow: hidden;
     z-index: 1;
+    @include background(#161824);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    transform: scale(1.2);
+    transform-origin: center;
+    filter: blur(10px);
     &::before {
       content: " ";
-      position: absolute;
+      @include positionType(absolute);
       left: 0;
       right: 0;
       bottom: 0;
       top: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      @include background(rgba(0, 0, 0, 0.5));
     }
   }
   .wrapper {
+    @include positionType(relative);
     z-index: 1;
-    position: relative;
     width: 100vw;
     padding-top: 80px;
     box-sizing: border-box;
     // goback组件当中的数据
     .goback {
-      position: absolute;
+      @include positionType(absolute);
       left: 10px;
       top: 10px;
       z-index: 100;
@@ -48,7 +54,7 @@
       }
       &::after {
         content: "";
-        position: absolute;
+        @include positionType(absolute);
         top: 7px;
         left: 0;
         width: 7px;
@@ -60,48 +66,48 @@
     }
     // 播放icon图标样式
     .iconmusic {
-      position: relative;
+      @include positionType(relative);
       margin: 0 auto;
       height: 342px;
       width: 342px;
       .needle {
-        position: absolute;
-        width: 110px;
-        height: 157px;
+        @include positionType(absolute);
         top: -80px;
         left: 150px;
-        background: url("../images/needle_plus.png") no-repeat;
-        background-size: contain;
         z-index: 2;
+        width: 110px;
+        height: 157px;
+        @include background(url("../images/needle_plus.png") no-repeat);
+        background-size: contain;
       }
       .icon_center {
         width: 100%;
         height: 100%;
         &:before{
           content: " ";
-          position: absolute;
+          @include positionType(absolute);
           left: 0;
           right: 0;
           top: 0;
           bottom: 0;
           z-index: 1;
-          background: url("../images/disc_plus.png") no-repeat;
+          @include background(url("../images/disc_plus.png") no-repeat);
           background-size: contain;
         }
         .song_img {
-          position: absolute;
+          @include positionType(absolute);
           left: 50%;
           top: 50%;
+          z-index: 1;
           width: 212px;
           height: 212px;
           margin: -106px 0 0 -106px;
-          z-index: 1;
           .song_img_rotate {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             overflow: hidden;
-            background: url("../images/disc_default.png") no-repeat;
+            @include background(url("../images/disc_default.png") no-repeat);
             background-size: contain;
             animation: rotate 16s linear infinite;
             img {
@@ -119,15 +125,15 @@
         }
       }
       .play_btn {
-        position: absolute;
+        @include positionType(absolute);
         left: 50%;
         top: 50%;
+        z-index: 10;
         width: 65px;
         height: 65px;
-        background-image: url("../images/play_btn.png");
+        @include background(url("../images/play_btn.png"));
         background-size: contain;
         transform: translate(-50%, -50%);
-        z-index: 10;
       }
     }
     // 歌词样式
@@ -156,13 +162,18 @@
         font-size: 18px;
       }
     }
-    .am-button-warning {
-      position: fixed;
+    .link {
+      @include positionType(fixed);
       left: 25%;
-      bottom: 8vw;
+      bottom: 6vw;
       width: 50%;
       height: 30px;
+      border: 1px solid #ff3a3a;
+      border-radius: 40px;
       font-size: 16px;
+      text-align: center;
+      @include background(#ff3a3a);
+      color: #fff;
       line-height: 30px;
     }
   }
@@ -170,37 +181,37 @@
 
 // 迷你播放器的样式
 .small_palyer {
-  position: fixed;
+  @include positionType(fixed);
   bottom: 0;
   left: 0;
   z-index: 99;
   height: 53px;
   width: 100vw;
-  background: url("../images/playbar.png") repeat-x;
+  @include background(url("../images/playbar.png") repeat-x);
   .small_palyer_icon {
-    position: absolute;
+    @include positionType(absolute);
     left: 4%;
     top: 2vw;
     width: 36px;
     height: 36px;
-    background: url("../images/playbar.png") no-repeat;
+    @include background(url("../images/playbar.png") no-repeat);
     background-position: 0 -204px;
   }
   .small_palyer_content {
     display: block;
-    position: relative;
+    @include positionType(relative);
     max-width: 80%;
     height: 100%;
     margin-left: 18%;
     img {
-      position: absolute;
+      @include positionType(absolute);
       width: 13vw;
       height: 13vw;
       top: -3vw;
       left: 0;
     }
     p {
-      position: absolute;
+      @include positionType(absolute);
       left: 15vw;
       top: 2vw;
       color: #e8e8e8;
@@ -209,19 +220,20 @@
       overflow: hidden;
     }
     .process {
-      position: absolute;
+      @include positionType(absolute);
       top: 8vw;
       left: 15vw;
       width: 60vw;
       .weui_progress {
         width: 100%;
         height: 3px;
-        background-color: #EBEBEB;
+        @include background(#EBEBEB);
       }
       .on {
         width: 0;
         height: 100%;
         background-color: red;
+        @include background(red);
       }
     }
   }
@@ -229,7 +241,7 @@
 
 // 歌词滚动区域
 .lyric_wrapper {
-  position: relative;
+  @include positionType(relative);
   left: 0;
   right: 0;
   top: 14px;
