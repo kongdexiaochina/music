@@ -35,6 +35,10 @@ class MusicList extends Component {
 }
 
 export default connect(
-    null,
-    {getMusicData: getMusicData}
+    state => ({
+        isRecommend: state.isRecommend
+    }),
+    {
+        getMusicData: getMusicData
+    }
 )(MusicList)

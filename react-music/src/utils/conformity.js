@@ -21,8 +21,9 @@ export default function conformityData (arr) {
                 name: item.album || (item.al ? item.al.name : '') || item.song.album.name
             },
             id: item.id,
-            picUrl: item.picUrl
+            picUrl: item.artists ? item.artists[0].img1v1Url : '' || item.picUrl || item.al.picUrl
         })
+        // console.log();
     })
     return newArr
 }

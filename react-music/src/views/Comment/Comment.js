@@ -20,10 +20,7 @@ class Comment extends Component {
         this.props.getIsSmallMusic(false) // 不显示迷你播放器
     }
     componentDidMount() {
-        // 如果是开启播放那么我们就关闭
-        if (this.props.is_Music) {
-            this.props.getIsMusic(false) // 关闭播放
-        }
+        this.props.getIsMusic(true) // 关闭播放
     }
     // 请求数据的函数
     async getData () {

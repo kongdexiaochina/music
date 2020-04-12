@@ -48,7 +48,7 @@ class SongLyric extends Component {
                     titleObj &&
                     <div className={"song_lyric"}>
                         <p className={"title"}>
-                            {titleObj.name}
+                            {titleObj.name.name || titleObj.name}
                             <em> - </em>
                             <Fragment>
                                 {

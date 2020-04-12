@@ -27,15 +27,13 @@ class Player extends Component{
         // 解构对应的props值
         const {music_data,match:{params}, getMusicObj} = this.props
         // 如果获取到了值歌词的数据 那么就是歌词数据 反之是本地存储的数据
-        const obj = music_data[params.index] || JSON.parse(localStorage.getItem("musicObj"))
+        let obj = music_data[params.index] || JSON.parse(localStorage.getItem("musicObj"))
         getMusicObj(obj) // 向redux当中发送数据
         // 获取歌词数据
         const {lrc: {lyric}} = await playerLyricData(obj.id)
         this.setState({ // 更改state的状态
             lyric
         })
-        // 本地存储动态路由的params值
-        localStorage.setItem("index", params.index)
     }
     // 编导式导航 到上一个历史页面
     handleClick = () => {

@@ -13,8 +13,8 @@ class SmallPlayer extends Component {
     }
     state = {
         url: '', // 歌曲的URL路径
-        index: localStorage.getItem("index"), // player组件模块当中的params值
-        width: '0%' // 进度条的宽度值
+        width: '0%', // 进度条的宽度值
+        duration: 0 // 音频的总时间
     }
     // 进行请求数据
     componentWillMount() {
@@ -28,17 +28,14 @@ class SmallPlayer extends Component {
     componentWillReceiveProps(nextProps) {
         // 获取数据
         this.getData()
+        // this.toggleIcon()
         // 判断是否开启音乐
         if (nextProps.is_Music) {
-            this.music.current.play() // 开启
+            this.music.current.play().catch(e => {}) // 开启
         } else {
             this.music.current.pause() // 不开启
         }
-    }
-    // 我们在数据即将更新的时候 让index值从新等于我们本地存储的值
-    shouldComponentUpdate(nextProps, nextState){
-        nextState.index = localStorage.getItem("index")
-        return true
+        // console.log(nextProps.is_Music);
     }
     // 请求数据 获得到歌曲的URL路径
     async getData () {
@@ -54,15 +51,22 @@ class SmallPlayer extends Component {
         const music = this.music.current
         if (!is_Music) { // 开启音乐
             getIsMusic(true)
-            music.play()
+            music.play().catch(e => {})
         } else { // 关闭音乐
             getIsMusic(false)
             music.pause()
         }
     }
+    handleCanPaly () {
+        console.log(this.music.current.duration);
+        this.setState({
+            duration: this.music.current.duration
+        })
+    }
     // 当音频播放的时候 进行操作
     TimeUpdate () {
-        const {currentTime, duration} = this.music.current
+        const {currentTime} = this.music.current
+        const {duration} = this.state
         const {lyric} = this.props
         // 获取到当前歌词时间和播放时间一直的索引
         const activateIndex = lyric.findIndex((item, index, array) => {
@@ -78,6 +82,7 @@ class SmallPlayer extends Component {
         })
         // 向redux当中发送这个索引值
         this.props.getActivateIndex(activateIndex)
+        // console.log(currentTime, duration + '一个时间', duration, this.music.current);
         // 设置滚动条的进度
         this.setState({
             width: (currentTime/duration)*100 + '%'
@@ -88,14 +93,14 @@ class SmallPlayer extends Component {
         const {music_obj, is_Music, is_small_music} = this.props
         const pathname = window.location.pathname.split('/')[1]
         // 解构state当中的数据
-        const {url, index, width} = this.state
+        const {url, width} = this.state
         return (
             <div className={"small_palyer"} style={{display: is_small_music && pathname !== 'comment' ? 'block' : 'none'}}>
                 <span className={"small_palyer_icon"}
                       onClick={this.toggleIcon.bind(this)}
                       style={{backgroundPosition: is_Music ? '0 -165px' : '0 -204px'}}
                 ></span>
-                <NavLink to={"/player/" + index} className="small_palyer_content">
+                <NavLink to={"/player/music"} className="small_palyer_content">
                     <img src={music_obj.picUrl} alt="歌曲图片"/>
                     <p>
                         {music_obj.name}
@@ -116,9 +121,8 @@ class SmallPlayer extends Component {
                 </NavLink>
                 <audio
                     src={url}
-                    loop
                     ref={this.music}
-                    autoPlay={is_Music}
+                    onCanPlay={this.handleCanPaly.bind(this)}
                     onTimeUpdate={this.TimeUpdate.bind(this)}
                 ></audio>
             </div>

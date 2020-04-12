@@ -1,11 +1,19 @@
 import React, {Component, Fragment} from 'react'
 // 引入对应的UI组件
 import { Tag, List,  NoticeBar } from 'antd-mobile';
-
+import {NavLink} from 'react-router-dom'
+// 引入对应的actions
+import {getMusicData} from '../../../redux/actions'
+// 引入connect用于解耦react+redux代码
+import {connect} from 'react-redux'
 // 引入适用性比较高的组件
 import CommonMusicListItem from '../../../component/common/MusicListItem'
 import CommonMyScroll from '../../../component/common/MyScroll'
 class HotList extends Component {
+    // 我们在给子组件接收到父组件的props的时候 我们进行向redux当中发送数据
+    componentWillReceiveProps(nextProps) {
+        nextProps.getMusicData(nextProps.hotsList)
+    }
     render() {
         // 解构父级传递过来的方法和数据
         const {hots, handleClickTab, hotsList, val} = this.props
@@ -15,7 +23,9 @@ class HotList extends Component {
                 {
                     hotsList.map((item, index) => {
                         return (
-                            <CommonMusicListItem key={index} item={item}/>
+                            <NavLink to={"/player/" + index} key={index}>
+                                <CommonMusicListItem item={item}/>
+                            </NavLink>
                         )
                     })
                 }
@@ -54,4 +64,9 @@ class HotList extends Component {
 }
 
 
-export default HotList
+export default connect(
+    null,
+    {
+        getMusicData: getMusicData
+    }
+)(HotList)
