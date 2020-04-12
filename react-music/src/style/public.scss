@@ -62,3 +62,9 @@
       background-size: 166px 97px;
     }
   }
+
+  .link {
+    @include displayType(block);
+    width: 100%;
+    height: 100%;
+  }

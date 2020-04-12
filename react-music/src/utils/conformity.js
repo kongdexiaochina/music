@@ -7,7 +7,8 @@
 *                   artists： 歌曲的设计师,
 *                   name: 歌曲的作者
 *               },
-*               id: 歌曲的id
+*               id: 歌曲的id,
+*               picUrl: 歌曲图片的路径
 *           }
 * */
 export default function conformityData (arr) {
@@ -19,7 +20,8 @@ export default function conformityData (arr) {
                 artists: item.ar || (item.song ? item.song.artists : item.artists),
                 name: item.album || (item.al ? item.al.name : '') || item.song.album.name
             },
-            id: item.id
+            id: item.id,
+            picUrl: item.picUrl
         })
     })
     return newArr

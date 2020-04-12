@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import Url from 'url'
 // 引入对应的API请求函数
 import {DetailSongData, DetailSongHeadData,DetailSuccinctData, DetailSongListData} from '../../api/detail'
@@ -53,7 +53,12 @@ class Detail extends Component {
             </div>
         )
         return (
-            <CommonMyScroll content={content} className={"detail_wrapper"}/>
+            <Fragment>
+                {
+                    SongList.length &&
+                    <CommonMyScroll content={content} className={"detail_wrapper"}/>
+                }
+            </Fragment>
         )
     }
 }
