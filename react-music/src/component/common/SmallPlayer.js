@@ -29,7 +29,6 @@ class SmallPlayer extends Component {
     componentWillReceiveProps(nextProps) {
         // 获取数据
         this.getData()
-        // this.toggleIcon()
         // 判断是否开启音乐
         if (nextProps.is_Music) {
             this.music.current.play().catch(e => {}) // 开启
@@ -49,6 +48,10 @@ class SmallPlayer extends Component {
         this.setState({
             url: data[0].url
         })
+        // 播放不同歌曲的时候 我们直接让需要播放的歌曲的currentTime为1
+        if (this.props.music_obj.name !== localStorage.getItem("name")) {
+            this.music.current.currentTime = 1
+        }
     }
     // 切换对应的图标 和 开启关闭音乐
     toggleIcon () {
@@ -130,6 +133,7 @@ class SmallPlayer extends Component {
                     src={url}
                     loop
                     ref={this.music}
+                    autoPlay={is_Music}
                     onCanPlay={this.handleCanPaly.bind(this)}
                     onTimeUpdate={this.TimeUpdate.bind(this)}
                 ></audio>

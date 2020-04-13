@@ -1,10 +1,6 @@
 import React, {Component, Fragment} from "react";
-// 引入对应的UI组件
-import {Switch, Route, Redirect} from 'react-router-dom'
-// 引入路由组件
-import Recommend from '../Recommend/Recommend'
-import SongHot from '../SongHot/SongHot'
-import Search from '../Search/Search'
+// 引入二级路由组件
+import SecondRouter from "../../router/SecondRouter";
 // 引入适用性比较低的组件
 import ContentTopHeader from '../../component/content/TopHeader'
 import ContentTabBar from '../../component/content/TabBar'
@@ -24,13 +20,7 @@ class Home extends Component{
                     <ContentTopHeader />
                     <ContentTabBar TabClick={this.TabClick}/>
                 </div>
-                {/*二级路由*/}
-                <Switch>
-                    <Route exact path={"/home/recommend"} component={Recommend}/>
-                    <Route path={"/home/songhot"} component={SongHot}/>
-                    <Route path={"/home/search"} component={Search}/>
-                    <Redirect to={"/home/recommend"}/>
-                </Switch>
+               <SecondRouter />
             </Fragment>
         )
     }

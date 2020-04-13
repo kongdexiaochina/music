@@ -34,6 +34,7 @@ class Player extends Component{
         this.setState({ // 更改state的状态
             lyric
         })
+        localStorage.setItem("name", obj.name)
     }
     // 编导式导航 到上一个历史页面
     handleClick = () => {

@@ -1,14 +1,14 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 // 引入connect用于解耦react+redux代码
 import {connect} from 'react-redux'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../component/common/GoBack'
+import CommonMyScroll from '../../component/common/MyScroll'
 // 引入对应的actions
 import {getIsSmallMusic, getIsMusic} from '../../redux/actions'
 // 引入对应的数据请求函数
 import {CommentData} from '../../api/comment'
-// 引入适用性比较高的组件
-import CommonMyScroll from '../../component/common/MyScroll'
+import Loading from '../../router/loading/Loading'
 // 引入当前组件模块下面的子组件
 import CommentPlayerList from './base/PlayerList'
 class Comment extends Component {
@@ -38,21 +38,20 @@ class Comment extends Component {
     render() {
         const {music_obj} = this.props
         const {hotComments} = this.state
-        return (
-            <Fragment>
-                {
-                    hotComments.length &&
-                    <div className={"comment"}>
-                        <div className="comment_bgc" style={{backgroundImage: `url(${music_obj.picUrl})`}}></div>
-                        <div className={"comment_top"}>
-                            <CommonGoBack handleClick={this.handleClick}/>
-                            <p>热门评论</p>
-                        </div>
-                        <CommonMyScroll content={<CommentPlayerList hotComments={hotComments}/>} className={"comment_wrapper"}/>
+        if (hotComments.length) {
+            return (
+                <div className={"comment"}>
+                    <div className="comment_bgc" style={{backgroundImage: `url(${music_obj.picUrl})`}}></div>
+                    <div className={"comment_top"}>
+                        <CommonGoBack handleClick={this.handleClick}/>
+                        <p>热门评论</p>
                     </div>
-                }
-            </Fragment>
-        )
+                    <CommonMyScroll content={<CommentPlayerList hotComments={hotComments}/>} className={"comment_wrapper"}/>
+                </div>
+            )
+        } else {
+            return <Loading />
+        }
     }
     // 在此处完成组件的卸载和数据的销毁。并且不显示迷你播放器 并且开启音乐
     componentWillUnmount (){

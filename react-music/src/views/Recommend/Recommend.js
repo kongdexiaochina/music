@@ -4,7 +4,7 @@ import { SongListData, NewMusicData } from '../../api/recommend'
 // 引入适用性比较高的组件
 import CommonMyScroll from '../../component/common/MyScroll'
 import conformityData from '../../utils/conformity'
-
+import Loading from '../../router/loading/Loading'
 // 引入当当前组件下面的子组件
 import RecommendSongList from "./base/SongList";
 import RecommendMusicList from "./base/MusicList";
@@ -38,15 +38,17 @@ class Recommend extends Component {
                 <RecommendFoot />
             </div>
         )
-        return (
-            <Fragment>
-                {
-                    songList.length && newMusic.length &&
-                    <CommonMyScroll content={content} className={"recommend_wrapper"}/>
-                }
-            </Fragment>
-
-        )
+        if (songList.length) {
+            return (
+                <Fragment>
+                    {
+                        <CommonMyScroll content={content} className={"recommend_wrapper"}/>
+                    }
+                </Fragment>
+            )
+        } else {
+            return <Loading />
+        }
     }
     //  当组件销毁的时候 我们要通过以下代码防止出现内存泄漏
     componentWillUnmount = () => {

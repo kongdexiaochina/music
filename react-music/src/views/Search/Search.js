@@ -1,6 +1,7 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 // 引入对应的API数据请求函数
 import {hotListData, hotSearchData} from '../../api/search'
+import Loading from '../../router/loading/Loading'
 // 引入工具类函数用于整合数据
 import conformityData from '../../utils/conformity'
 // 引入当前组件下面的子组件
@@ -54,22 +55,21 @@ class Search extends Component{
     render() {
         // 解构state状态管理里面的属性值
         const {hots, val, hotsList} = this.state
-        return (
-            <Fragment>
-                {
-                    hots.length &&
-                    <div className={"search"}>
-                        <SearchMusic changeVal={this.changeVal} val={val}/>
-                        <SearchHotList
-                            hots={hots}
-                            handleClickTab={this.handleClickTab}
-                            hotsList={hotsList}
-                            val={val}
-                        />
-                    </div>
-                }
-            </Fragment>
-        )
+        if (hots.length) {
+            return (
+                <div className={"search"}>
+                    <SearchMusic changeVal={this.changeVal} val={val}/>
+                    <SearchHotList
+                        hots={hots}
+                        handleClickTab={this.handleClickTab}
+                        hotsList={hotsList}
+                        val={val}
+                    />
+                </div>
+            )
+        } else {
+            return <Loading />
+        }
     }
     //  当组件销毁的时候 我们要通过以下代码防止出现内存泄漏
     componentWillUnmount = () => {

@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react'
 // 引入对应的UI组件
 import { List } from 'antd-mobile';
+// 引入适用性比较低的组件
+import ContentImgLoading from '../../../component/content/ImgLoading'
 // 引入工具类函数用于转换时间
 import {formateDate} from '../../../utils/time'
 class PlayerList extends Component{
@@ -23,7 +25,9 @@ class PlayerList extends Component{
                                             </i>
                                         </div>
                                     }
-                                    thumb={item.user.avatarUrl}
+                                    thumb={
+                                        <ContentImgLoading src={item.user.avatarUrl} loading={require('../../../images/loadingLog.png')}/>
+                                    }
                                     key={index}
                                 >
                                     <div className={"content"}>
