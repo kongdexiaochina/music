@@ -163,7 +163,7 @@ body {
 // recommend组件需要用BScroll滚动的区域样式
 .recommend_wrapper {
   @include positionType(absolute);
-  top: 128px;
+  top: 107px;
   right: $zero;
   bottom: $zero;
   left: $zero;

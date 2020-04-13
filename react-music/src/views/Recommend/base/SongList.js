@@ -10,7 +10,7 @@ class SongList extends Component {
         const { songList } = this.props
         return (
            <Fragment>
-               <h3 className={"title"}>推荐歌单</h3>
+               <h3 className={"title"} style={{paddingTop: '40px'}}>推荐歌单</h3>
                <div className={"grid"}>
                    {
                        ToArray(3, songList).map((item, index) => {
