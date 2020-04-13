@@ -14,7 +14,8 @@ class SmallPlayer extends Component {
     state = {
         url: '', // 歌曲的URL路径
         width: '0%', // 进度条的宽度值
-        duration: 0 // 音频的总时间
+        duration: 0, // 音频的总时间
+        time: 1
     }
     // 进行请求数据
     componentWillMount() {
@@ -35,7 +36,11 @@ class SmallPlayer extends Component {
         } else {
             this.music.current.pause() // 不开启
         }
-        // console.log(nextProps.is_Music);
+        const {currentTime} = this.music.current
+        // 如果等于0那么我们就从新设置他的currentTime值
+        if (currentTime === 0) {
+            this.music.current.currentTime = this.state.time
+        }
     }
     // 请求数据 获得到歌曲的URL路径
     async getData () {
@@ -57,8 +62,8 @@ class SmallPlayer extends Component {
             music.pause()
         }
     }
+    // 当音频加载完毕那么我们就获取他的duration值
     handleCanPaly () {
-        console.log(this.music.current.duration);
         this.setState({
             duration: this.music.current.duration
         })
@@ -82,11 +87,13 @@ class SmallPlayer extends Component {
         })
         // 向redux当中发送这个索引值
         this.props.getActivateIndex(activateIndex)
-        // console.log(currentTime, duration + '一个时间', duration, this.music.current);
-        // 设置滚动条的进度
-        this.setState({
-            width: (currentTime/duration)*100 + '%'
-        })
+        if (currentTime) {
+            // 设置滚动条的进度 和播放速度
+            this.setState({
+                width: (currentTime/duration)*100 + '%',
+                time: currentTime
+            })
+        }
     }
     render() {
         // 解构props的属性和方法
@@ -121,6 +128,7 @@ class SmallPlayer extends Component {
                 </NavLink>
                 <audio
                     src={url}
+                    loop
                     ref={this.music}
                     onCanPlay={this.handleCanPaly.bind(this)}
                     onTimeUpdate={this.TimeUpdate.bind(this)}

@@ -41,8 +41,8 @@
     }
   }
 }
-
 .hotlist_wrapper {
   @include positionType(160px);
+  bottom: 64px;
   overflow: hidden;
 }
