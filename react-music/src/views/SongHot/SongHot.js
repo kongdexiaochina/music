@@ -31,7 +31,6 @@ class SongHot extends Component {
         this.props.getMusicData(this.state.tracks)
     }
     componentDidRecover = () => {
-        console.log('List recovered', '缓存回复')
         this.props.getMusicData(this.state.tracks)
     }
     // 请求数据的函数

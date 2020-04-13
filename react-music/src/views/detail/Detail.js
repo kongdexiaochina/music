@@ -1,10 +1,11 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import Url from 'url'
 // 引入对应的API请求函数
 import {DetailSongData, DetailSongHeadData,DetailSuccinctData, DetailSongListData} from '../../api/detail'
 // 引入适用性比较搞的组件
 import CommonGoBack from '../../component/common/GoBack'
 import CommonMyScroll from '../../component/common/MyScroll'
+import Loading from '../../router/loading/Loading'
 // 引入当前组件下面的子组件
 import DetailBannerHead from "./base/BannerHead";
 import DetailSuccinctIcon from './base/SuccinctIcon'
@@ -52,14 +53,11 @@ class Detail extends Component {
                 <DetailSongList SongList={SongList}/>
             </div>
         )
-        return (
-            <Fragment>
-                {
-                    SongList.length &&
-                    <CommonMyScroll content={content} className={"detail_wrapper"}/>
-                }
-            </Fragment>
-        )
+        if (SongList.length) {
+            return <CommonMyScroll content={content} className={"detail_wrapper"}/>
+        } else {
+            return <Loading />
+        }
     }
 }
 

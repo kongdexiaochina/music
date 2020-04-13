@@ -31,7 +31,6 @@ class Search extends Component{
         this.props.getMusicData(this.state.hotsList)
     }
     componentDidRecover = () => {
-        console.log('List recovered', '缓存回复')
         this.props.getMusicData(this.state.hotsList)
     }
     // 获取tab热歌歌曲数据

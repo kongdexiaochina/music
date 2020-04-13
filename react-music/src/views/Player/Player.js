@@ -8,6 +8,7 @@ import {connect} from 'react-redux'
 import {getMusicObj, getIsSmallMusic, getIsMusic} from '../../redux/actions'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../component/common/GoBack'
+import Loading from '../../router/loading/Loading'
 // 引入当前组件下面的子组件
 import PlayerIconMusic from './base/IconMusic'
 import PlayerSongLyric from './base/SongLyric'
@@ -46,19 +47,23 @@ class Player extends Component{
         const {music_obj} = this.props
         // 解构state当中的属性值
         const {lyric} = this.state
-        return (
-            <div className={"player"}>
-                <div className="player_bgc" style={{backgroundImage: `url(${music_obj.picUrl})`}}></div>
-                <div className="wrapper">
-                    <CommonGoBack handleClick={this.handleClick}/>
-                    <PlayerIconMusic url={music_obj.picUrl}/>
-                    <PlayerSongLyric titleObj={music_obj.song} lyric={lyric}/>
-                    <NavLink to={"/comment/" + music_obj.id} className={"link"}>
-                        查看歌曲评论
-                    </NavLink>
+        if (Object.keys(music_obj).length) {
+            return (
+                <div className={"player"}>
+                    <div className="player_bgc" style={{backgroundImage: `url(${music_obj.picUrl})`}}></div>
+                    <div className="wrapper">
+                        <CommonGoBack handleClick={this.handleClick}/>
+                        <PlayerIconMusic url={music_obj.picUrl}/>
+                        <PlayerSongLyric titleObj={music_obj.song} lyric={lyric}/>
+                        <NavLink to={"/comment/" + music_obj.id} className={"link"}>
+                            查看歌曲评论
+                        </NavLink>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return <Loading />
+        }
     }
     // 在此处完成组件的卸载和数据的销毁。并且不显示迷你播放器 并且开启音乐
     componentWillUnmount (){

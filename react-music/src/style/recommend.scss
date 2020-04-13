@@ -10,6 +10,11 @@ body {
   color: #333;
   background-color: #fff;
 }
+#root {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 // 头部
 .top {
   @include positionType(fixed);
@@ -57,6 +62,7 @@ body {
 
 // 推荐音乐部分
 .recommend {
+  padding-top: 25px;
   // 标题部分
   .title {
     @include displayType(block);

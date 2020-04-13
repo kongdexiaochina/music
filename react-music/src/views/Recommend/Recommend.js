@@ -37,11 +37,9 @@ class Recommend extends Component {
         })
     }
     componentDidCache = () => {
-        console.log('List cached', '缓存开始')
         this.props.getMusicData(this.state.newMusic)
     }
     componentDidRecover = () => {
-        console.log('List recovered', '缓存回复')
         this.props.getMusicData(this.state.newMusic)
     }
     render () {
