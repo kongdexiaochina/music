@@ -1,6 +1,10 @@
 import React, {Component, Fragment} from "react";
 // 引入对应的API请求函数
 import { SongListData, NewMusicData } from '../../api/recommend'
+// 引入对应的actions
+import {getMusicData} from '../../redux/actions'
+// 引入connect用于解耦react+redux代码
+import {connect} from 'react-redux'
 // 引入适用性比较高的组件
 import CommonMyScroll from '../../component/common/MyScroll'
 import conformityData from '../../utils/conformity'
@@ -10,6 +14,11 @@ import RecommendSongList from "./base/SongList";
 import RecommendMusicList from "./base/MusicList";
 import RecommendFoot from './base/Foot'
 class Recommend extends Component {
+    constructor(props) {
+        super(props);
+        props.cacheLifecycles.didCache(this.componentDidCache)
+        props.cacheLifecycles.didRecover(this.componentDidRecover)
+    }
     state = {
         songList: [], // 歌单数据
         newMusic: [] // 最新音乐
@@ -26,6 +35,14 @@ class Recommend extends Component {
             songList: songList.result,
             newMusic: conformityData(newMusic.result)
         })
+    }
+    componentDidCache = () => {
+        console.log('List cached', '缓存开始')
+        this.props.getMusicData(this.state.newMusic)
+    }
+    componentDidRecover = () => {
+        console.log('List recovered', '缓存回复')
+        this.props.getMusicData(this.state.newMusic)
     }
     render () {
         // 解构state当中的数据 并且向子组件传递对应的属性
@@ -58,4 +75,8 @@ class Recommend extends Component {
     }
 }
 
-export default Recommend
+export default connect(
+    null, {
+        getMusicData: getMusicData
+    }
+)(Recommend)

@@ -1,6 +1,10 @@
 import React, {Component} from "react";
 // 引入对应的API数据请求函数
 import {BannerData} from '../../api/songhot'
+// 引入对应的actions
+import {getMusicData} from '../../redux/actions'
+// 引入connect用于解耦react+redux代码
+import {connect} from 'react-redux'
 // 引入工具类函数用于整合数据
 import conformityData from '../../utils/conformity'
 // 引入适用性比较高的组件
@@ -10,6 +14,11 @@ import Loading from '../../router/loading/Loading'
 import SongHotBanner from './base/Banner'
 import SongHotSongList from './base/List'
 class SongHot extends Component {
+    constructor(props) {
+        super(props);
+        props.cacheLifecycles.didCache(this.componentDidCache)
+        props.cacheLifecycles.didRecover(this.componentDidRecover)
+    }
     state = {
         description: '', // banner组件标题数据
         tracks: [] // 热歌榜列表数据
@@ -17,6 +26,13 @@ class SongHot extends Component {
     // 当组件即将挂载的时候 进行请求数据
     componentWillMount() {
         this.getBannerData()
+    }
+    componentDidCache = () => {
+        this.props.getMusicData(this.state.tracks)
+    }
+    componentDidRecover = () => {
+        console.log('List recovered', '缓存回复')
+        this.props.getMusicData(this.state.tracks)
     }
     // 请求数据的函数
     async getBannerData () {
@@ -51,4 +67,9 @@ class SongHot extends Component {
     }
 }
 
-export default SongHot
+export default connect(
+    null,
+    {
+        getMusicData: getMusicData
+    }
+)(SongHot)

@@ -1,4 +1,8 @@
 import React, {Component} from "react";
+// 引入对应的actions
+import {getMusicData} from '../../redux/actions'
+// 引入connect用于解耦react+redux代码
+import {connect} from 'react-redux'
 // 引入对应的API数据请求函数
 import {hotListData, hotSearchData} from '../../api/search'
 import Loading from '../../router/loading/Loading'
@@ -9,6 +13,11 @@ import SearchMusic from './base/SearchMusic'
 import SearchHotList from './base/HotList'
 
 class Search extends Component{
+    constructor(props) {
+        super(props);
+        props.cacheLifecycles.didCache(this.componentDidCache)
+        props.cacheLifecycles.didRecover(this.componentDidRecover)
+    }
     state = {
         val: '', // 搜索框当中的内容
         hots: [], // 热门搜索数据
@@ -17,6 +26,13 @@ class Search extends Component{
     // 当组件即将被挂载的是 进行获取数据
     componentWillMount() {
         this.getDataHots()
+    }
+    componentDidCatch = () => {
+        this.props.getMusicData(this.state.hotsList)
+    }
+    componentDidRecover = () => {
+        console.log('List recovered', '缓存回复')
+        this.props.getMusicData(this.state.hotsList)
     }
     // 获取tab热歌歌曲数据
     async getDataHots () {
@@ -79,4 +95,9 @@ class Search extends Component{
     }
 }
 
-export default Search
+export default connect(
+    null,
+    {
+        getMusicData: getMusicData
+    }
+)(Search)
