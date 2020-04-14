@@ -35,10 +35,14 @@ class SmallPlayer extends Component {
         } else {
             this.music.current.pause() // 不开启
         }
-        const {currentTime} = this.music.current
+        const {currentTime, duration} = this.music.current
         // 如果等于0那么我们就从新设置他的currentTime值
         if (currentTime === 0) {
-            this.music.current.currentTime = this.state.time
+            if (currentTime === duration) {
+                this.music.current.currentTime = 0
+            } else {
+                this.music.current.currentTime = this.state.time
+            }
         }
     }
     // 请求数据 获得到歌曲的URL路径
