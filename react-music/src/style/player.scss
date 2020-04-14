@@ -6,6 +6,7 @@
 }
 // player组件模块的样式
 .player {
+  overflow: hidden;
   .player_bgc {
     @include positionType(fixed);
     left: 0;
