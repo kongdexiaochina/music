@@ -31,7 +31,9 @@ class Player extends Component{
         let obj = music_data[params.index] || JSON.parse(localStorage.getItem("musicObj"))
         getMusicObj(obj) // 向redux当中发送数据
         // 获取歌词数据
-        const {lrc: {lyric}} = await playerLyricData(obj.id)
+        try {
+            var {lrc: {lyric}} = await playerLyricData(obj.id)
+        } catch (e) {}
         this.setState({ // 更改state的状态
             lyric
         })
