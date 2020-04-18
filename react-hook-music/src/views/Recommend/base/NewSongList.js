@@ -9,7 +9,7 @@ function NewSongList (props) {
         <ul className={"newmusiclist"}>
             {
                 newMusicList.map((item, index) => {
-                    return <CommonNewSongListItem item={item} key={index}/>
+                    return <CommonNewSongListItem item={item} key={index} index={false}/>
                 })
             }
         </ul>

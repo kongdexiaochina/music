@@ -3,12 +3,34 @@
 // 歌曲列表的样式
 .newmusiclist_item {
   display: flex;
-  padding-left: 10px;
+  padding: 0 10px;
   color: #333;
   .song_wrapper {
     position: relative;
     display: flex;
     flex: 1 1 auto;
+    &::after {
+      width: 300%;
+      height: 300%;
+      transform: scale(.333333);
+      position: absolute;
+      z-index: 20;
+      content: " ";
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      box-sizing: border-box;
+      transform-origin: top left;
+      border: 0 solid rgba(0,0,0,.1);
+      border-bottom-width: 2px;
+    }
+    .num {
+      color: #999999;
+      align-items: center;
+      width: 28px;
+      font-size: 17px;
+      display: flex;
+    }
     .song_info {
       text-align: left;
       flex: 1 1 auto;
@@ -57,8 +79,18 @@
 // recommend模块组件当中的wrapper样式
 .wrapper_recommend {
   position: absolute;
-  top: 0;
+  top: 107px;
   right: 0;
   left: 0;
   bottom: 0;
+  overflow: hidden;
+}
+// hotsong组件模块当中的wrapper样式
+.wrapper_hotsong {
+  position: absolute;
+  top: 107px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
 }

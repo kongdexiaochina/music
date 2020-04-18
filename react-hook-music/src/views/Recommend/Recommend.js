@@ -11,6 +11,7 @@ import RecommendNewSongList from './base/NewSongList'
 import RecommendFoot from './base/Foot'
 // 引入对应的工具类函数
 import toArray from '../../utils/ToArray'
+import conformityData from '../../utils/conformity'
 function Recommend () {
     // 推荐歌单数据
     const [songList, setSongList] = useState([])
@@ -21,7 +22,7 @@ function Recommend () {
         const songData = await SongListData(6) // 获取推荐歌单数据
         setSongList(songData.result)
         const newMusicList = await NewMusicData() // 获取最新音乐数据
-        setNewMusicList(newMusicList.result)
+        setNewMusicList(conformityData(newMusicList.result))
     }
     // 在useEffecthook函数里面进行请求数据
     useEffect(() => {
