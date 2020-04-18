@@ -1,0 +1,102 @@
+// 推荐音乐部分
+.recommend {
+  padding-top: 125px;
+  // 推荐歌单标题样式
+  .recommend_title {
+    position: relative;
+    padding-left: 9px;
+    margin-bottom: 14px;
+    font-size: 17px;
+    font-weight: 400;
+    height: 20px;
+    line-height: 20px;
+    &::after {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -9px;
+      width: 2px;
+      height: 16px;
+      background-color: #d33a31;
+    }
+  }
+  // 推荐歌单
+  .song_list {
+    .song_list_line {
+      padding-bottom: 15px;
+      &::after {
+        content: "";
+        display: block;
+        clear: both;
+        overflow: hidden;
+        visibility: hidden;
+      }
+      .item {
+        overflow: hidden;
+        display: block;
+        float: left;
+        width: 33.3%;
+        height: 172px;
+        padding: 0 2px;
+        .item_img {
+          position: relative;
+          padding-bottom: 100%;
+          img {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+          }
+          span {
+            position: absolute;
+            right: 5px;
+            top: 2px;
+            z-index: 3;
+            padding-left: 15px;
+            color: #fff;
+            font-size: 12px;
+            background-image: url("../images/icon.svg");
+            background-position: 0;
+            background-repeat: no-repeat;
+            background-size: 11px 10px;
+            text-shadow: 1px 0 0 rgba(0,0,0,.15);
+          }
+        }
+        .name_text {
+          padding: 6px 2px 0 6px;
+          line-height: 1.2;
+          font-size: 13px;
+          max-height: 30px;
+        }
+      }
+    }
+  }
+  // 脚部
+  .foot {
+    position: relative;
+    padding-top: 53.3%;
+    margin-top: 4px;
+    background: url("../images/footbg.png") no-repeat;
+    background-size: contain;
+    .foot_wrapper {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: 1;
+      text-align: center;
+      .foot_logo {
+        padding-top: 12%;
+        img {
+          display: block;
+          margin: 0 auto;
+          width: 230px;
+          height: 44px;
+        }
+      }
+    }
+  }
+}

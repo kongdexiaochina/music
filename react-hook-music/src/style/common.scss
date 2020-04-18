@@ -1,0 +1,64 @@
+// 适用性比较高组件的样式
+
+// 歌曲列表的样式
+.newmusiclist_item {
+  display: flex;
+  padding-left: 10px;
+  color: #333;
+  .song_wrapper {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    .song_info {
+      text-align: left;
+      flex: 1 1 auto;
+      padding: 6px 0;
+      width: 0;
+      .song_title {
+        font-size: 17px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: normal;
+      }
+      .song_detail {
+        font-size: 12px;
+        color: #888;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: normal;
+        i {
+          display: inline-block;
+          width: 12px;
+          height: 8px;
+          margin-right: 4px;
+          background: url("../images/hot_icon.png") no-repeat;
+          background-size: 166px 97px;
+        }
+      }
+    }
+    .song_play {
+      display: flex;
+      padding: 0 10px;
+      align-items: center;
+      span {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background: url("../images/hot_icon.png") no-repeat;
+        background-position: -24px 0;
+        background-size: 166px 97px;
+      }
+    }
+  }
+}
+
+// recommend模块组件当中的wrapper样式
+.wrapper_recommend {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
