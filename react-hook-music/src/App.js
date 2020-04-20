@@ -6,6 +6,7 @@ import './style/app.scss';
 
 // 路由懒加载
 const Home = lazy(() => import('./views/Home/Home'));
+const Detail = lazy(() => import("./views/Detail/Detail"))
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ function App() {
             {/*  一级路由*/}
             <Switch>
                 <Route path={"/home"} component={Home}/>
+                <Route path={"/detail"} component={Detail}/>
                 <Redirect to={"/home"}/>
             </Switch>
         </Suspense>

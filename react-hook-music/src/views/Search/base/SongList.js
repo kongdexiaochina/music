@@ -37,7 +37,7 @@ function SongList (props) {
         <ul className={"song_list"}>
             {
                 SongList.map((item, index) => {
-                    return <CommonNewSongListItem key={index} item={item} index={false}/>
+                    return <CommonNewSongListItem key={index} item={item} index={false} className={""}/>
                 })
             }
         </ul>

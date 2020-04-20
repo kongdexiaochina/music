@@ -24,8 +24,14 @@
       border: 0 solid rgba(0,0,0,.1);
       border-bottom-width: 2px;
     }
-    .num {
+    .on {
       color: #999999;
+      align-items: center;
+      width: 28px;
+      font-size: 17px;
+      display: flex;
+    }
+    .noDefault {
       align-items: center;
       width: 28px;
       font-size: 17px;
@@ -102,4 +108,41 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
+}
+// 详情组件的样式的wrapper样式
+.wrapper_detail {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+
+// detail组件的goback样式
+.detail_goBack {
+  position: absolute;
+  left: 10px;
+  z-index: 10;
+  color: #fff;
+  padding-left: 13px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border: solid #fff;
+    border-width: 3px 0 0 3px;
+    transform: rotate(315deg);
+    top: 7px;
+    left: 0;
+  }
+  h3 {
+    font-weight: bolder;
+    line-height: 27px;
+    font-size: 16px;
+  }
 }
