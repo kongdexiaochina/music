@@ -1,0 +1,142 @@
+// 歌曲组件的部分样式
+.player {
+  .player_bgc {
+    background-color: #161824;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    transform: scale(1.2);
+    transform-origin: center;
+    filter: blur(10px);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    &::after {
+      content: " ";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  .wrapper {
+    z-index: 1;
+    position: relative;
+    width: 100vw;
+    padding-top: 80px;
+    box-sizing: border-box;
+    // icon组件样式
+    .icon {
+      position: relative;
+      margin: 0 auto;
+      height: 342px;
+      width: 342px;
+      .needle {
+        position: absolute;
+        width: 110px;
+        height: 157px;
+        top: -80px;
+        left: 150px;
+        background: url("../images/needle_plus.png") no-repeat;
+        background-size: contain;
+        z-index: 2;
+      }
+      .icon_center {
+        width: 100%;
+        height: 100%;
+        &::before {
+          content: " ";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          z-index: 1;
+          background: url("../images/disc_plus.png") no-repeat;
+          background-size: contain;
+        }
+        .song_img {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 212px;
+          height: 212px;
+          margin: -106px 0 0 -106px;
+          z-index: 1;
+          .rotate_img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+      .play_btn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 65px;
+        height: 65px;
+        background-image: url("../images/play_btn.png");
+        background-size: contain;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+      }
+    }
+    // 歌词的样式
+    .lyric {
+      margin-top: 25px;
+      padding: 0 35px;
+      .song_title {
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.1;
+        color: #fefefe;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .lrc_wrapper {
+        position: relative;
+        height: 40vw;
+        margin-top: 14px;
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: center;
+        color: hsla(0, 0%, 100%, 0.6);
+        p {
+          padding-bottom: 8px;
+        }
+        .on {
+          color: #eb1206;
+          font-weight: 600;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  .link_comment {
+    position: fixed;
+    left: 25%;
+    bottom: 8vw;
+    z-index: 100;
+    width: 50%;
+    height: 30px;
+    border: 1px solid #ff3a3a;
+    border-radius: 40px;
+    font-size: 16px;
+    text-align: center;
+    background: #ff3a3a;
+    color: #fff;
+    line-height: 30px;
+  }
+}

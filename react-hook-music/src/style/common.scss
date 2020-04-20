@@ -118,10 +118,18 @@
   bottom: 0;
   overflow: hidden;
 }
+// 歌词的滚动样式
+.wrapper_lyric {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
 
-
-// detail组件的goback样式
-.detail_goBack {
+// detail和player组件的goback样式
+.detail_goBack, .player_goback {
   position: absolute;
   left: 10px;
   z-index: 10;
@@ -145,4 +153,7 @@
     line-height: 27px;
     font-size: 16px;
   }
+}
+.player_goback {
+  top: 10px;
 }

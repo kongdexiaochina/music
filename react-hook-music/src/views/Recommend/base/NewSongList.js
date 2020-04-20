@@ -1,15 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
+// 引入对应的路由内组件
+import {NavLink} from 'react-router-dom'
 // 引入适用性比较高的组件
 import CommonNewSongListItem from '../../../component/common/NewSongListItem'
 function NewSongList (props) {
     // 解构父组件传递过来的属性值
     const {newMusicList} = props
-    // console.log(newMusicList);
     return (
         <ul className={"newmusiclist"}>
             {
                 newMusicList.map((item, index) => {
-                    return <CommonNewSongListItem item={item} key={index} index={false} className={""}/>
+                    return (
+                        <NavLink to={{pathname: '/player', params:{item:item}}} key={index}>
+                            <CommonNewSongListItem item={item} index={false} className={""}/>
+                        </NavLink>
+                    )
                 })
             }
         </ul>

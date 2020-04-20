@@ -7,6 +7,7 @@ import './style/app.scss';
 // 路由懒加载
 const Home = lazy(() => import('./views/Home/Home'));
 const Detail = lazy(() => import("./views/Detail/Detail"))
+const Player = lazy(() => import("./views/Player/Player"))
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
             <Switch>
                 <Route path={"/home"} component={Home}/>
                 <Route path={"/detail"} component={Detail}/>
+                <Route path={"/player"} component={Player}/>
                 <Redirect to={"/home"}/>
             </Switch>
         </Suspense>
