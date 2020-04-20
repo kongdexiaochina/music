@@ -8,13 +8,16 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "better-scroll": "^1.15.2",
+    "eslint-plugin-react-hooks": "0.0.0-d7382b6c4",
     "node-sass": "^4.13.1",
     "pubsub-js": "^1.8.0",
     "r-img-lazyload": "^1.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
     "url": "^0.11.0"
   },
   "scripts": {

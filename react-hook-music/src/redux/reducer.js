@@ -1,0 +1,36 @@
+// 引入对应的actionsType
+import {itemPlayerData, isMusic, isPlay} from './actionsType'
+
+export default function (state= {
+    // 歌曲数据
+    playerItemObj: JSON.parse(localStorage.getItem("itemPlayer")) || {},
+    // 是否现在迷你播放器
+    isMusic: true,
+    // 是否播放默认是不 播放的
+    isPlay: false
+}, action) {
+    switch  (action.type) {
+        // 获取对应的歌曲
+        case itemPlayerData :
+            localStorage.setItem("itemPlayer", JSON.stringify(action.obj))
+            return {
+                ...state,
+                playerItemObj: action.obj
+            }
+        // 是否显示迷你播放器
+        case isMusic:
+            return {
+                ...state,
+                isMusic: action.bol
+            }
+        // 是否播放
+        case isPlay:
+            console.log(action);
+            return {
+                ...state,
+                isPlay: action.bol
+            }
+        default :
+            return {...state}
+    }
+}

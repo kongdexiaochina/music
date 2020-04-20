@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 // 引入对应的路由内组件
 import {NavLink} from 'react-router-dom'
 // 引入适用性比较高的组件
