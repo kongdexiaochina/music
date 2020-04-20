@@ -29,7 +29,7 @@ function NewSongListItem (props) {
                             })
                         }
                         <em> - </em>
-                        {item.song.name}
+                        { item.song.name.name || item.song.name}
                     </div>
                 </div>
                 <div className={"song_play"}>

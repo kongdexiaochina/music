@@ -15,13 +15,13 @@ export default function conformityData (arr) {
     const newArr = []
     arr.forEach(item => {
         newArr.push({
-            name:item.name,
+            name: item.name,
             song: {
                 artists: item.ar || (item.song ? item.song.artists : item.artists),
                 name: item.album || (item.al ? item.al.name : '') || item.song.album.name
             },
             id: item.id,
-            picUrl: item.picUrl || item.al.picUrl
+            picUrl: item.artists ? item.artists[0].img1v1Url : '' || item.picUrl || item.al.picUrl
         })
     })
     return newArr

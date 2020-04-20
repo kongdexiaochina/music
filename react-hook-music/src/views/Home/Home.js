@@ -1,6 +1,6 @@
 import React, {lazy, Suspense} from "react";
 // 引入对应的路由内置组件
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 // 引入对应的css文件
 import '../../style/home.scss'
@@ -24,6 +24,7 @@ function Home () {
                     <Route path={"/home/recommend"} component={Recommend}/>
                     <Route path={"/home/hotsong"} component={HotSong}/>
                     <Route path={"/home/search"} component={Search}/>
+                    <Redirect to={"/home/recommend"}/>
                 </Switch>
             </Suspense>
         </div>

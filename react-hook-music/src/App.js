@@ -1,6 +1,6 @@
 import React, {lazy, Suspense} from 'react';
 // 引入对应的路由内置的组件
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 // 引入对应的css样式
 import './style/app.scss';
 
@@ -12,7 +12,8 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
             {/*  一级路由*/}
             <Switch>
-                <Route to={"/home"} component={Home}/>
+                <Route path={"/home"} component={Home}/>
+                <Redirect to={"/home"}/>
             </Switch>
         </Suspense>
     </BrowserRouter>
