@@ -1,0 +1,124 @@
+// comment组件部分样式
+.comment {
+  width: 100%;
+  height: 100%;
+  .comment_bgc {
+    background-color: #161824;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    transform: scale(1.2);
+    transform-origin: center;
+    filter: blur(10px);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    &::after {
+      content: " ";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.5)
+    }
+    animation: bgchange 50s linear infinite;
+    @keyframes bgchange {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 100%;
+      }
+    }
+  }
+  .flex {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    & > h3 {
+      width: 100%;
+      margin: 10px 0;
+      font-size: 18px;
+      color: #fff;
+      text-align: center;
+    }
+  }
+  .list {
+    .item {
+      position: relative;
+      padding-top: 10px;
+      width: 100%;
+      display: flex;
+      .img {
+        height: 35px;
+        margin: 0 10px;
+        img {
+          display: block;
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          border: none;
+        }
+      }
+      .content {
+        position: relative;
+        padding-right: 10px;
+        padding-bottom: 11px;
+        flex: 1;
+        .header {
+          display: flex;
+          .info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .username {
+              font-size: 14px;
+              color: hsla(0, 0%, 100%, .7);
+              line-height: 20px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            .time {
+              font-size: 9px;
+              color: hsla(0, 0%, 100%, .3);
+            }
+          }
+          .link {
+            display: inline-block;
+            min-width: 30px;
+            padding-left: 5px;
+            width: 65px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 11px;
+            color: #999;
+            flex: none;
+            text-align: right;
+            i {
+              display: inline-block;
+              width: 14px;
+              height: 18px;
+              margin-left: 6px;
+              line-height: 0;
+              vertical-align: middle;
+              cursor: pointer;
+            }
+          }
+        }
+        .text {
+          color: #fff;
+          position: relative;
+          font-size: 15px;
+          line-height: 22px;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+}

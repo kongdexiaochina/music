@@ -127,6 +127,16 @@
   bottom: 0;
   overflow: hidden;
 }
+// 评论组件样式
+.wrapper_comment {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  overflow: hidden;
+}
 
 // detail和player组件的goback样式
 .detail_goBack, .player_goback {
@@ -154,6 +164,34 @@
     font-size: 16px;
   }
 }
-.player_goback {
+.player_goback{
   top: 10px;
+}
+
+.comment_goback {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 10;
+  color: #fff;
+  width: 50px;
+  padding-left: 13px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border: solid #fff;
+    border-width: 3px 0 0 3px;
+    transform: rotate(315deg);
+    top: 8px;
+    left: 0;
+  }
+  h3 {
+    font-weight: bolder;
+    line-height: 27px;
+    font-size: 16px;
+  }
 }

@@ -6,6 +6,8 @@ import {connect} from 'react-redux'
 import {getItemPlayer, getIsMusic, getIsPlay} from '../../redux/actions'
 // 引入对应的数据请求接口
 import {playerLyricData} from '../../api/player'
+// 引入路由内置的组件
+import {NavLink} from 'react-router-dom'
 // 引入对应的工具类函数
 import lyricParser from '../../utils/lyric'
 // 引入适用性比较高的组件
@@ -56,11 +58,13 @@ function Player (props) {
                     <CommonIcon picUrl={playerItemObj.picUrl}/>
                     <CommonLyricText title={playerItemObj.name} song={playerItemObj.song} lyric={lyric}/>
                 </div>
-                <div className={"link_comment"}>查看歌曲评论</div>
+                <div className={"link_comment"}>
+                    <NavLink to={"/comment/id=?" + playerItemObj.id}>查看歌曲评论</NavLink>
+                </div>
             </div>
         )
     } else  {
-        return  <div>你还没有加载选择对应的歌曲</div>
+        return  <div></div>
     }
 }
 

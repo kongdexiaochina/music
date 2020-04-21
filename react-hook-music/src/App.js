@@ -13,6 +13,7 @@ import ContentSmallPlayer from './component/content/SmallPlayer'
 const Home = lazy(() => import('./views/Home/Home'));
 const Detail = lazy(() => import("./views/Detail/Detail"))
 const Player = lazy(() => import("./views/Player/Player"))
+const Comment = lazy(() => import("./views/Comment/Comment"))
 function App(props) {
     // 解构props数据
     const {isMusic, playerItemObj} = props
@@ -24,6 +25,7 @@ function App(props) {
                     <Route path={"/home"} component={Home}/>
                     <Route path={"/detail"} component={Detail}/>
                     <Route path={"/player"} component={Player}/>
+                    <Route path={"/comment"} component={Comment}/>
                     <Redirect to={"/home"}/>
                 </Switch>
             </Suspense>
