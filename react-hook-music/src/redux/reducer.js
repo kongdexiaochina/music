@@ -1,5 +1,5 @@
 // 引入对应的actionsType
-import {itemPlayerData, isMusic, isPlay} from './actionsType'
+import {itemPlayerData, isMusic, isPlay, currentTimeDate} from './actionsType'
 
 export default function (state= {
     // 歌曲数据
@@ -7,12 +7,15 @@ export default function (state= {
     // 是否现在迷你播放器
     isMusic: true,
     // 是否播放默认是不 播放的
-    isPlay: false
+    isPlay: false,
+    // 获取音频实时播放的时候
+    currentTime: 0
 }, action) {
     switch  (action.type) {
         // 获取对应的歌曲
         case itemPlayerData :
             localStorage.setItem("itemPlayer", JSON.stringify(action.obj))
+            console.log(action);
             return {
                 ...state,
                 playerItemObj: action.obj
@@ -29,6 +32,12 @@ export default function (state= {
             return {
                 ...state,
                 isPlay: action.bol
+            }
+         // 获取音频实时播放的currentTime值
+        case currentTimeDate :
+            return {
+                ...state,
+                currentTime: action.num
             }
         default :
             return {...state}

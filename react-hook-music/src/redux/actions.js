@@ -1,5 +1,5 @@
 // 引入对应的actionsType
-import {itemPlayerData, isMusic, isPlay} from './actionsType'
+import {itemPlayerData, isMusic, isPlay, currentTimeDate} from './actionsType'
 
 // 获取歌曲数据
 export const getItemPlayer = obj => {
@@ -22,5 +22,13 @@ export const getIsPlay = bol => {
     return {
         type: isPlay,
         bol
+    }
+}
+
+// 获取音频实时播放的时间
+export const getCurrentTime = num => {
+    return {
+        type: currentTimeDate,
+        num
     }
 }

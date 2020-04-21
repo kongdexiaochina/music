@@ -46,6 +46,11 @@
         width: 100%;
         height: 3px;
         background-color: #EBEBEB;
+        .on {
+          width: 100%;
+          height: 100%;
+          background-color: red;
+        }
       }
     }
   }

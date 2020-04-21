@@ -4,3 +4,5 @@ export const itemPlayerData = 'itemPlayerData'
 export const isMusic = 'isMusic'
 // 是否播放音乐
 export const isPlay = 'isPlay'
+// 获取实时播放音乐的currentTime值
+export const currentTimeDate = 'currentTimeDate'

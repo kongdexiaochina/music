@@ -1,4 +1,4 @@
-import React, {lazy, Suspense, useEffect} from 'react';
+import React, {lazy, Suspense} from 'react';
 // 引入对应的路由内置的组件
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 // 引入react-redux
@@ -15,7 +15,7 @@ const Detail = lazy(() => import("./views/Detail/Detail"))
 const Player = lazy(() => import("./views/Player/Player"))
 function App(props) {
     // 解构props数据
-    const {isMusic} = props
+    const {isMusic, playerItemObj} = props
     return (
         <BrowserRouter>
             <Suspense fallback={<div>Loading...</div>}>
@@ -27,16 +27,20 @@ function App(props) {
                     <Redirect to={"/home"}/>
                 </Switch>
             </Suspense>
-            <div style={{display: isMusic ? 'block' : 'none'}}>
-                <ContentSmallPlayer />
-            </div>
+            {
+                Object.keys(playerItemObj).length &&
+                <div style={{display: isMusic ? 'block' : 'none'}}>
+                    <ContentSmallPlayer />
+                </div>
+            }
         </BrowserRouter>
     );
 }
 
 export default connect(
     state => ({
-        isMusic: state.isMusic
+        isMusic: state.isMusic,
+        playerItemObj: state.playerItemObj
     }),
     null
 )(App);
