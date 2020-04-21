@@ -3,7 +3,11 @@ import React, {useState, useEffect} from "react";
 import '../../style/player.scss'
 // 引入react-redux和对应的actions
 import {connect} from 'react-redux'
-import {getItemPlayer, getIsMusic, getIsPlay} from '../../redux/actions'
+import {
+    getItemPlayer,
+    getIsMusic,
+    getIsPlay
+} from '../../redux/actions'
 // 引入对应的数据请求接口
 import {playerLyricData} from '../../api/player'
 // 引入路由内置的组件
@@ -18,14 +22,32 @@ import CommonLyricText from './base/lyricText'
 function Player (props) {
     // 歌词数据
     const [lyric, setLyric] = useState([])
+    // 没有歌曲数据
+    const [lyricNone, setLyricNone] = useState('')
     // 解构对应的props值
-    const {playerItemObj, location: {params}, getItemPlayer, getIsMusic, getIsPlay} = props
+    const {
+        playerItemObj,
+        location: {
+            params
+        },
+        getItemPlayer,
+        getIsMusic,
+        getIsPlay
+    } = props
     // 获取对应的数据的函数
     const getData = async () => {
-        if (Object.keys(playerItemObj).length) {
-            const {lrc: {lyric}} = await playerLyricData(playerItemObj.id)
-            setLyric(lyricParser(lyric));
+        if (params) { // 我们在组件之间切换的时候 走进if里面并且获取对应的数据
+            const {lrc} = await playerLyricData(params.item.id)
+            if (lrc) {
+                setLyric(lyricParser(lrc.lyric));
+            }
+        } else { // 反之在我们页面刷新的时候触发else 并且获取对应的数据
+            const {lrc} = await playerLyricData(playerItemObj.id)
+            if (lrc) {
+                setLyric(lyricParser(lrc.lyric));
+            }
         }
+        setLyricNone("暂无歌曲数据")
     }
     // 进行向redux当中发送数据
     useEffect(() => {
@@ -51,14 +73,14 @@ function Player (props) {
     const navigation = () => {
         props.history.go(-1)
     }
-    if (lyric.length) {
+    if (Object.keys(playerItemObj).length) {
         return (
             <div className={"player"}>
                 <div className="player_bgc" style={{backgroundImage: `url(${playerItemObj.picUrl})`}}></div>
                 <CommonGoBack className={"player_goback"} navigation={navigation}/>
                 <div className="wrapper">
                     <CommonIcon picUrl={playerItemObj.picUrl}/>
-                    <CommonLyricText title={playerItemObj.name} song={playerItemObj.song} lyric={lyric}/>
+                    <CommonLyricText title={playerItemObj.name} song={playerItemObj.song} lyric={lyric} lyricNone={lyricNone}/>
                 </div>
                 <div className={"link_comment"}>
                     <NavLink to={"/comment/id=?" + playerItemObj.id}>查看歌曲评论</NavLink>
@@ -73,7 +95,8 @@ function Player (props) {
 export default connect(
     state => ({
         playerItemObj: state.playerItemObj,
-        currentTime: state.currentTime
+        currentTime: state.currentTime,
+        isPlayError: state.isPlayError
     }),
     {
         getItemPlayer:getItemPlayer,

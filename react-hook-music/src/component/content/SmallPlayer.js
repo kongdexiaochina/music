@@ -1,14 +1,23 @@
 import React, {Fragment, useEffect, useState, useRef} from "react";
 // 引入react-redux和对应的actions
 import {connect} from 'react-redux'
-import {getIsPlay, getCurrentTime} from '../../redux/actions'
+import {
+    getIsPlay,
+    getCurrentTime
+} from '../../redux/actions'
 // 引入路由内置组件
 import {NavLink} from 'react-router-dom'
 // 引入对应的api请求函数
 import {playerSong} from '../../api/player'
 function SmallPlayer (props) {
     // 解构props值
-    const {playerItemObj, isPlay, getIsPlayToggle, getCurrentTime} = props
+    const {
+        playerItemObj,
+        isPlay,
+        getIsPlayToggle,
+        getCurrentTime,
+        getIsPlay
+    } = props
     // 歌曲路径数据
     const [url, setUrl] = useState('')
     // 音频DOM
@@ -27,15 +36,29 @@ function SmallPlayer (props) {
     // console.log(playerItemObj);
     // 检测isPlay的值 判断是否开启音乐
     useEffect(() => {
-        if (isPlay) {
-            audioDOM.current.play()
-        } else {
+        if (isPlay) { // 播放
+            audioDOM.current.play().then(() => {
+                audioDOM.current.play()
+                getIsPlay(true)
+            }).catch(e => {
+                console.log(e)
+            })
+        } else { // 不播放
             audioDOM.current.pause()
+            getIsPlay(false)
         }
     }, [isPlay])
     // 当picUrl值发送变化的时候 进行请求数据
     useEffect(() => {
-        getData()
+        if (isPlay) { // 当isPlay的值是true的时候 我们播放音乐
+            audioDOM.current.play().then(() => {
+                audioDOM.current.play()
+                getIsPlay(true)
+            }).catch(e => {
+                console.log(e)
+            })
+        }
+        getData() // 获取数据
     }, [playerItemObj.picUrl])
     // 音频可以播放的时候触发
     const canPlay = () => {
@@ -86,6 +109,7 @@ export default connect(
     }),
     {
         getIsPlayToggle: getIsPlay,
-        getCurrentTime: getCurrentTime
+        getCurrentTime: getCurrentTime,
+        getIsPlay: getIsPlay
     }
 )(SmallPlayer)

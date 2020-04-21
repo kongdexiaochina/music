@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import CommonMyScroll from '../../../component/common/MyScroll'
 function LyricText (props) {
     // 解构父组件传递过来的属性值
-    const {title, song, lyric, currentTime} = props
+    const {title, song, lyric, currentTime, lyricNone} = props
     // 标记需要滚动的区域的ref节点
     const scroll = useRef(null)
     // 当currentTime值发送变化的时候根据歌词的time值计算出当前播放时间的index值
@@ -29,15 +29,20 @@ function LyricText (props) {
         }
     }, [activateIndex()])
     // 需要滚动的内容
-    const content = (
-        <Fragment>
-            {
-                lyric.map((item, index) => {
-                    return <p  id={"item"} key={index} className={index === (activateIndex() === -1 ? 0 : activateIndex()) ? 'on' : null}>{item.content}</p>
-                })
-            }
-        </Fragment>
-    )
+    let content = null
+    if (lyric.length) {
+       content = (
+            <Fragment>
+                {
+                    lyric.map((item, index) => {
+                        return <p  id={"item"} key={index} className={index === (activateIndex() === -1 ? 0 : activateIndex()) ? 'on' : null}>{item.content}</p>
+                    })
+                }
+            </Fragment>
+        )
+    } else {
+        content = <h3>{lyricNone}</h3>
+    }
     return (
         <div className={"lyric"}>
             <p className={"song_title"}>
