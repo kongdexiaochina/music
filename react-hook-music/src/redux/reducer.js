@@ -15,10 +15,9 @@ export default function (state= {
         // 获取对应的歌曲
         case itemPlayerData :
             localStorage.setItem("itemPlayer", JSON.stringify(action.obj))
-            console.log(action);
             return {
                 ...state,
-                playerItemObj: action.obj
+                playerItemObj: {...action.obj}
             }
         // 是否显示迷你播放器
         case isMusic:
@@ -28,7 +27,6 @@ export default function (state= {
             }
         // 是否播放
         case isPlay:
-            console.log(action);
             return {
                 ...state,
                 isPlay: action.bol

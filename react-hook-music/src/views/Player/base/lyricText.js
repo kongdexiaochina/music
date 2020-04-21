@@ -22,12 +22,12 @@ function LyricText (props) {
             }
         })
     }, [currentTime])
-    // 当currentTime的值发送变化的时候 进行滚动歌词
+    // 当activateIndex的值发送变化的时候 进行滚动歌词
     useEffect(() => {
         if (scroll.current) {
             scroll.current.changeScroll(document.querySelectorAll("#item"), (activateIndex() === -1 ? 0 : activateIndex()))
         }
-    }, [currentTime])
+    }, [activateIndex()])
     // 需要滚动的内容
     const content = (
         <Fragment>

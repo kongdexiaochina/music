@@ -33,10 +33,10 @@ function SmallPlayer (props) {
             audioDOM.current.pause()
         }
     }, [isPlay])
-    // 当id值发送变化的时候 进行请求数据
+    // 当picUrl值发送变化的时候 进行请求数据
     useEffect(() => {
         getData()
-    }, [playerItemObj.id])
+    }, [playerItemObj.picUrl])
     // 音频可以播放的时候触发
     const canPlay = () => {
         setDuration(audioDOM.current.duration);

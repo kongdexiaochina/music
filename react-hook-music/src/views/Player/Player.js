@@ -27,15 +27,17 @@ function Player (props) {
             setLyric(lyricParser(lyric));
         }
     }
-
-    // 请求数据
+    // 进行向redux当中发送数据
     useEffect(() => {
-        getData()
-        if (params) { // 进行向redux当中发送数据
+        if (params) {
             getItemPlayer(params.item)
+            localStorage.setItem("itemPlayer", JSON.stringify(params.item))
         }
     }, [Object.keys(playerItemObj).length])
-
+    // 检测歌词的变化 并且请求数据
+    useEffect(() => {
+        getData()
+    }, [lyric.length])
     // 监听路由变化是否显示迷你播放器
     useEffect(() => {
         getIsMusic(false) // 不显示
