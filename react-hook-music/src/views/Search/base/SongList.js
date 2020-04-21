@@ -3,6 +3,8 @@ import React, {useEffect, useState} from "react";
 import Pubsub from 'pubsub-js'
 // 引入对应的数据请求函数
 import {hotSearchData} from '../../../api/search'
+// 引入对应的路由内组件
+import {NavLink} from 'react-router-dom'
 // 引入对应的工具类函数
 import conformityData from "../../../utils/conformity";
 // 引入适用性比较高的组件
@@ -37,7 +39,11 @@ function SongList (props) {
         <ul className={"song_list"}>
             {
                 SongList.map((item, index) => {
-                    return <CommonNewSongListItem key={index} item={item} index={false} className={""}/>
+                    return (
+                        <NavLink to={{pathname: '/player', params:{item:item}}} key={index}>
+                            <CommonNewSongListItem item={item} index={false} className={""}/>
+                        </NavLink>
+                    )
                 })
             }
         </ul>

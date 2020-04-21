@@ -1,5 +1,8 @@
 import React from "react";
-
+// 引入对应的路由内组件
+import {
+    NavLink
+} from 'react-router-dom'
 // 引入适用性比较高的组件
 import CommonNewSongListItem from '../../../component/common/NewSongListItem'
 function SongList (props) {
@@ -10,7 +13,11 @@ function SongList (props) {
             <h3>歌曲列表</h3>
             {
                 tracksList.map((item, index) => {
-                    return <CommonNewSongListItem key={index} item={item} index={index + 1} className={"noDefault"}/>
+                    return (
+                        <NavLink to={{pathname: '/player', params:{item:item}}} key={index}>
+                            <CommonNewSongListItem item={item} index={index + 1} className={"noDefault"}/>
+                        </NavLink>
+                    )
                 })
             }
         </div>

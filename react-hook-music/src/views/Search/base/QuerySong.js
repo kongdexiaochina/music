@@ -13,7 +13,6 @@ function QuerySong () {
         const isEmpty = name.replace(/(^\s*)|(\s*$)/g, '')
         if (isEmpty) {
             const {result: {songs}} = await hotSearchData(name)
-            console.log(conformityData(songs));
             Pubsub.publish('SongList',conformityData(songs))
         }
     }
