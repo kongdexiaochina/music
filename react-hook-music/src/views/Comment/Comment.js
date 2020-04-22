@@ -8,6 +8,8 @@ import '../../style/essayist.scss'
 import {formateDate} from '../../utils/time'
 // 引入对应的api请求函数
 import {CommentData} from '../../api/comment'
+// 引入适用性比较低的组件
+import ContentLazyLoading from '../../component/content/LazyLoading'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../component/common/GoBack'
 import CommonMyScroll from '../../component/common/MyScroll'
@@ -45,7 +47,7 @@ function Comment (props) {
                     return (
                         <li key={index} className={"item"}>
                             <div className="img">
-                                <img src={item.user.avatarUrl} alt={item.user.nickname} />
+                                <ContentLazyLoading src={item.user.avatarUrl} loading={require("../../images/loadingLog.png")}/>
                             </div>
                             <div className="content">
                                 <div className="header">

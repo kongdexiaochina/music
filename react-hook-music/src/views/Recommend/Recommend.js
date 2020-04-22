@@ -5,6 +5,8 @@ import '../../style/recommend.scss'
 import {SongListData, NewMusicData} from '../../api/recommend'
 // 引入适用性比较高的组件
 import CommonMyScroll from '../../component/common/MyScroll'
+// 引入适用性比较低的组件
+import ContentLoading from '../../component/content/Loading'
 // 引入当前模块下面的子组件
 import RecommendSongList from './base/SongList'
 import RecommendNewSongList from './base/NewSongList'
@@ -41,7 +43,7 @@ function Recommend () {
     if (songList.length && newMusicList.length) {
         return <CommonMyScroll content={content} className={"wrapper_recommend"}/>
     } else  {
-        return <div></div>
+        return <ContentLoading />
     }
 }
 

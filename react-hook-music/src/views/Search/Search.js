@@ -3,6 +3,8 @@ import React, {useState, useEffect} from "react";
 import {hotListData} from '../../api/search'
 // 引入对应的css文件
 import '../../style/search.scss'
+// 引入适用性比较低的组件
+import ContentLoading from '../../component/content/Loading'
 // 引入当中组件下面的子组件
 import SearchQuerySong from './base/QuerySong'
 import SearchSongList from './base/SongList'
@@ -27,7 +29,7 @@ function Search () {
             </div>
         )
     } else {
-        return  <div></div>
+        return <ContentLoading />
     }
 }
 

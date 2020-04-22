@@ -7,6 +7,8 @@ import {BannerData} from '../../api/hotsong'
 import conformityData from '../../utils/conformity'
 // 引入适用性比较高的组件
 import CommonMyScroll from '../../component/common/MyScroll'
+// 引入适用性比较低的组件
+import ContentLoading from '../../component/content/Loading'
 // 引入当前模块下面的子组件
 import HotSongBanner from './base/Banner'
 import HotSongList from './base/SongList'
@@ -38,7 +40,7 @@ function HotSong () {
     if (tracks.length) {
         return <CommonMyScroll content={content} className={"wrapper_hotsong"}/>
     } else  {
-        return <div></div>
+        return <ContentLoading />
     }
 }
 

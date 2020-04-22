@@ -7,6 +7,8 @@ import '../../style/detail.scss'
 import {DetailSongData, DetailSongHeadData, DetailSuccinctData} from '../../api/detail'
 // 引入工具类函数
 import conformityData from '../../utils/conformity'
+// 引入适用性比较低的组件
+import ContentLoading from '../../component/content/Loading'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../component/common/GoBack'
 import CommonMyScroll from '../../component/common/MyScroll'
@@ -53,7 +55,7 @@ function Detail (props) {
     if (tracksList.length) {
         return <CommonMyScroll content={content} className={"wrapper_detail"}/>
     } else  {
-        return <div></div>
+        return <ContentLoading />
     }
 }
 
