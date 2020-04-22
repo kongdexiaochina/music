@@ -10,6 +10,7 @@ import {formateDate} from '../../utils/time'
 import {CommentData} from '../../api/comment'
 // 引入适用性比较低的组件
 import ContentLazyLoading from '../../component/content/LazyLoading'
+import ContentLoading from '../../component/content/Loading'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../component/common/GoBack'
 import CommonMyScroll from '../../component/common/MyScroll'
@@ -30,7 +31,7 @@ function Comment (props) {
     }, [])
     // 监听路由变化是否显示迷你播放器
     useEffect(() => {
-        getIsMusic(false) // 不显示
+        getIsMusic(false)
         return function () { // 当组件销毁的时候 不显示迷你播放器
             getIsMusic(false)
         }
@@ -82,7 +83,12 @@ function Comment (props) {
             </div>
         )
     } else {
-        return <div></div>
+        return (
+            <div className={"comment"}>
+                <div className="comment_bgc" style={{backgroundImage: `url(${playerItemObj.picUrl})`}}></div>
+                <ContentLoading />
+            </div>
+        )
     }
 }
 

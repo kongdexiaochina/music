@@ -33,32 +33,27 @@ function SmallPlayer (props) {
         const {data} = await playerSong(playerItemObj.id)
         setUrl(data[0].url);
     }
-    // console.log(playerItemObj);
     // 检测isPlay的值 判断是否开启音乐
     useEffect(() => {
-        if (isPlay) { // 播放
-            audioDOM.current.play().then(() => {
+        ( async() => {
+            if (isPlay) { // 播放
                 audioDOM.current.play()
                 getIsPlay(true)
-            }).catch(e => {
-                console.log(e)
-            })
-        } else { // 不播放
-            audioDOM.current.pause()
-            getIsPlay(false)
-        }
+            } else { // 不播放
+                audioDOM.current.pause()
+                getIsPlay(false)
+            }
+        })()
     }, [isPlay])
     // 当picUrl值发送变化的时候 进行请求数据
     useEffect(() => {
-        if (isPlay) { // 当isPlay的值是true的时候 我们播放音乐
-            audioDOM.current.play().then(() => {
+        (async () => {
+            if (isPlay) { // 当isPlay的值是true的时候 我们播放音乐
                 audioDOM.current.play()
                 getIsPlay(true)
-            }).catch(e => {
-                console.log(e)
-            })
-        }
-        getData() // 获取数据
+            }
+            getData() // 获取数据
+        })()
     }, [playerItemObj.picUrl])
     // 音频可以播放的时候触发
     const canPlay = () => {
@@ -70,9 +65,6 @@ function SmallPlayer (props) {
         setWidth((currentTime/duration)*100 + '%')
         getCurrentTime(currentTime)
     }
-    // console.log(duration);
-    // console.log(currentTime);
-    // console.log(width);
     return (
         <div className={"small_player"}>
             <span className={"play_icon"} onClick={
