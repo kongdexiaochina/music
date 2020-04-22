@@ -6,3 +6,5 @@ export const isMusic = 'isMusic'
 export const isPlay = 'isPlay'
 // 获取实时播放音乐的currentTime值
 export const currentTimeDate = 'currentTimeDate'
+// 是否获取到了歌曲的url路径
+export const isPlayUrl = 'isPlayUrl'

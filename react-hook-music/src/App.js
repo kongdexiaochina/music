@@ -13,13 +13,21 @@ import ContentSmallPlayer from './component/content/SmallPlayer'
 
 function App(props) {
     // 解构props数据
-    const {isMusic, playerItemObj} = props
+    const {
+        isMusic,
+        playerItemObj,
+        isUrl
+    } = props
     return (
         <BrowserRouter>
             <StairRouter />
             {
                 Object.keys(playerItemObj).length &&
-                <div style={{display: isMusic ? 'block' : 'none'}}>
+                <div style = {
+                    {
+                        display: isMusic && isUrl ? 'block' : 'none'
+                    }
+                }>
                     <ContentSmallPlayer />
                 </div>
             }
@@ -30,7 +38,8 @@ function App(props) {
 export default connect(
     state => ({
         isMusic: state.isMusic,
-        playerItemObj: state.playerItemObj
+        playerItemObj: state.playerItemObj,
+        isUrl: state.isUrl
     }),
     null
 )(App);

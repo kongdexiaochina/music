@@ -3,8 +3,10 @@ import React, {Fragment, useEffect, useState, useRef} from "react";
 import {connect} from 'react-redux'
 import {
     getIsPlay,
-    getCurrentTime
+    getCurrentTime,
+    getIsPlayUrl
 } from '../../redux/actions'
+import Pubsub from 'pubsub-js'
 // 引入路由内置组件
 import {NavLink} from 'react-router-dom'
 // 引入对应的api请求函数
@@ -16,7 +18,9 @@ function SmallPlayer (props) {
         isPlay,
         getIsPlayToggle,
         getCurrentTime,
-        getIsPlay
+        getIsPlay,
+        getIsPlayUrl,
+        isUrl
     } = props
     // 歌曲路径数据
     const [url, setUrl] = useState('')
@@ -32,29 +36,38 @@ function SmallPlayer (props) {
     const getData = async () => {
         const {data} = await playerSong(playerItemObj.id)
         setUrl(data[0].url);
+        if (!data[0].url) {
+            Pubsub.publish('isUrl', false)
+            getIsPlayUrl(false)
+        } else {
+            getIsPlayUrl(true)
+             Pubsub.publish('isUrl', true)
+        }
     }
     // 检测isPlay的值 判断是否开启音乐
     useEffect(() => {
-        ( async() => {
-            if (isPlay) { // 播放
+        if (isPlay) { // 播放
+            const promise = audioDOM.current.play
+            promise().then(() => {
                 audioDOM.current.play()
-                getIsPlay(true)
-            } else { // 不播放
-                audioDOM.current.pause()
-                getIsPlay(false)
-            }
-        })()
+            }).catch(e => {})
+            getIsPlay(true)
+        } else { // 不播放
+            audioDOM.current.pause()
+            getIsPlay(false)
+        }
     }, [isPlay])
     // 当picUrl值发送变化的时候 进行请求数据
     useEffect(() => {
-        (async () => {
-            if (isPlay) { // 当isPlay的值是true的时候 我们播放音乐
-                audioDOM.current.play()
+        if (isPlay) { // 当isPlay的值是true的时候 我们播放音乐
+            const promise = audioDOM.current.play
+                promise().then(() => {
+                    audioDOM.current.play()
+                }).catch(e => {})
                 getIsPlay(true)
             }
             getData() // 获取数据
-        })()
-    }, [playerItemObj.picUrl])
+    }, [playerItemObj.id])
     // 音频可以播放的时候触发
     const canPlay = () => {
         setDuration(audioDOM.current.duration);
@@ -89,7 +102,7 @@ function SmallPlayer (props) {
                     </div>
                 </div>
             </NavLink>
-            <audio src={url} loop={"loop"} ref={audioDOM} autoPlay={isPlay} onCanPlay={canPlay} onTimeUpdate={TimeUpdate}></audio>
+            <audio src={isUrl ? url : ''} loop={"loop"} ref={audioDOM} autoPlay={isPlay} onCanPlay={canPlay} onTimeUpdate={TimeUpdate}></audio>
         </div>
     )
 }
@@ -97,11 +110,13 @@ function SmallPlayer (props) {
 export default connect(
     state => ({
         playerItemObj: state.playerItemObj,
-        isPlay: state.isPlay
+        isPlay: state.isPlay,
+        isUrl: state.isUrl
     }),
     {
         getIsPlayToggle: getIsPlay,
         getCurrentTime: getCurrentTime,
-        getIsPlay: getIsPlay
+        getIsPlay: getIsPlay,
+        getIsPlayUrl: getIsPlayUrl
     }
 )(SmallPlayer)

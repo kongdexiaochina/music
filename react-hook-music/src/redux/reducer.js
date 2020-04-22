@@ -1,5 +1,11 @@
 // 引入对应的actionsType
-import {itemPlayerData, isMusic, isPlay, currentTimeDate} from './actionsType'
+import {
+    itemPlayerData,
+    isMusic,
+    isPlay,
+    currentTimeDate,
+    isPlayUrl
+} from './actionsType'
 
 export default function (state= {
     // 歌曲数据
@@ -9,7 +15,9 @@ export default function (state= {
     // 是否播放默认是不 播放的
     isPlay: false,
     // 获取音频实时播放的时候
-    currentTime: 0
+    currentTime: 0,
+    // 是否获取到了歌曲的url路由
+    isUrl: false
 }, action) {
     switch  (action.type) {
         // 获取对应的歌曲
@@ -36,6 +44,13 @@ export default function (state= {
             return {
                 ...state,
                 currentTime: action.num
+            }
+        // 是否获取到了歌曲的URL路径
+        case isPlayUrl :
+            console.log(action)
+            return {
+                ...state,
+                isUrl: action.bol
             }
         default :
             return {...state}

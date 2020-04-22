@@ -1,5 +1,11 @@
 // 引入对应的actionsType
-import {itemPlayerData, isMusic, isPlay, currentTimeDate} from './actionsType'
+import {
+    itemPlayerData,
+    isMusic,
+    isPlay,
+    currentTimeDate,
+    isPlayUrl
+} from './actionsType'
 
 // 获取歌曲数据
 export const getItemPlayer = obj => {
@@ -30,5 +36,13 @@ export const getCurrentTime = num => {
     return {
         type: currentTimeDate,
         num
+    }
+}
+
+// 是否获取到了歌曲的URL路径
+export const getIsPlayUrl = bol => {
+    return {
+        type: isPlayUrl,
+        bol
     }
 }

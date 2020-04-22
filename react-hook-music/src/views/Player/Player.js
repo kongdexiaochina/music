@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from "react";
 // 引入对应的css样式
 import '../../style/player.scss'
+import Pubsub from 'pubsub-js'
 // 引入react-redux和对应的actions
 import {connect} from 'react-redux'
 import {
     getItemPlayer,
     getIsMusic,
-    getIsPlay
+    getIsPlay,
+    getIsPlayUrl
 } from '../../redux/actions'
 // 引入对应的数据请求接口
 import {playerLyricData} from '../../api/player'
@@ -16,6 +18,8 @@ import {NavLink} from 'react-router-dom'
 import lyricParser from '../../utils/lyric'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../component/common/GoBack'
+// 引入适用性比较低的组件
+import ContentLoading from '../../component/content/Loading'
 // 引入当中模块下面的子组件
 import CommonIcon from './base/Icon'
 import CommonLyricText from './base/lyricText'
@@ -32,7 +36,8 @@ function Player (props) {
         },
         getItemPlayer,
         getIsMusic,
-        getIsPlay
+        getIsPlay,
+        isUrl
     } = props
     // 获取对应的数据的函数
     const getData = async () => {
@@ -64,16 +69,29 @@ function Player (props) {
     useEffect(() => {
         getIsMusic(false) // 不显示
         getIsPlay(true) // 播放
+        getIsPlayUrl(true)
+        const token = Pubsub.subscribe("isUrl", (type, data) => {
+            if (!data) {
+                console.log(data)
+                var result = setTimeout(() => {
+                    navigation()
+                }, 2000)
+                return () => {
+                    clearTimeout(result)
+                }
+            }
+        });
         return function () { // 当组件销毁的时候 显示迷你播放器 和 播放
             getIsMusic(true)
             getIsPlay(true)
+            Pubsub.unsubscribe(token) // 清除异步事件
         }
     }, [props.location])
     // 编导式导航
     const navigation = () => {
         props.history.go(-1)
     }
-    if (Object.keys(playerItemObj).length) {
+    if (Object.keys(playerItemObj).length && isUrl) {
         return (
             <div className={"player"}>
                 <div className="player_bgc" style={{backgroundImage: `url(${playerItemObj.picUrl})`}}></div>
@@ -88,7 +106,12 @@ function Player (props) {
             </div>
         )
     } else  {
-        return  <div></div>
+        return  (
+            <div className={"player"}>
+                <div className="player_bgc" style={{backgroundImage: `url(${playerItemObj.picUrl})`}}></div>
+                <ContentLoading />
+            </div>
+        )
     }
 }
 
@@ -96,11 +119,13 @@ export default connect(
     state => ({
         playerItemObj: state.playerItemObj,
         currentTime: state.currentTime,
-        isPlayError: state.isPlayError
+        isPlayError: state.isPlayError,
+        isUrl: state.isUrl
     }),
     {
         getItemPlayer:getItemPlayer,
         getIsMusic: getIsMusic,
-        getIsPlay: getIsPlay
+        getIsPlay: getIsPlay,
+        getIsPlayUrl: getIsPlayUrl
     }
 )(Player)
