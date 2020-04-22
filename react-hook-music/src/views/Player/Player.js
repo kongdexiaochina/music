@@ -14,8 +14,6 @@ import {playerLyricData} from '../../api/player'
 import {NavLink} from 'react-router-dom'
 // 引入对应的工具类函数
 import lyricParser from '../../utils/lyric'
-// 引入适用性比较低的组件
-import ContentLoading from '../../component/content/Loading'
 // 引入适用性比较高的组件
 import CommonGoBack from '../../component/common/GoBack'
 // 引入当中模块下面的子组件
@@ -90,7 +88,7 @@ function Player (props) {
             </div>
         )
     } else  {
-        return <ContentLoading />
+        return  <div></div>
     }
 }
 

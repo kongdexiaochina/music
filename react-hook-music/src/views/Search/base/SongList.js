@@ -30,9 +30,12 @@ function SongList (props) {
     }
     // 进行接收兄弟组件传递过来的数据
     useEffect(() => {
-        Pubsub.subscribe("SongList", (type, data) => {
+        const token = Pubsub.subscribe("SongList", (type, data) => {
             setSongList(data);
         });
+        return () => {
+            Pubsub.unsubscribe(token) // 清除异步事件
+        }
     }, [])
     // 需要滚动的内容
     const content = (

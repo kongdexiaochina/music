@@ -13,7 +13,7 @@ function QuerySong () {
         const isEmpty = name.replace(/(^\s*)|(\s*$)/g, '')
         if (isEmpty) {
             const {result: {songs}} = await hotSearchData(name)
-            Pubsub.publish('SongList',conformityData(songs))
+            Pubsub.publish('SongList', conformityData(songs))
         }
     }
     // 当触发input框当中的change事件的时候触发该事件处理函数
@@ -22,19 +22,26 @@ function QuerySong () {
         setVal(val) // 设置对应的val值
         getQueryData(val) // 请求对应的数据
         if (!val) { // 如果val值为空那么我们就发送一个[]数组 代表没有获取到数据
-            Pubsub.publish('SongList',[])
+            Pubsub.publish('SongList', [])
         }
     }
     // 删除
     const changeDelete = () => {
         setVal("") // 让val值为空
-        Pubsub.publish('SongList',[]) // 发送一个空数组代表没有删除了所有的数据
+        Pubsub.publish('SongList', []) // 发送一个空数组代表没有删除了所有的数据
     }
     // 当触发useEffect生命周期hook函数的时候 我们进行接收并且赋值数据也就是val值
     useEffect(() => {
-        Pubsub.subscribe("valName", (type, data) => {
+        const token = Pubsub.subscribe("valName", (type, data) => {
             setVal(data);
         });
+        /*
+            我们在使用pubsub插件 进行兄弟组件传值的时候
+            是一个异步事件的机制 所以说我们应当在useEffect当中清除该异步事件
+        */
+        return () => {
+            Pubsub.unsubscribe(token) // 清除异步事件
+        }
     }, [])
     return (
         <div className={"querysong"}>
