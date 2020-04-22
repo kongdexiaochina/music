@@ -47,7 +47,6 @@ export default function (state= {
             }
         // 是否获取到了歌曲的URL路径
         case isPlayUrl :
-            console.log(action)
             return {
                 ...state,
                 isUrl: action.bol

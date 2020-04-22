@@ -16,11 +16,10 @@ function SmallPlayer (props) {
     const {
         playerItemObj,
         isPlay,
-        getIsPlayToggle,
         getCurrentTime,
-        getIsPlay,
         getIsPlayUrl,
-        isUrl
+        isUrl,
+        getIsPlayToggle
     } = props
     // 歌曲路径数据
     const [url, setUrl] = useState('')
@@ -41,20 +40,18 @@ function SmallPlayer (props) {
             getIsPlayUrl(false)
         } else {
             getIsPlayUrl(true)
-             Pubsub.publish('isUrl', true)
+            Pubsub.publish('isUrl', true)
         }
     }
     // 检测isPlay的值 判断是否开启音乐
     useEffect(() => {
         if (isPlay) { // 播放
             const promise = audioDOM.current.play
-            promise().then(() => {
-                audioDOM.current.play()
-            }).catch(e => {})
-            getIsPlay(true)
+            audioDOM.current.play()
+            getIsPlayToggle(true)
         } else { // 不播放
             audioDOM.current.pause()
-            getIsPlay(false)
+            getIsPlayToggle(false)
         }
     }, [isPlay])
     // 当picUrl值发送变化的时候 进行请求数据
@@ -64,7 +61,7 @@ function SmallPlayer (props) {
                 promise().then(() => {
                     audioDOM.current.play()
                 }).catch(e => {})
-                getIsPlay(true)
+                getIsPlayToggle(true)
             }
             getData() // 获取数据
     }, [playerItemObj.id])
@@ -116,7 +113,6 @@ export default connect(
     {
         getIsPlayToggle: getIsPlay,
         getCurrentTime: getCurrentTime,
-        getIsPlay: getIsPlay,
         getIsPlayUrl: getIsPlayUrl
     }
 )(SmallPlayer)
