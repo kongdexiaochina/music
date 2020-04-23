@@ -46,8 +46,10 @@ function SmallPlayer (props) {
     // 检测isPlay的值 判断是否开启音乐
     useEffect(() => {
         if (isPlay) { // 播放
-            const promise = audioDOM.current.play
-            audioDOM.current.play()
+            const promise = audioDOM.current.play()
+            promise.then(() => {
+                audioDOM.current.play()
+            }).catch(e => {})
             getIsPlayToggle(true)
         } else { // 不播放
             audioDOM.current.pause()
