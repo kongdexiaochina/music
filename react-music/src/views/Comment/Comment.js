@@ -50,7 +50,12 @@ class Comment extends Component {
                 </div>
             )
         } else {
-            return <Loading />
+            return (
+                <div className={"comment"}>
+                    <div className="comment_bgc" style={{backgroundImage: `url(${music_obj.picUrl})`}}></div>
+                    <Loading />   
+                </div>
+            )
         }
     }
     // 在此处完成组件的卸载和数据的销毁。并且不显示迷你播放器 并且开启音乐
