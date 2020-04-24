@@ -19,15 +19,20 @@ function Comment (props) {
     const {location, getIsMusic, history, playerItemObj, getIsPlay} = props
     // 歌词数据
     const [hotComments, setHotComments] = useState([])
+    const [isShow, setIsShow] = useState(false) // 默认是false代表歌词全部加载完毕
     // 获取数据
     const getData = async () => {
-        const {hotComments} = await CommentData(playerItemObj.id)
-        setHotComments(hotComments);
+        (async () => {
+            const {hotComments} = await CommentData(playerItemObj.id)
+            setHotComments(hotComments);
+        })()
     }
     // 获取对应的数据
     useEffect(() => {
-        getIsPlay(true) //播放音乐
-        getData()
+        (async () => {
+            getIsPlay(true) //播放音乐
+          await getData()
+        }) ()
     }, [])
     // 监听路由变化是否显示迷你播放器
     useEffect(() => {
@@ -36,6 +41,22 @@ function Comment (props) {
             getIsMusic(false)
         }
     }, [location])
+    // 判断是否加载出来歌词 和 跳转到上一层的页面
+    useEffect(() => {
+        if (hotComments.length) { // 加载出来
+            setIsShow(false)
+        } else { // 没有加载出来
+            setIsShow(true)
+        }
+        if (!isShow) { // 没有加载出来
+            const result = setTimeout(() => {
+                navigation()
+            }, 2000)
+            return () => {
+                clearTimeout(result)
+            }
+        }
+    }, [hotComments.length])
     // 编导式导航
     const navigation = () => {
         history.go(-1)

@@ -24,8 +24,10 @@ function SongList (props) {
     const getQueryData = async (name) => {
         const isEmpty = name.replace(/(^\s*)|(\s*$)/g, '')
         if (isEmpty) { // 如果name值不是空串 那么进行获取数据
-            const {result: {songs}} = await hotSearchData(name)
-            setSongList(conformityData(songs));
+            (async () => {
+                const {result: {songs}} = await hotSearchData(name)
+                await setSongList(conformityData(songs));
+            })()
         }
     }
     // 进行接收兄弟组件传递过来的数据

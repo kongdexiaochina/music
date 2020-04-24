@@ -12,6 +12,7 @@
 *           }
 * */
 export default function conformityData (arr) {
+    if (!arr) return
     const newArr = []
     arr.forEach(item => {
         newArr.push({

@@ -21,13 +21,13 @@ function LyricText (props) {
                 return  0
             }
         })
-    }, [currentTime])
+    }, [currentTime, lyric])
     // 当activateIndex的值发送变化的时候 进行滚动歌词
     useEffect(() => {
         if (scroll.current) {
             scroll.current.changeScroll(document.querySelectorAll("#item"), (activateIndex() === -1 ? 0 : activateIndex()))
         }
-    }, [activateIndex()])
+    }, [activateIndex])
     // 需要滚动的内容
     let content = null
     if (lyric.length) {
