@@ -5,6 +5,7 @@ import Pubsub from 'pubsub-js'
 import {hotSearchData} from '../../../api/search'
 // 引入对应的工具类函数
 import conformityData from "../../../utils/conformity";
+import {technique} from '../../../utils/technique'
 function QuerySong () {
     // 搜索框的value值
     const [val, setVal] = useState('')
@@ -18,12 +19,16 @@ function QuerySong () {
     }
     // 当触发input框当中的change事件的时候触发该事件处理函数
     const handleChange = e => {
+        console.log(e.target.value);
         const val = e.target.value
-        setVal(val) // 设置对应的val值
-        getQueryData(val) // 请求对应的数据
-        if (!val) { // 如果val值为空那么我们就发送一个[]数组 代表没有获取到数据
-            Pubsub.publish('SongList', [])
-        }
+        const result = technique(function () {
+            setVal(val) // 设置对应的val值
+            getQueryData(val) // 请求对应的数据
+            if (!val) { // 如果val值为空那么我们就发送一个[]数组 代表没有获取到数据
+                Pubsub.publish('SongList', [])
+            }
+        }, 20)
+        result()
     }
     // 删除
     const changeDelete = () => {
