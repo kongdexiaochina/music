@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import {BrowserRouter} from 'react-router-dom'
+import './static/iconfont/iconfont.css'
+import './static/js/rem'
+import './static/css/reset.css'
+import './static/css/home.scss'
+import './static/css/common.scss'
+
+import App from './App.jsx';
 
 ReactDOM.render(
-  <App />,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   document.getElementById('root')
 );
-

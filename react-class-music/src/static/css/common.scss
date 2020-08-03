@@ -1,0 +1,33 @@
+// 公共组件的样式
+
+// 头部组件的样式
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.33rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0 0.4rem;
+    i,a {
+        font-size: 0.53rem;
+    }
+    .header_nav {
+        display: flex;
+        justify-content: space-evenly;
+        width: 6.4rem;
+        a {
+            font-size: 0.48rem;
+            color: #797979;
+            transition: 0.5s;
+            // 激活的nav导航
+            &.active {
+                font-weight: bold;
+                color: #000;
+            }
+        }
+    }
+}
+// loading样式
+.loading {
+    font-size: 0.3rem;
+}

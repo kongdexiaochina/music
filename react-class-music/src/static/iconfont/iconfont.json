@@ -1,0 +1,23 @@
+{
+  "id": "1982018",
+  "name": "react-music",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1462916",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "1881828",
+      "name": "list",
+      "font_class": "list",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    }
+  ]
+}
