@@ -11,7 +11,6 @@ export default class SlideShow extends Component {
             handleShowBanner: 可选，触发父级点击展示轮播图
         */
         const {banner,className,customPaging,handleShowBanner} = this.props
-        console.log(handleShowBanner);
         // 轮播图选项
         const settings = {
             dots: true,
@@ -25,7 +24,7 @@ export default class SlideShow extends Component {
         return  (
             <Slider {...settings} customPaging={customPaging} className={className}>
                 {
-                    banner.map((item,index) => <img src={item.image} alt="" key={item.image} onClick={() =>  handleShowBanner ? handleShowBanner(item, index) : () => {}}/>)
+                    banner.map((item,index) => <img src={item.image} alt="" key={item.image} onClick={handleShowBanner ? handleShowBanner : () => {}}/>)
                 }
             </Slider>
         )

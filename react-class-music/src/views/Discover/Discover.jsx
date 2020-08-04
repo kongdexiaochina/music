@@ -1,8 +1,11 @@
 import React, {Component, Fragment, createRef} from 'react'
+import {NavLink} from 'react-router-dom'
 import {getBanner,getRecommendSong, getSong} from '../../api/index'
 import animation from '../../utility/animation'
+import stopBodyScroll from '../../utility/stopBodyScroll'
 import SlideShow from '../../component/content/SlideShow'
 import RemoSongItem from '../../component/content/RemoSongItem'
+
 export default class Discover extends Component {
     constructor (props) {
         super(props)
@@ -15,10 +18,10 @@ export default class Discover extends Component {
         isBannerShow: false // 是否显示大图轮播图
     }
     option = [ // 菜单选项
-        {icon: 'iconfont icon-rili', title: '每日推荐'},
-        {icon: 'iconfont icon-gedan', title: '歌单'},
-        {icon: 'iconfont icon-paihangbang', title: '排行榜'},
-        {icon: 'iconfont icon-diantai', title: '电台'}
+        {icon: 'iconfont icon-rili', title: '每日推荐', path: '/'},
+        {icon: 'iconfont icon-gedan', title: '歌单', path: '/songsheet'},
+        {icon: 'iconfont icon-paihangbang', title: '排行榜', path: '/rank'},
+        {icon: 'iconfont icon-diantai', title: '电台', path: '/dj'}
     ]
     // 同步进行请求数据
     UNSAFE_componentWillMount () {
@@ -29,10 +32,12 @@ export default class Discover extends Component {
                 {
                     this.option.map(item => (
                         <li key={item.title}>
-                            <div className="icon">
-                                <i className={item.icon}></i>
-                            </div>
-                            <span>{item.title}</span>
+                            <NavLink to={item.path}>
+                                <div className="icon">
+                                    <i className={item.icon}></i>
+                                </div>
+                                <span>{item.title}</span>
+                            </NavLink>
                         </li>
                     ))
                 }
@@ -57,15 +62,14 @@ export default class Discover extends Component {
         })
     }
     // 点击显示展示轮播图
-    handleShowBanner = (obj, index) => {
-        // console.log(obj, index);
+    handleShowBanner = () => {
         this.setState({
             isBannerShow: true
         })
         animation(this.slideShowRef.current,{
             opacity:1,
         },0.25,function(){
-            console.log('执行');
+            stopBodyScroll(true)
         })
     }
     // 点击关闭展示轮播图
@@ -79,6 +83,7 @@ export default class Discover extends Component {
                 })
             }, 300)
         })
+        stopBodyScroll(false)
     }
     render () {
         const {banner,recommend,song,isBannerShow} = this.state
@@ -95,7 +100,11 @@ export default class Discover extends Component {
                             </header>
                             <section className="discover_song_recommend">
                                 {
-                                    recommend.map(item => <RemoSongItem item={item} color={"#fff"} key={item.id}/>)
+                                    recommend.map((item, index) => (
+                                        <NavLink to={`/recommend?id=${item.id}&name=${item.name}`} key={index}>
+                                            <RemoSongItem item={item} color={"#fff"}/>
+                                        </NavLink>
+                                    ))
                                 }
                             </section>
                         </section>
@@ -105,7 +114,11 @@ export default class Discover extends Component {
                             </header>
                             <section className="song_every_list">
                                 {
-                                    song.map(item => <RemoSongItem item={item} color={"#000"} key={item.id}/>)
+                                    song.map((item, index) => (
+                                        <NavLink to={`/recommend?id=${item.id}&name=${item.name}`} key={index}>
+                                             <RemoSongItem item={item} color={"#000"}/>
+                                        </NavLink>
+                                    ))
                                 }
                             </section>
                         </section>

@@ -40,10 +40,14 @@
             font-size: 0.27rem;
             li {
                 flex: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                align-items: center;
+                a {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                }
                 .icon {
                     width: 1.13rem;
                     height: 1.13rem;
@@ -93,10 +97,13 @@
                 &::-webkit-scrollbar { // 去除滚动条
                     display: none;
                 }
-                &>div {
+                >a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
                     margin-right: 0.4rem;
                 }
-                div:last-of-type{
+                a:last-of-type{
                     margin: 0;
                 }
             }
@@ -106,8 +113,8 @@
                 flex-wrap: wrap;
                 justify-content: space-around;
                 padding: 0.13rem 0.13rem 0;
-                >div {
-                    margin-bottom: 0.13rem;
+                >a {
+                    margin-bottom: 0.2rem;
                 }
             }
             // 单个歌单项的样式
@@ -116,13 +123,14 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                .info {
+                .info{
+                    position: relative;
                     width: 2.8rem;
                     height: 2.8rem;
                     position: relative;
                     border-radius: 0.13rem;
                     overflow: hidden;
-                    img {
+                    img,.recommend_list .song_des img {
                         display: block;
                         width: 100%;
                         height: 100%;
@@ -205,4 +213,81 @@
             }
         }
     }
+}
+
+// 显示菜单的内容样式
+.menu_mode_fake {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 10000;
+    opacity: 0;
+    background-color: rgba(0, 0, 0,.6);
+}
+.menu_show{
+    position: relative;
+    left: 0;
+    width: 82%;
+    height: 100%;
+    background: #fff;
+    transition: all .15s ease-out;
+    height: 100%;
+    transition: opacity .2s ease-out;
+    .drawer_sidebar_bgc {
+        height: 4.5rem;
+        line-height: 4.5rem;
+        background-color: #e5473c;
+        opacity: .8;
+        background-image: url('../images/menu_show_bgc.png');
+        background-position: 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .drawer_sidebar_list {
+        li {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: .3rem;
+            height: 1.2rem;
+            border-bottom: 1px solid #ededed;
+            font-size: .4rem;
+            color: #000000;
+            p {
+                flex: 1;
+            }
+            i {
+                font-size: .4rem;
+            }
+        }
+    }
+}
+
+// 图片loading
+.recommend_list .song_des,
+.discover_song .song_item .info {
+    position: relative;
+    img {
+        &[lazy = loading], &[lazy = error] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            width: 1rem !important;
+            height: 1rem !important;
+            margin: auto;
+            animation: rotate 1.5s linear infinite;
+            @keyframes rotate {
+                0%{transform: rotate(0deg);}
+                100%{transform: rotate(360deg);}
+            }
+        }
+    }
+}
+.recommend_list .song_des img {
+    position: inherit !important;
 }

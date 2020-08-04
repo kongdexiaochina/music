@@ -5,6 +5,7 @@ import './static/iconfont/iconfont.css'
 import './static/js/rem'
 import './static/css/reset.css'
 import './static/css/home.scss'
+import './static/css/recommend.scss'
 import './static/css/common.scss'
 
 import App from './App.jsx';
