@@ -27,6 +27,13 @@
         }
     }
 }
+.header_fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+}
 // loading样式
 .loading {
     font-size: 0.3rem;
