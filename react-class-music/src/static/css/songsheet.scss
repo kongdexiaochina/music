@@ -1,0 +1,61 @@
+// 歌单广场的样式
+.songsheet {
+    overflow: auto;
+    // 头部
+    .header {
+        background: radial-gradient(ellipse, #fff 0, #bbb 100%) !important;
+        height: 1.2rem;
+        &>.left {
+            display: flex;
+            align-items: center;
+            color: #000;
+            i {
+                font-size: .4rem;
+            }
+            p {
+                font-size: .35rem;
+                margin-left: .1rem;
+            }
+        }
+    }
+    // 导航
+    .nav_list {
+        width: 100%;
+        height: 1rem;
+        position: relative;
+        background-color: #fff;
+        border-top: 1px solid #000000;
+        .nav_list_scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            display: flex;
+            >section {
+                position: relative;
+                flex: 0 0 22%;
+                color: #323233;
+                font-weight: 500;
+                font-size: .35rem;
+                text-align: center;
+                line-height: 1rem;
+                box-sizing: border-box;
+            }
+            .activate{
+                color: #ee0a24;
+                font-weight: bolder;
+            }
+            &::-webkit-scrollbar { // 去除滚动条
+                display: none;
+            }
+        }
+    }
+    // 歌单列表
+    .handpick_list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 0.13rem 0.13rem 0;
+        .song_item {
+            margin-bottom: 0.27rem;
+        }
+    }
+}

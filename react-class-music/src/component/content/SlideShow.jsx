@@ -24,7 +24,7 @@ export default class SlideShow extends Component {
         return  (
             <Slider {...settings} customPaging={customPaging} className={className}>
                 {
-                    banner.map((item,index) => <img src={item.image} alt="" key={item.image} onClick={handleShowBanner ? handleShowBanner : () => {}}/>)
+                    banner.map((item,index) => <img src={item.image} alt="" key={index} onClick={handleShowBanner ? handleShowBanner : () => {}}/>)
                 }
             </Slider>
         )

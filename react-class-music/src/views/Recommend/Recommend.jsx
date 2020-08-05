@@ -3,6 +3,7 @@ import Url from 'url' // 解析query数据
 import {getSongDetails} from '../../api/index'
 import ScrollHeader from '../../component/common/ScrollHeader'
 import LazyLoading from '../../component/common/LazyLoading'
+import Loading from '../../component/content/Loading'
 class Recommend extends Component {
     state = {
         songDetailsList: [], // 歌单详情列表数据
@@ -27,7 +28,7 @@ class Recommend extends Component {
             return (
                 <div className="recommend">
                     {/* 歌单详情头部 */}
-                    <ScrollHeader height={90}>
+                    <ScrollHeader height={100}>
                         <header className="recommend_header">
                             <section className="recommend_header_top">
                                 <i className="iconfont icon-jiantouzuo" onClick={() => {
@@ -63,7 +64,7 @@ class Recommend extends Component {
                 </div>
             );
         } else {
-            return <div className="loading">loading...</div>
+            return <Loading />
         }
     }
 }

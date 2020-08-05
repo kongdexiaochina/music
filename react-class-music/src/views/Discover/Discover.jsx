@@ -1,24 +1,20 @@
-import React, {Component, Fragment, createRef} from 'react'
+import React, {Component, Fragment} from 'react'
 import {NavLink} from 'react-router-dom'
 import {getBanner,getRecommendSong, getSong} from '../../api/index'
-import animation from '../../utility/animation'
-import stopBodyScroll from '../../utility/stopBodyScroll'
 import SlideShow from '../../component/content/SlideShow'
 import RemoSongItem from '../../component/content/RemoSongItem'
-
+import SlideShowLarge from '../../component/content/SlideShowLarge'
+import BoutiqueSong from '../../component/content/BoutiqueSong'
+import Prompt from '../../component/content/Prompt'
+import Loading from '../../component/content/Loading'
 export default class Discover extends Component {
-    constructor (props) {
-        super(props)
-        this.slideShowRef = createRef()
-    }
     state = {
         banner: [], // 轮播图数据
         recommend: [], // 推荐歌单数据
         song: [], // 歌单数据
-        isBannerShow: false // 是否显示大图轮播图
     }
     option = [ // 菜单选项
-        {icon: 'iconfont icon-rili', title: '每日推荐', path: '/'},
+        {icon: 'iconfont icon-rili', title: '每日推荐', path: null},
         {icon: 'iconfont icon-gedan', title: '歌单', path: '/songsheet'},
         {icon: 'iconfont icon-paihangbang', title: '排行榜', path: '/rank'},
         {icon: 'iconfont icon-diantai', title: '电台', path: '/dj'}
@@ -30,16 +26,23 @@ export default class Discover extends Component {
         this.optionDOM = (
             <ul className="discover_option">
                 {
-                    this.option.map(item => (
-                        <li key={item.title}>
+                    this.option.map(item => {
+                        return item.path ? <li key={item.title}>
                             <NavLink to={item.path}>
                                 <div className="icon">
                                     <i className={item.icon}></i>
                                 </div>
                                 <span>{item.title}</span>
                             </NavLink>
-                        </li>
-                    ))
+                        </li> : <li key={item.title}>
+                            <div onClick={this.handleRecommend}>
+                                <div className="icon">
+                                    <i className={item.icon}></i>
+                                </div>
+                                <span>{item.title}</span>
+                            </div>
+                        </li>;
+                    })
                 }
             </ul>
         )
@@ -61,52 +64,31 @@ export default class Discover extends Component {
             song
         })
     }
-    // 点击显示展示轮播图
-    handleShowBanner = () => {
-        this.setState({
-            isBannerShow: true
-        })
-        animation(this.slideShowRef.current,{
-            opacity:1,
-        },0.25,function(){
-            stopBodyScroll(true)
-        })
-    }
-    // 点击关闭展示轮播图
-    handleHideBanner = () => {
-        animation(this.slideShowRef.current,{
-            opacity:0,
-        },0.3,() => {
-            setTimeout(() => {
-                this.setState({
-                    isBannerShow: false
-                })
-            }, 300)
-        })
-        stopBodyScroll(false)
+    // 点击跳转到推荐音乐页面 需要提前登录
+    handleRecommend = () => {
+        console.log('需要提交登陆');
+        this.promptRef.handlePromptToggle();
     }
     render () {
-        const {banner,recommend,song,isBannerShow} = this.state
+        const {banner,recommend,song} = this.state
         if (banner.length) {
             return (
                 <Fragment>
                     <div className="discover">
-                        <SlideShow banner={banner} customPaging={() => <span></span>} className={"home_slide"} handleShowBanner={this.handleShowBanner}/>
+                        <SlideShow 
+                            banner={banner}
+                            customPaging={() => <span></span>}
+                            className={"home_slide"}
+                            handleShowBanner={() => { // 点击显示大图轮播图
+                                this.largeSlide.handleShowBanner(); // 通过ref标记节点的方式调用子级组件的方法
+                            }}/>
                         {this.optionDOM}
                         <section className="discover_song">
                             <header className="discover_song_head">
                                 <h3>精品歌单</h3>
                                 <p>查看更多</p>
                             </header>
-                            <section className="discover_song_recommend">
-                                {
-                                    recommend.map((item, index) => (
-                                        <NavLink to={`/recommend?id=${item.id}&name=${item.name}`} key={index}>
-                                            <RemoSongItem item={item} color={"#fff"}/>
-                                        </NavLink>
-                                    ))
-                                }
-                            </section>
+                            <BoutiqueSong recommend={recommend}/>
                         </section>
                         <section className="discover_song discover_song_every">
                             <header className="discover_song_head">
@@ -123,16 +105,12 @@ export default class Discover extends Component {
                             </section>
                         </section>
                     </div>
-                    {/* 点击显示轮播大图的结构 */}
-                    <div  className="slider_show" onClick={this.handleHideBanner} ref={this.slideShowRef} style={{display: isBannerShow ? 'block' : 'none'}}>
-                        <SlideShow banner={banner} className={"slider_show_slide"} customPaging={(index) => {
-                            return  <div>{index+1}/{banner.length}</div>
-                        }}/>
-                    </div>
+                    <SlideShowLarge banner={banner} ref={largeSlide => this.largeSlide = largeSlide} className="slider_show_slide"/>
+                    <Prompt msg={'请您登陆'} ref={promptRef => this.promptRef = promptRef}/>
                 </Fragment>
             )
         } else {
-            return <div className="loading">loading...</div>
+            return <Loading />
         }
     }
 }

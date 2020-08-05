@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "554192",
+      "name": "用户",
+      "font_class": "iconset0203",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "240129",
+      "name": "hot",
+      "font_class": "hot",
+      "unicode": "e758",
+      "unicode_decimal": 59224
+    },
+    {
+      "icon_id": "6582307",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
       "icon_id": "14830257",
       "name": "loading03",
       "font_class": "loading03",

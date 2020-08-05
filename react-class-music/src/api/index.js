@@ -9,5 +9,23 @@ export const getBanner = (type = 1) => axios.get(`/banner?type=${type}`)
 export const getRecommendSong = (limit = 8) => axios.get(`/personalized?limit=${limit}`)
 // 获取歌单数据的接口请求函数
 export const getSong = (cat = '华语', order = 'hot', limit = 39) => axios.get(`/top/playlist?cat=${cat}&limit=${limit}&order=${order}`)
-// 获取歌单详情的接口请求函数
+// 获取歌单详情数据的接口请求函数
 export const getSongDetails = id => axios.get(`/playlist/detail?id=${id}`)
+// 获取热门歌单分类数据的接口请求函数
+export const getSongHot = () => axios.get('/playlist/hot')
+// 获取歌单(网友精选碟)的接口请求函数
+export const getSongHandpick = (limit = 39, cat = '华语', order = 'hot') => axios.get(`/top/playlist?limit=${limit}&cat=${cat}&order=${order}`)
+// 获取官方榜歌单数据的接口请求函数
+export const getRankSong = () => axios.get('/toplist/detail')
+// 获取电台轮播图数据的接口请求函数
+export const getDjBanner = () => axios.get('/dj/banner')
+// 获取电台推荐歌单数据的接口请求函数
+export const getDjRecommend = () => axios.get('/dj/category/recommend')
+// 获取电台节目榜列表数据的接口请求函数
+export const getDjProgram = (limit = 30) => axios.get(`/dj/program/toplist/hours?limit=${limit}`)
+// 获取搜索最火热歌曲数据接口请求函数
+export const getSearchHot = () => axios.get(`/search/hot/detail`)
+// 获取建议搜索数据接口请求函数
+export const getSearchSuggest = (keywords,type='mobile') => axios.get(`/search/suggest?type=${type}&keywords=${keywords}`)
+// 获取建议搜索详情列表数据的接口请求函数
+export const getSearchDetailList = (keywords, limit = 15) => axios.get(`/search?keywords=${keywords}&limit=${limit}`)
