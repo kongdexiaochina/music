@@ -17,10 +17,10 @@ export default class Prompt extends Component {
             stopBodyScroll(true)
             animation(this.promptRef.current, {
                 opacity: 1
-            }, 2, () => {
+            }, .5, () => {
                 animation(this.promptRef.current, {
                     opacity: 0
-                }, 2, () => {
+                }, .5, () => {
                     stopBodyScroll(false)
                     this.setState({
                         isPrompt: false

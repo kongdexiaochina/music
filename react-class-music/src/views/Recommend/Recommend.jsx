@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Url from 'url' // 解析query数据
-import {getSongDetails} from '../../api/index'
+import {getSongDetails,getUserRecommend} from '../../api/index'
 import ScrollHeader from '../../component/common/ScrollHeader'
 import LazyLoading from '../../component/common/LazyLoading'
 import Loading from '../../component/content/Loading'
@@ -15,16 +15,24 @@ class Recommend extends Component {
     }
     async getData () { // 请求歌单详情数据
         const {id,name} = Url.parse(this.props.location.search,true).query
-        const resultDetails = await getSongDetails(id)
-        this.setState({
-            songDetailsList: resultDetails.data.playlist.tracks,
-            name
-        })
+        console.log(id)
+        if (id === 'daily') { // 每日推荐
+            const resultRecommend = await getUserRecommend()
+            console.log(resultRecommend.data.data.dailySongs)
+            this.setState({
+                songDetailsList: resultRecommend.data.data.dailySongs
+            })
+        } else {
+            const resultDetails = await getSongDetails(id)
+            this.setState({
+                songDetailsList: resultDetails.data.playlist.tracks,
+                name
+            })
+        }
     }
     render() {
         const {name, songDetailsList} = this.state
-        if (name) {
-            console.log(songDetailsList, 'recommend');
+        if (songDetailsList.length) {
             return (
                 <div className="recommend">
                     {/* 歌单详情头部 */}
@@ -32,9 +40,9 @@ class Recommend extends Component {
                         <header className="recommend_header">
                             <section className="recommend_header_top">
                                 <i className="iconfont icon-jiantouzuo" onClick={() => {
-                                    this.props.history.push('/')
+                                    this.props.history.goBack()
                                 }}></i>
-                                <p>{name}</p>
+                                <p>{name || '每日推荐'}</p>
                             </section>
                             <section className="recommend_header_all">
                                 <i className="iconfont icon-bofang"></i>

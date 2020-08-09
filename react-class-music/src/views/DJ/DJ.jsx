@@ -43,7 +43,7 @@ class DJ extends Component {
                             </header>
                         </ScrollHeader>
                         {/* 轮播图 */}
-                        <SlideShow 
+                        <SlideShow
                             banner={banner}
                             customPaging={() => <span></span>}
                             className={"dj_slide"}
@@ -80,11 +80,12 @@ class DJ extends Component {
                         </section>
                     </div>
                     {/* 显示大图 */}
-                    <SlideShowLarge 
-                        banner={banner}
-                        className="slider_show_slide" 
-                        ref={largeSlide => this.largeSlide = largeSlide}
-                    />
+                    <SlideShowLarge
+                        ref={largeSlide => this.largeSlide = largeSlide}>
+                        <SlideShow banner={banner} className="slider_show_slide" customPaging={(index) => {
+                            return  <div>{index+1}/{banner.length}</div>
+                        }}/>
+                    </SlideShowLarge>
                 </Fragment>
             );
         } else {

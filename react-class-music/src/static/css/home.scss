@@ -70,25 +70,6 @@
             margin: 0 !important;
         }
         >.discover_song {
-            margin: 0.27rem 0;
-            .discover_song_head {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 0.4rem;
-                height: 0.93rem;
-                >h3 {
-                    font-size: 0.41rem;
-                    color: #000;
-                    font-weight: bold;
-                }
-                >p {
-                    font-size: 0.21rem;
-                    padding: 0.11rem;
-                    border: 0.01rem solid #ddd;
-                    border-radius: 0.27rem;
-                }
-            }
             // 每日推荐歌单样式
             >.song_every_list {
                 display: flex;

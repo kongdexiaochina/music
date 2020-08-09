@@ -2,7 +2,7 @@
 
 export default {
     getLocalStorage (name) { // 获取
-        return JSON.parse(localStorage.getItem(name))
+        return JSON.parse(localStorage.getItem(name)) || []
     },
     setLocalStorage (name, data) { // 设置
         const init = JSON.parse(localStorage.getItem(name)) || []

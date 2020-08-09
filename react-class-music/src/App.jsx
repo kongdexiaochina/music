@@ -8,7 +8,7 @@ const Recommend = lazy(() => import("./views/Recommend/Recommend"))
 const SongSheet = lazy(() => import("./views/SongSheet/SongSheet"))
 const Rank = lazy(() => import("./views/Rank/Rank"))
 const DJ = lazy(() => import("./views/DJ/DJ"))
-
+const VideoDetails = lazy(() => import("./views/VideoDetails/VideoDetails"))
 class App extends Component {
   render() {
     return (
@@ -21,6 +21,7 @@ class App extends Component {
           <Route path={'/songsheet'} component={SongSheet}/>
           <Route path={'/rank'} component={Rank}/>
           <Route path={'/dj'} component={DJ}/>
+          <Route path={'/videoDetails/:id'} component={VideoDetails}/>
           <Redirect to="/home/discover"/>
         </Switch>
       </Suspense>

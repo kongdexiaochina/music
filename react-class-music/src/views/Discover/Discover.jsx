@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import {NavLink} from 'react-router-dom'
+import {connect} from "react-redux";
 import {getBanner,getRecommendSong, getSong} from '../../api/index'
 import SlideShow from '../../component/content/SlideShow'
 import RemoSongItem from '../../component/content/RemoSongItem'
@@ -7,7 +8,7 @@ import SlideShowLarge from '../../component/content/SlideShowLarge'
 import BoutiqueSong from '../../component/content/BoutiqueSong'
 import Prompt from '../../component/content/Prompt'
 import Loading from '../../component/content/Loading'
-export default class Discover extends Component {
+class Discover extends Component {
     state = {
         banner: [], // 轮播图数据
         recommend: [], // 推荐歌单数据
@@ -49,7 +50,7 @@ export default class Discover extends Component {
     }
     // 请求数据的方法
     async getData () {
-        // 轮播图数据 
+        // 轮播图数据
         const resultBanner = await getBanner(1) // 1代表请求轮播图的MV资源类型 1-->MV
         const banner = resultBanner.data.banners.map(item => ({image:item.pic})) // 处理轮播图的数据
         // 推荐歌单的数据
@@ -65,9 +66,13 @@ export default class Discover extends Component {
         })
     }
     // 点击跳转到推荐音乐页面 需要提前登录
-    handleRecommend = () => {
-        console.log('需要提交登陆');
-        this.promptRef.handlePromptToggle();
+    handleRecommend = async () => {
+        const {loginStatus} = this.props
+        if (!Object.keys(loginStatus).length) {
+            this.promptRef.handlePromptToggle();
+        } else {
+            this.props.history.push('/recommend?id=daily')
+        }
     }
     render () {
         const {banner,recommend,song} = this.state
@@ -75,7 +80,7 @@ export default class Discover extends Component {
             return (
                 <Fragment>
                     <div className="discover">
-                        <SlideShow 
+                        <SlideShow
                             banner={banner}
                             customPaging={() => <span></span>}
                             className={"home_slide"}
@@ -105,7 +110,11 @@ export default class Discover extends Component {
                             </section>
                         </section>
                     </div>
-                    <SlideShowLarge banner={banner} ref={largeSlide => this.largeSlide = largeSlide} className="slider_show_slide"/>
+                    <SlideShowLarge ref={largeSlide => this.largeSlide = largeSlide} >
+                        <SlideShow banner={banner} className="slider_show_slide" customPaging={(index) => {
+                            return  <div>{index+1}/{banner.length}</div>
+                        }}/>
+                    </SlideShowLarge>
                     <Prompt msg={'请您登陆'} ref={promptRef => this.promptRef = promptRef}/>
                 </Fragment>
             )
@@ -114,3 +123,8 @@ export default class Discover extends Component {
         }
     }
 }
+export default connect(
+    state => ({
+        loginStatus: state.loginStatus
+    })
+)(Discover)

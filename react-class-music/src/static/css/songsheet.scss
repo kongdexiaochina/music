@@ -18,36 +18,6 @@
             }
         }
     }
-    // 导航
-    .nav_list {
-        width: 100%;
-        height: 1rem;
-        position: relative;
-        background-color: #fff;
-        border-top: 1px solid #000000;
-        .nav_list_scroll {
-            overflow-x: auto;
-            overflow-y: hidden;
-            display: flex;
-            >section {
-                position: relative;
-                flex: 0 0 22%;
-                color: #323233;
-                font-weight: 500;
-                font-size: .35rem;
-                text-align: center;
-                line-height: 1rem;
-                box-sizing: border-box;
-            }
-            .activate{
-                color: #ee0a24;
-                font-weight: bolder;
-            }
-            &::-webkit-scrollbar { // 去除滚动条
-                display: none;
-            }
-        }
-    }
     // 歌单列表
     .handpick_list {
         display: flex;

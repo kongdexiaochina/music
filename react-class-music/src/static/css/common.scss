@@ -47,6 +47,13 @@
     left: 0;
     z-index: 99;
 }
+// /hoem/my路由组件头部样式
+.header.dark {
+    background: rgba(0, 0, 0, 0.7) !important;
+    i,a.active {
+        color: #ffffff;
+    }
+}
 // loading样式
 .loading {
     font-size: 0.3rem;
@@ -108,7 +115,8 @@
 // 图片懒加载loading
 .song_item .info,
 .recommend_list .song_des,
-.dj_list_item{
+.dj_list_item,
+.common li,{
     position: relative;
     img {
         &[lazy = loading], &[lazy = error] {
@@ -128,10 +136,10 @@
         }
     }
 }
-.recommend_list .song_des img,.dj_list_item img {
+.recommend_list .song_des img,.dj_list_item img,.common li img {
     position: inherit !important;
 }
-.dj_list_item img  {
+.dj_list_item img ,.common img {
     margin: 0 !important;
 }
 .dj_list_item .info .info_user  img{
@@ -173,4 +181,56 @@
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999999;
+}
+// 推荐歌单 头部那个是
+.discover_song {
+    margin: 0.27rem 0;
+    .discover_song_head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 0.4rem;
+        height: 0.93rem;
+        >h3 {
+            font-size: 0.41rem;
+            color: #000;
+            font-weight: bold;
+        }
+        >p {
+            font-size: 0.21rem;
+            padding: 0.11rem;
+            border: 0.01rem solid #ddd;
+            border-radius: 0.27rem;
+        }
+    }
+}
+// 滚动导航
+.nav_list {
+    width: 100%;
+    height: 1rem;
+    position: relative;
+    background-color: #fff;
+    border-top: 1px solid #000000;
+    .nav_list_scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: flex;
+        >section {
+            position: relative;
+            flex: 0 0 25%;
+            color: #323233;
+            font-weight: 500;
+            font-size: .35rem;
+            text-align: center;
+            line-height: 1rem;
+            box-sizing: border-box;
+        }
+        .activate{
+            color: #ee0a24;
+            font-weight: bolder;
+        }
+        &::-webkit-scrollbar { // 去除滚动条
+            display: none;
+        }
+    }
 }
