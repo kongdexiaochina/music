@@ -335,3 +335,18 @@
         }
     }
 }
+/* 动画相关样式 */
+.fade-enter,
+.fade-appear {
+    opacity: 0;
+}
+
+.fade-enter-active,
+.fade-appear-active {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+}
+
+.fade-enter-done {
+    opacity: 1;
+}

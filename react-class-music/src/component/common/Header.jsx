@@ -22,14 +22,23 @@ export default class Header extends Component {
             dom.classList.remove('dark')
         }
     }
+    navConfig = [
+        {path: '/home/my', msg: '我的'},
+        {path: '/home/discover', msg: '发现'},
+        {path: '/home/video', msg: '视频'}
+    ]
     render() {
         return (
             <header className="header" ref={this.headerRef}>
                 <i className="iconfont icon-list" onClick={this.props.menuShow}></i>
                 <nav className="header_nav">
-                    <NavLink to="/home/my">我的</NavLink>
-                    <NavLink to="/home/discover">发现</NavLink>
-                    <NavLink to="/home/video">视频</NavLink>
+                    {
+                        this.navConfig.map((item,index) => (
+                            <p key={item.path}>
+                                <NavLink to={item.path}>{item.msg}</NavLink>
+                            </p>
+                        ))
+                    }
                 </nav>
                 <NavLink to="/search">
                     <i className="iconfont icon-search"></i>

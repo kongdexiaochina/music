@@ -9,6 +9,7 @@ import MenuShow from '../../component/common/MenuShow'
 import ScrollHeader from '../../component/common/ScrollHeader'
 import Loading from '../../component/content/Loading'
 
+
 export default class Home extends Component {
     constructor (props) {
         super(props)
@@ -16,7 +17,7 @@ export default class Home extends Component {
         this.menuRef = createRef()
     }
     state = {
-        isMenuShow: false // 是否显示导航栏的内容
+        isMenuShow: false, // 是否显示导航栏的内容
     }
     componentDidMount () {
         // 当DOM加载完毕的时候初始设置他的left值（不能为0）是根据视口宽度决定的widow.innerWidth
@@ -45,12 +46,15 @@ export default class Home extends Component {
         })
         stopBodyScroll(false)
     }
+    handleToggle  = index => {
+        console.log(index)
+    }
     render() {
         const {isMenuShow} = this.state
         return (
             <div className={'home'}>
                 <ScrollHeader height={50}>
-                    <Header menuShow={this.menuShow}/>
+                    <Header menuShow={this.menuShow} handleToggle={this.handleToggle}/>
                 </ScrollHeader>
                 {/* 二级路由 */}
                 <Suspense fallback={<Loading />}>
