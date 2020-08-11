@@ -1,15 +1,13 @@
-import React, { Component, lazy, Suspense,createRef } from 'react'
-import {Switch, Route, Redirect} from 'react-router-dom'
+import React, { Component, Suspense,createRef } from 'react'
+import {Redirect} from 'react-router-dom'
+import CacheRoute, { CacheSwitch } from "react-router-cache-route";
+import {secondRouter} from '../../router/index'
 import animation from '../../utility/animation'
 import stopBodyScroll from '../../utility/stopBodyScroll'
 import Header from '../../component/common/Header'
 import MenuShow from '../../component/common/MenuShow'
 import ScrollHeader from '../../component/common/ScrollHeader'
 import Loading from '../../component/content/Loading'
-// 路由懒加载
-const Discover = lazy(() => import("../Discover/Discover"))
-const My = lazy(() => import("../My/My"))
-const Video = lazy(() => import("../Video/Video"))
 
 export default class Home extends Component {
     constructor (props) {
@@ -23,18 +21,6 @@ export default class Home extends Component {
     componentDidMount () {
         // 当DOM加载完毕的时候初始设置他的left值（不能为0）是根据视口宽度决定的widow.innerWidth
         this.menuRef.current.style.left = -window.innerWidth + 'px'
-    }
-    // 设置头部是否可以为fixed定位进行展示
-    setFixed = () => {
-        const scrollTop = document.documentElement.scrollTop
-        const headerDOM = this.headerRef.current
-        if (scrollTop > 0) {
-            this.headerAntiShake.current.style.height = '50px'
-            headerDOM.classList.add('header_fixed')
-        } else {
-            headerDOM.classList.remove('header_fixed')
-            this.headerAntiShake.current.style.height = null
-        }
     }
     // 点击显示menu的内容
     menuShow = () => {
@@ -68,13 +54,65 @@ export default class Home extends Component {
                 </ScrollHeader>
                 {/* 二级路由 */}
                 <Suspense fallback={<Loading />}>
-                    <Switch>
-                        <Route exact path="/" component={Discover}/>
-                        <Route path="/home/discover" component={Discover}/>
-                        <Route path="/home/my" component={My}/>
-                        <Route path="/home/video" component={Video}/>
+                    <CacheSwitch>
+                        {
+                            secondRouter.map(item => {
+                                if (item.exact) {
+                                    return <CacheRoute
+                                        key={item.path}
+                                        path={item.path}
+                                        component={item.component}
+                                        exact={item.exact}
+                                        // 一些是路由缓存插件的一些配置
+                                        when="always"
+                                        behavior={cached =>
+                                            cached
+                                                ? {
+                                                    style: {
+                                                        position: "absolute",
+                                                        zIndex: -9999,
+                                                        opacity: 0,
+                                                        visibility: "hidden",
+                                                        pointerEvents: "none"
+                                                    },
+                                                    className: "__CacheRoute__wrapper__cached"
+                                                }
+                                                : {
+                                                    className: "__CacheRoute__wrapper__uncached"
+                                                }
+                                        }
+                                        saveScrollPosition={true}
+                                    />
+                                } else {
+                                    return <CacheRoute
+                                        key={item.path}
+                                        path={item.path}
+                                        component={item.component}
+                                        // 一些是路由缓存插件的一些配置
+                                        when="always"
+                                        behavior={cached =>
+                                            cached
+                                                ? {
+                                                    style: {
+                                                        position: "absolute",
+                                                        zIndex: -9999,
+                                                        opacity: 0,
+                                                        visibility: "hidden",
+                                                        pointerEvents: "none"
+                                                    },
+                                                    className: "__CacheRoute__wrapper__cached"
+                                                }
+                                                : {
+                                                    className: "__CacheRoute__wrapper__uncached"
+                                                }
+                                        }
+                                        saveScrollPosition={true}
+                                    />
+                                }
+                            })
+                        }
                         <Redirect to="/home/discover"/>
-                    </Switch>
+                    </CacheSwitch>
                 </Suspense>
                 <div className="menu_mode_fake" onClick={this.menuHide} style={{display: isMenuShow ? 'block' : 'none'}} ref={this.menuRef} >
                     <MenuShow />

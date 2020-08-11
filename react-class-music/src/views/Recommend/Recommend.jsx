@@ -9,6 +9,10 @@ import Loading from '../../component/content/Loading'
 import localStorage from "../../utility/localStorage";
 const {setLocalStorage,getLocalStorage} = localStorage
 class Recommend extends Component {
+    constructor(props) {
+        super(props)
+        props.cacheLifecycles.didRecover(this.componentDidRecover);
+    }
     state = {
         songDetailsList: [], // 歌单详情列表数据
         name: ''// 歌单名称
@@ -19,7 +23,6 @@ class Recommend extends Component {
     }
     async getData () { // 请求歌单详情数据
         const {id,name} = Url.parse(this.props.location.search,true).query
-        console.log(id)
         if (id === 'daily') { // 每日推荐
             const resultRecommend = await getUserRecommend()
             console.log(resultRecommend.data.data.dailySongs)
@@ -72,6 +75,10 @@ class Recommend extends Component {
         this.props.getPlayerIndex(index)
         this.props.getIsPlay(true) // 播放
         this.props.history.push('/player') // 跳转
+    }
+    // 当前进入路由缓存组件的时候触发
+    componentDidRecover = () => {
+        this.getData()
     }
     render() {
         const {name, songDetailsList} = this.state

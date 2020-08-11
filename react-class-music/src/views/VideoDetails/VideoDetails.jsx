@@ -17,6 +17,11 @@ import Loading from '../../component/content/Loading'
 import LazyLoading from '../../component/common/LazyLoading'
 import ScrollHeader from '../../component/common/ScrollHeader'
 class VideoDetails extends Component {
+    constructor(props) {
+        super(props);
+        props.cacheLifecycles.didCache(this.componentDidCache)
+        props.cacheLifecycles.didRecover(this.componentDidRecover)
+    }
     state = {
         details: {},
         common: []
@@ -33,12 +38,19 @@ class VideoDetails extends Component {
         this.setState({
             details: obj,
             common: resultCommon.data.comments
+        }, () => {
+            this.video.load()
         })
+    }
+    componentDidRecover = () => {
+        this.getData()
+    }
+    componentDidCache = () => {
+        this.video.pause()
     }
     render() {
         const {details, common} = this.state
         if (common.length) {
-            console.log(common)
             return (
                 <div className={'video_details'}>
                     <ScrollHeader height={50}>
@@ -49,7 +61,7 @@ class VideoDetails extends Component {
                             </div>
                         </header>
                     </ScrollHeader>
-                    <Player poster={details.coverUrl}>
+                    <Player poster={details.coverUrl} ref={video => this.video = video}>
                         <source src={details.url} />
                         <ControlBar autoHide={false} disableDefaultControls={false}>
                             <ReplayControl seconds={10} order={1.1} />

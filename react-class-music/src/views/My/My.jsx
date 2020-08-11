@@ -22,7 +22,7 @@ class My extends Component {
     render() {
         const {loginStatus} = this.props
         return (
-            <div className="my">
+            <div className="my" style={{minHeight: !Object.keys(loginStatus).length ? '87vh' : '92vh'}}>
                 {
                     Object.keys(loginStatus).length ?
                         <MyUserShow userId={loginStatus.userId}/> :

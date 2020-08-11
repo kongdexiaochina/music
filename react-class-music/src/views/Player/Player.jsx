@@ -29,6 +29,7 @@ class Player extends Component {
         this.lineRef = createRef()
         // 是否显示播放列表
         this.playerList = createRef()
+        props.cacheLifecycles.didRecover(this.componentDidRecover)
     }
     state = {
         msg: '', // 提示信息
@@ -236,6 +237,9 @@ class Player extends Component {
                 })
             })
         }
+    }
+    componentDidRecover = () => {
+        this.getData(this.props.player, () => {})
     }
     render() {
         const {
