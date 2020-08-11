@@ -116,10 +116,11 @@
 .song_item .info,
 .recommend_list .song_des,
 .dj_list_item,
-.common li,{
+.common li,
+.player_list .left{
     position: relative;
     img {
-        &[lazy = loading], &[lazy = error] {
+        &[lazy = loading], &[lazy = error]{
             position: absolute;
             top: 0;
             right: 0;
@@ -128,15 +129,10 @@
             width: 1rem !important;
             height: 1rem !important;
             margin: auto;
-            animation: rotate 1.5s linear infinite;
-            @keyframes rotate {
-                0%{transform: rotate(0deg);}
-                100%{transform: rotate(360deg);}
-            }
         }
     }
 }
-.recommend_list .song_des img,.dj_list_item img,.common li img {
+.recommend_list .song_des img,.dj_list_item img,.common li img, .player_list .left img {
     position: inherit !important;
 }
 .dj_list_item img ,.common img {

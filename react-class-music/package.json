@@ -11,6 +11,7 @@
     "node-sass": "^4.14.1",
     "r-img-lazyload": "^1.1.0",
     "react": "^16.13.1",
+    "react-bscroll": "^1.0.7",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",

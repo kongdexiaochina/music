@@ -1,0 +1,292 @@
+.player {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100vh;
+  background: linear-gradient(135deg, #8e8485 0%, #e6846e 100%);
+  // 头部导航
+  .player_navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 .3rem;
+    i {
+      color: #fff;
+      font-size: 0.53rem;
+      margin-right: 0.47rem;
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      padding: 0.27rem 0;
+      p:first-child {
+        color: #fff;
+        font-size: 0.4rem;
+        margin-bottom: 0.11rem;
+      }
+      p:last-of-type {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.27rem;
+        >em {
+          margin: 0 .1rem;
+        }
+        span:last-of-type {
+          em {
+            margin-right: .1rem;
+          }
+        }
+      }
+    }
+  }
+  // 音乐播放器(图标部分)
+  .player_container {
+    opacity: 1;
+    flex: 1;
+    position: relative;
+    >.dish {
+      position: absolute;
+      left: calc((100% - 7.52rem) / 2);
+      top: calc((100% - 7.52rem) / 2);
+      display: flex;
+      width: 7.52rem;
+      height: 7.52rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      .needle {
+        width: 3.64rem;
+        height: 5.36rem;
+        position: absolute;
+        z-index: 99;
+        left: 50%;
+        top: -1.33rem;
+        img {
+          transform: scale(0.5);
+          transition: 1s;
+          transform-origin: 0.59rem 0.49rem;
+        }
+      }
+      .disc {
+        width: 7.28rem;
+        height: 7.28rem;
+        background-size: cover;
+        margin: auto;
+        display: flex;
+        animation: rotate 10s infinite linear;
+        >.disc_cover {
+          overflow: hidden;
+          width: 4.93rem;
+          height: 4.93rem;
+          margin: auto;
+          border-radius: 50%;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      @keyframes rotate {
+        0%{transform: rotate(0deg)}
+        100%{transform: rotate(360deg)}
+      }
+    }
+  }
+  // 歌词播放
+  .lyric_wrap {
+    opacity: 0;
+    flex: 1 1;
+    overflow: hidden;
+    position: relative;
+    .list {
+      transition: 1s;
+      li {
+        height: 0.8rem;
+        line-height: 0.8rem;
+        transition: 1s;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+        font-size: .4rem;
+      }
+      .activate {
+        color: #ffffff;
+        font-weight: bolder;
+      }
+    }
+    .b-wrapper {
+      background-color: transparent;
+    }
+    .bscroll-vertical-scrollbar div {
+      background-color: rgba(0, 0, 0, 0.2) !important;
+    }
+  }
+  // 操作
+  .player_controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 2.93rem;
+    >.time {
+      display: flex;
+      align-items: center;
+      color: #ddd;
+      font-size: 0.27rem;
+      padding: 0.2rem 0.33rem;
+      .slidre {
+        position: relative;
+        width: 100%;
+        height: 3px;
+        background-color: #ebedf0;
+        border-radius: 999px;
+        cursor: pointer;
+        margin: 0 0.27rem;
+        &::before {
+          position: absolute;
+          top: -8px;
+          right: 0;
+          bottom: -8px;
+          left: 0;
+          content: '';
+        }
+        .bar {
+          position: relative;
+          width: 10%;
+          height: 100%;
+          border-radius: inherit;
+          transition: width .2s;
+          background-color: red;
+          .btn {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate3d(50%,-50%,0);
+            cursor: grab;
+            width: 0.16rem;
+            height: 0.16rem;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 1px 2px rgba(0,0,0,.5);
+          }
+        }
+      }
+    }
+    .operation {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      color: #ffffff;
+      i {
+        font-size: 0.53rem;
+      }
+      i:first-child {
+        font-size: 0.67rem;
+      }
+    }
+  }
+}
+// 迷你播放器
+.small_player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 1rem;
+  background-color: rgb(51,49,49);
+  padding: .1rem .2rem;
+  box-shadow: 0 -0.01rem 0.01rem #fff;
+  box-sizing: border-box;
+  >i {
+    font-size: .7rem;
+    color: #ffffff;
+  }
+  >a {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.3rem .8rem;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    height: 100%;
+    >.msg {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .text {
+        color: #ffffff;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+      }
+      .bar {
+        position: absolute;
+        bottom: .13rem;
+        width: 100%;
+        height: 3px;
+        background-color: #EBEBEB;
+        .on {
+          width: 0;
+          height: 100%;
+          background-color: red;
+        }
+      }
+    }
+  }
+}
+// 播放列表
+.player_list {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  opacity: 0;
+  .content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70%;
+    border-radius: 20px 20px 0 0;
+    background-color: #fff;
+    padding-top: .5rem;
+    .b-scroll-content {
+      width: 100%;
+    }
+    .b-scroll-content > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .2rem .3rem;
+      .left {
+        display: flex;
+        align-items: center;
+        font-size: .3rem;
+        color: #545454;
+        >img {
+          width: 1rem;
+          height: 1rem;
+          margin-right: .3rem;
+        }
+      }
+      i {
+        font-size: 0.5rem;
+      }
+    }
+  }
+}

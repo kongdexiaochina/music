@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
-import {getSearchHot,getSearchSuggest,getSearchDetailList} from '../../api/index'
+import {getSearchHot, getSearchSuggest, getSearchDetailList, getSongRUrl} from '../../api/index'
+import {connect} from 'react-redux'
+import {getMenusData,getPlayerList,getPlayerIndex,getIsPlay} from '../../store/action'
 import total from '../../utility/total'
 import localStorage from '../../utility/localStorage'
 import ScrollHeader from '../../component/common/ScrollHeader'
@@ -8,7 +10,7 @@ import Loading from '../../component/content/Loading'
 import throttle from '../../utility/throttle'
 const {setLocalStorage,getLocalStorage} = localStorage
 
-export default class Search extends Component {
+class Search extends Component {
     state = {
         hotSearch: [], // 搜索热歌榜数据
         msg: '', // 提示框内容
@@ -36,9 +38,14 @@ export default class Search extends Component {
     }
     // 点击歌曲列表的选项 并且进行函数节流
     handleClick (item) {
-        setLocalStorage('hot_history', item.searchWord)
+        const init = getLocalStorage('hot_history') || []
+        if (init.indexOf(item.searchWord) === -1) {
+            init.push(item.searchWord)
+            setLocalStorage('hot_history', init)
+        }
         this.setState({
-            msg: '搜索成功'
+            msg: '搜索成功',
+            historyList: getLocalStorage('hot_history')
         }, () => {
             this.promptRef.handlePromptToggle() // 调用消息提示组件的方法
         })
@@ -64,8 +71,47 @@ export default class Search extends Component {
         })
         const result = await getSearchDetailList(keyword, 15)
         this.setState({
-            searchDetailList: result.data.result.songs 
+            searchDetailList: result.data.result.songs
         })
+    }
+    // 点击跳转歌曲页面播放音乐
+    handleClickTo = async (item, index) => {
+        // 获取歌曲的url路径
+        const resutlSongUrl = await getSongRUrl(item.id)
+        // 整合歌单列表的数据 并且向全局状态发送值
+        const playerList = this.state.searchDetailList.map(item => (
+            {
+                name: item.name,
+                id: item.id,
+                picUrl: item.artists[0].img1v1Url,
+                ar: item.artists,
+                al: item.album,
+            }
+        ))
+        // 歌曲播放需要的数据
+        const option = {
+            name: item.name,
+            id: item.id,
+            picUrl: item.artists[0].img1v1Url,
+            ar: item.artists,
+            al: item.album,
+            url: resutlSongUrl.data.data[0].url
+        }
+        const init = getLocalStorage('hot_history') || []
+        if (init.indexOf(item.name) === -1) {
+            init.push(item.name)
+            setLocalStorage('hot_history', init)
+        }
+        // 进行本地存储
+        setLocalStorage('player', option)
+        setLocalStorage('playerList', playerList)
+        setLocalStorage('playerIndex', index)
+        // 发送歌曲的数据
+        this.props.getMenusData(option)
+        this.props.getPlayerList(playerList)
+        this.props.getPlayerIndex(index)
+        this.props.getIsPlay(true) // 播放
+        this.props.history.push('/player') // 跳转
     }
     render() {
         const {hotSearch,msg,historyList,value,searchList,keyword,searchDetailList} = this.state
@@ -77,7 +123,7 @@ export default class Search extends Component {
                         <header className="header">
                             <i className="iconfont icon-jiantouzuo" onClick={() => this.props.history.push('/')}></i>
                             <div className="search">
-                                <input 
+                                <input
                                     type="text"
                                     placeholder="搜索"
                                     value={value}
@@ -105,7 +151,7 @@ export default class Search extends Component {
                             <section className="history">
                                 <h3>历史记录</h3>
                                 {
-                                    !historyList.length ?
+                                    !(historyList || []).length ?
                                     <p className="not">暂无搜索记录...</p> :
                                     <Fragment>
                                         {
@@ -145,7 +191,7 @@ export default class Search extends Component {
                                 searchDetailList.map((item,index) => (
                                     <li key={index}>
                                         <i className="iconfont icon-jiantouzuo" onClick={() => {this.setState({keyword: ''})}}></i>
-                                        <div className="song">
+                                        <div className="song" onClick={() => this.handleClickTo(item, index)}>
                                             <p>{item.name}</p>
                                             <p>{item.artists[0].name} ~ {item.album.name}</p>
                                         </div>
@@ -164,3 +210,8 @@ export default class Search extends Component {
         }
     }
 }
+
+export default connect(
+    null,
+    {getMenusData,getPlayerList,getPlayerIndex,getIsPlay}
+)(Search)

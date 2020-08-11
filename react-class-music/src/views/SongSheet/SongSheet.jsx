@@ -26,7 +26,7 @@ class SongSheet extends Component {
             this.setState({
                 tag: this.state.tagsHot[0]
             })
-            this.getSongHandpickData(getSessionStorage('song_tag').name || this.state.tag.name)
+            this.getSongHandpickData((getSessionStorage('song_tag') || {}).name || this.state.tag.name)
         })
     }
     // 请求网友精选歌碟的歌单数据
@@ -61,7 +61,7 @@ class SongSheet extends Component {
                                 <p>歌单广场</p>
                             </section>
                         </header>
-                        <ScrollTag tagList={tagsHot} handleChangeTag={this.handleChangeTag} tagIndex={getSessionStorage('song_tag').index}/>
+                        <ScrollTag tagList={tagsHot} handleChangeTag={this.handleChangeTag} tagIndex={(getSessionStorage('song_tag') || {}).index}/>
                     </ScrollHeader>
                     <section className="handpick_list">
                         {

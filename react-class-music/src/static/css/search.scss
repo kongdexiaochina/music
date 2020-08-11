@@ -34,6 +34,8 @@
     .history {
         margin-top: 0.4rem;
         padding: 0 0.4rem;
+        max-height: 4rem;
+        overflow: auto;
         .not {
             margin-top: .1rem;
             text-align: center;
@@ -57,7 +59,7 @@
     }
     // 热搜榜
     .most {
-        padding: 0 0.4rem;
+        padding: 0.4rem 0.4rem 0;
         .most_list {
             padding-top: .25rem;
             li {

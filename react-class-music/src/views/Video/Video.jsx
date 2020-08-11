@@ -4,6 +4,7 @@ import {getVideoTag,getVideoTagData} from '../../api/index'
 import ScrollTag from '../../component/content/ScrollTag'
 import Loading from '../../component/content/Loading'
 import sessionStorage from '../../utility/sessionStorage'
+import LazyLoading from '../../component/common/LazyLoading'
 const {setSessionStorage,getSessionStorage} = sessionStorage
 export default class Video extends Component {
     state = {
@@ -19,7 +20,7 @@ export default class Video extends Component {
         this.setState({
             tag: result.data.data
         }, () => {
-            this.getVideoTag(getSessionStorage('video_tag').id || this.state.tag[0].id)
+            this.getVideoTag((getSessionStorage('video_tag') || {}).id || this.state.tag[0].id)
         })
     }
     // 获取视频标签下的视频数据
@@ -40,19 +41,19 @@ export default class Video extends Component {
             return (
                 <>
                     <div className={'video'}>
-                        <ScrollTag tagList={tag} handleChangeTag={this.handleChangeTag} tagIndex={getSessionStorage('video_tag').index}/>
+                        <ScrollTag tagList={tag} handleChangeTag={this.handleChangeTag} tagIndex={(getSessionStorage('video_tag') || {}).index}/>
                         <section>
                             {
                                 videoList.map((item, index) => (
                                     <NavLink to={'/videoDetails/' + item.data.vid} key={index}>
-                                        <img src={item.data.coverUrl} alt={item.data.title}/>
+                                        <LazyLoading src={item.data.coverUrl} />
                                         <div className="info">
                                             <h4>{item.data.title}</h4>
-                                            <img src={item.data.creator && item.data.creator.avatarUrl} alt={item.data.creator && item.data.creator.nickname}/>
+                                            <LazyLoading src={item.data.creator && item.data.creator.avatarUrl} />
                                         </div>
                                         <section className="bar">
                                             <div className="left">
-                                                <img src={item.data.creator && item.data.creator.avatarUrl} alt={item.data.creator && item.data.creator.nickname}/>
+                                                <LazyLoading src={item.data.creator && item.data.creator.avatarUrl}/>
                                                 <p>{item.data.creator && item.data.creator.nickname}</p>
                                             </div>
                                             <div className="icon">

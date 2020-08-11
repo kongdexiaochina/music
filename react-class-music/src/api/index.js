@@ -58,3 +58,10 @@ export const geiVideoSrc = id => axios.get(`/video/url?id=${id}`)
 export const getVideoDetails = id => axios.get(`/video/detail?id=${id}`)
 // 获取视频评论数据的接口请求函数
 export const getVideoCommon = id => axios.get(`/comment/video?id=${id}`)
+
+// 获取当前播放的歌曲是是否可以播放
+export const getIsMenusPlay = id => axios.get(`/check/music?id=${id}`)
+// 获取播放音乐的URL路径
+export const getSongRUrl = id => axios.get(`/song/url?id=${id}`)
+// 获取播放音乐歌词的接口请求函数
+export const getSongLyric = id => axios.get(`/lyric?id=${id}`)

@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {getIsLogin} from '../../../store/action'
 import {getUserSong,getUserFollows,getUserOut} from '../../../api/index'
 import BoutiqueSong from '../../../component/content/BoutiqueSong'
+import LazyLoading from '../../../component/common/LazyLoading'
 class MyUserShow extends Component {
     state = {
         userSong: [], // 用户歌单数据
@@ -60,7 +61,7 @@ class MyUserShow extends Component {
                         {
                             followList.map(item => (
                                 <li key={item.py}>
-                                    <img src={item.avatarUrl} alt={item.nickname}/>
+                                    <LazyLoading src={item.avatarUrl} />
                                     <div className="info">
                                         <h4>{item.nickname}</h4>
                                         <p className={'text'}>{item.signature || '暂无'}</p>

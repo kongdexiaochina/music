@@ -27,6 +27,10 @@ class DJ extends Component {
             programList: resultProgram.data.data.list
         })
     }
+    // 点击播放
+    handleClick = (item, index) => {
+        console.log(item, index)
+    }
     render() {
         const {banner,rankingList,programList} = this.state
         if (banner.length) {
@@ -60,7 +64,7 @@ class DJ extends Component {
                         <section className="dj_list">
                             {
                                 programList.map((item,index) => (
-                                    <div key={index} className="dj_list_item">
+                                    <div key={index} className="dj_list_item" onClick={() => this.handleClick(item, index)}>
                                         <LazyLoading src={item.program.coverUrl}/>
                                         <div className="info">
                                             <p>{item.program.name}</p>

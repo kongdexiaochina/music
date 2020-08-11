@@ -2,7 +2,7 @@
 
 export default {
     getSessionStorage (name) { // 获取
-        return JSON.parse(sessionStorage.getItem(name)) || {}
+        return JSON.parse(sessionStorage.getItem(name))
     },
     setSessionStorage (name, data) { // 设置
         sessionStorage.setItem(name, JSON.stringify(data))

@@ -9,7 +9,7 @@ function LazyLoading (props) {
     const config = {
         // 其他配置项
         options: {
-            error: require("../../static/images/loading.svg"), // 加载失败后展示的图像
+            error: require("../../static/images/loading-error.svg"), // 加载失败后展示的图像
             loading: require("../../static/images/loading.svg"), // 加载中展示的图像
             throttleWait: 1000 // 节流等待时间
         },

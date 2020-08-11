@@ -14,6 +14,7 @@ import './static/css/dj.scss'
 import './static/css/search.scss'
 import './static/css/my.scss'
 import './static/css/video.scss'
+import './static/css/player.scss'
 import './static/css/common.scss'
 
 import App from './App.jsx';
