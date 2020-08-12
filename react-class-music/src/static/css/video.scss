@@ -30,7 +30,7 @@
           overflow: hidden;
           font-size: .35rem;
           font-weight: inherit;
-          color: #545454;
+          color: var(--themeFontColor);
         }
         img {
           width: 1rem;
@@ -75,13 +75,16 @@
 .video_details {
   overflow: hidden;
   .header {
-    background: linear-gradient(135deg, #8e8485 0%, #e6846e 100%) !important;
+    background: var(--themePlayerColor) !important;
   }
   .header .text {
     width: 100%;
     color: #ffffff;
     display: flex;
     align-items: center;
+    i {
+      color: #ffffff;
+    }
     h3 {
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -116,7 +119,7 @@
           -webkit-line-clamp: 1;
           overflow: hidden;
           span {
-            color: #0086b3;
+            color: var(--themeColor);
             margin-right: .2rem;
           }
         }

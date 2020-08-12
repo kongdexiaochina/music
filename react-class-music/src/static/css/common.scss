@@ -13,6 +13,7 @@
     background-color: rgba(255, 255, 255, 0.9);
     padding: 0 0.4rem;
     i,a {
+        color: var(--themeFontColor);
         font-size: 0.53rem;
     }
     .header_nav {
@@ -21,12 +22,12 @@
         width: 6.4rem;
         a {
             font-size: 0.48rem;
-            color: #797979;
+            color: var(--themeFontColor);
             transition: 0.5s;
             // 激活的nav导航
             &.active {
                 font-weight: bold;
-                color: #000;
+                color: var(--themeColor);
             }
         }
     }
@@ -34,7 +35,7 @@
     .header_left {
         display: flex;
         align-items: center;
-        color: #000;
+        color: var(--themeFontColor);
         i {
             font-size: .4rem;
         }
@@ -84,7 +85,7 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: pink;
+    background: var(--themeColor);
     margin: -4px 0 0 -4px;
 }
 
@@ -180,7 +181,6 @@
         position: relative;
         width: 2.8rem;
         height: 2.8rem;
-        position: relative;
         border-radius: 0.13rem;
         overflow: hidden;
         img,.recommend_list .song_des img {
@@ -209,7 +209,7 @@
         font-size: 0.27rem;
         padding-top: 0.07rem;
         line-height: 1.6;
-        color: #393939;
+        color: var(--themeFontColor);
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
@@ -283,7 +283,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999999;
 }
-// 推荐歌单 头部那个是
+// 推荐歌单 头部
 .discover_song {
     margin: 0.27rem 0;
     .discover_song_head {
@@ -294,7 +294,7 @@
         height: 0.93rem;
         >h3 {
             font-size: 0.41rem;
-            color: #000;
+            color: var(--themeFontColor);
             font-weight: bold;
         }
         >p {
@@ -319,7 +319,7 @@
         >section {
             position: relative;
             flex: 0 0 25%;
-            color: #323233;
+            color: var(--themeFontColor);
             font-weight: 500;
             font-size: .35rem;
             text-align: center;
@@ -327,26 +327,11 @@
             box-sizing: border-box;
         }
         .activate{
-            color: #ee0a24;
+            color: var(--themeColor);
             font-weight: bolder;
         }
         &::-webkit-scrollbar { // 去除滚动条
             display: none;
         }
     }
-}
-/* 动画相关样式 */
-.fade-enter,
-.fade-appear {
-    opacity: 0;
-}
-
-.fade-enter-active,
-.fade-appear-active {
-    opacity: 1;
-    transition: opacity 1s ease-in;
-}
-
-.fade-enter-done {
-    opacity: 1;
 }

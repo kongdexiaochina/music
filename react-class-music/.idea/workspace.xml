@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="38b606e2-ca81-4798-ac7b-2efcba3f61c5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/css/skin.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Skin/Skin.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/dictionaries/de_l_l.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/music.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/common/MenuShow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/common/MenuShow.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/common/SmallPlayer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/common/SmallPlayer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/common.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/common.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/dj.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/dj.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/my.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/my.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/player.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/player.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/rank.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/rank.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/recommend.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/recommend.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/search.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/search.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/songsheet.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/songsheet.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/css/video.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/video.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/action-type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/DJ/DJ.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/DJ/DJ.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/My/My.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/My/My.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Player/Player.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Player/Player.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Recommend/Recommend.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Recommend/Recommend.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1fyY7bMuft7PCuFUo7Y6oEXsIWp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\music\react-class-music\public" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38b606e2-ca81-4798-ac7b-2efcba3f61c5" name="Default Changelist" comment="" />
+      <created>1597191632569</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597191632569</updated>
+      <workItem from="1597191647669" duration="16280000" />
+      <workItem from="1597213372061" duration="3968000" />
+      <workItem from="1597219710813" duration="1007000" />
+      <workItem from="1597220796116" duration="518000" />
+      <workItem from="1597231705279" duration="884000" />
+      <workItem from="1597232835918" duration="1001000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="71" key="#Deployment" timestamp="1597232943448">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Deployment/0.0.1536.824@0.0.1536.824" timestamp="1597232943448" />
+    <state x="345" y="58" key="#SSH_Configurations" timestamp="1597232929795">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="345" y="58" key="#SSH_Configurations/0.0.1536.824@0.0.1536.824" timestamp="1597232929795" />
+    <state x="626" y="308" key="WebDeployment.AddServerDialog.v.1" timestamp="1597211426184">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="626" y="308" key="WebDeployment.AddServerDialog.v.1/0.0.1536.824@0.0.1536.824" timestamp="1597211426184" />
+  </component>
+</project>

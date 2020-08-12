@@ -14,6 +14,7 @@ const Player = lazy(() => import("../views/Player/Player"))
 const Discover = lazy(() => import("../views/Discover/Discover"))
 const My = lazy(() => import("../views/My/My"))
 const Video = lazy(() => import("../views/Video/Video"))
+const Skin = lazy(() => import("../views/Skin/Skin"))
 
 // 一级路由
 export const stairRouter = [
@@ -24,7 +25,8 @@ export const stairRouter = [
     {path: '/rank', component: Rank},
     {path: '/dj', component: DJ},
     {path: '/videoDetails/:id', component: VideoDetails},
-    {path: '/player', component: Player}
+    {path: '/player', component: Player},
+    {path: '/skin', component: Skin}
 ]
 
 // 二级路由

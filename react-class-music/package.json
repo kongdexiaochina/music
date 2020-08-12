@@ -45,5 +45,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "proxy": "http://menus.qklhk.co/",
+  "homepage": "http://www.qklhk.co:3030"
 }

@@ -20,7 +20,6 @@ class DJ extends Component {
         const resultBanner = await getDjBanner()
         const resultRankingList = await getDjRecommend()
         const resultProgram = await getDjProgram()
-        // console.log();
         this.setState({ // 改变状态并且处理数据
             banner: resultBanner.data.data.map(item => ({image:item.pic})),
             rankingList: resultRankingList.data.data.map(item => item.radios).reduce((a, b)=> a.concat(b)),

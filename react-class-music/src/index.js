@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import store from './store/index'
 import './static/iconfont/iconfont.css'
@@ -15,15 +15,16 @@ import './static/css/search.scss'
 import './static/css/my.scss'
 import './static/css/video.scss'
 import './static/css/player.scss'
+import './static/css/skin.scss'
 import './static/css/common.scss'
 
 import App from './App.jsx';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <Provider store={store}>
         <App />
     </Provider>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root')
 );

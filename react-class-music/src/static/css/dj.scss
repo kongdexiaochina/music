@@ -28,7 +28,7 @@
             }
             .slick-active {
                 span {
-                    background-color: #fff;
+                    background-color: var(--themeColor);
                     font-size: 14px;
                 }
             }
@@ -44,6 +44,7 @@
         h3 {
             font-size: 0.43rem;
             font-weight: bold;
+            color: var(--themeFontColor);
         }
         .song_recommend {
             margin: 0;
@@ -76,7 +77,7 @@
                 flex-direction: column;
                 justify-content: space-evenly;
                 >p {
-                    color: #333;
+                    color: var(--themeFontColor);
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -85,6 +86,7 @@
                     font-size: 0.24rem;
                     display: flex;
                     align-items: center;
+                    color: var(--themeFontColor);
                     >img {
                         width: 0.4rem;
                         height: 0.4rem;

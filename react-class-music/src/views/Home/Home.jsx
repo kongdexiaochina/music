@@ -46,15 +46,12 @@ export default class Home extends Component {
         })
         stopBodyScroll(false)
     }
-    handleToggle  = index => {
-        console.log(index)
-    }
     render() {
         const {isMenuShow} = this.state
         return (
             <div className={'home'}>
                 <ScrollHeader height={50}>
-                    <Header menuShow={this.menuShow} handleToggle={this.handleToggle}/>
+                    <Header menuShow={this.menuShow}/>
                 </ScrollHeader>
                 {/* 二级路由 */}
                 <Suspense fallback={<Loading />}>

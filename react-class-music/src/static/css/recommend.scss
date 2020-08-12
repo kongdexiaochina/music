@@ -3,13 +3,13 @@
     overflow: hidden;
     // 歌单头部样式
     .recommend_header {
-        background: linear-gradient( 135deg, rgb(142, 132, 133) 0%, rgb(230, 132, 110) 100% ) !important;
+        background: var(--themePlayerColor) !important;
         .recommend_header_top {
             display: flex;
             align-items: center;
             height: 1.1rem;
             padding: 0 0.4rem;
-            color: #ffffff;
+            color: var(--themeFontColor);
             font-size: .34rem;
             i {
                 font-size: 0.4rem;
@@ -40,6 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: var(--themeFontColor);
             .song_des {
                 display: flex;
                 max-width: calc(100% - 1.07rem);
@@ -53,7 +54,7 @@
                     flex-shrink: 0;
                 }
                 .song_des_info {
-                    color: #aaa;
+                    color: var(--themeFontColor);
                     font-size: 0.29rem;
                     width: 100%;
                     display: flex;
@@ -70,7 +71,7 @@
                         }
                     }
                     .title {
-                        color: #333;
+                        color: var(--themeFontColor);
                     }
                 }
             }

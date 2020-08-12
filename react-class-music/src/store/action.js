@@ -10,7 +10,8 @@ import {
     GETLYLRYICINDEX,
     GETPLARYELIST,
     GETPLAYERINDEX,
-    GETMODENUM
+    GETMODENUM,
+    GETTHEMENAME
 } from './action-type'
 
 // 暴露是否已经登陆
@@ -83,4 +84,10 @@ export const getPlayerIndex = (index = 0) => ({
 export const getModeNum = (num = 0) => ({
     type: GETMODENUM,
     data: num
+})
+
+// 暴露获取当前切换主题名称的数据
+export const getThemeName = (name = 'red') => ({
+    type: GETTHEMENAME,
+    data: name
 })

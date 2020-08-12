@@ -8,7 +8,21 @@ import Loading from './component/content/Loading'
 
 
 class App extends Component {
-  render() {
+    componentDidMount() {
+        this.setTheme(this.props.themeName.name)
+    }
+    // 设置主题
+    setTheme (name) {
+        const el = document.querySelector('#theme')
+        el.href = `http://www.qklhk.co/theme/${name}.css`
+    }
+    UNSAFE_componentWillUpdate(nextProps, nextState, nextContext) {
+        const {themeName} = nextProps
+        if (themeName) {
+            this.setTheme(themeName.name)
+        }
+    }
+    render() {
     const {location,loginStatus} = this.props
     return (
       // 一级路由
@@ -54,6 +68,7 @@ class App extends Component {
 
 export default withRouter(connect(
     state => ({
-      loginStatus: state.loginStatus
+        loginStatus: state.loginStatus,
+        themeName: state.themeName
     })
 )(App));

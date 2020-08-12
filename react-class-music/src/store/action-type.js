@@ -22,3 +22,5 @@ export const GETPLARYELIST = 'GETPLARYELIST'
 export const GETPLAYERINDEX = 'GETPLAYERINDEX'
 // 获取当前模式播放的数值
 export const GETMODENUM = 'GETMODENUM'
+// 获取切换主题颜色名称的数据
+export const GETTHEMENAME = 'GETTHEMENAME'

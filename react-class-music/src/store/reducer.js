@@ -10,7 +10,8 @@ import {
     GETLYLRYICINDEX,
     GETPLARYELIST,
     GETPLAYERINDEX,
-    GETMODENUM
+    GETMODENUM,
+    GETTHEMENAME
 } from './action-type'
 import localStorage from '../utility/localStorage'
 const {getLocalStorage} = localStorage
@@ -40,7 +41,8 @@ export default function (store = {
             icon: 'icon-danquxunhuan',
             msg: '单曲循环'
         }
-    ]
+    ],
+    themeName: getLocalStorage('themeName') || {name:'red'} // 当前切换主题的名称
 } , action){
     switch (action.type) {
         // 设置用户登陆的状态
@@ -102,6 +104,11 @@ export default function (store = {
         case GETMODENUM :
             return Object.assign({},store,{
                 modeNum: action.data
+            })
+        // 设置当前主题切换名称的数据
+        case GETTHEMENAME :
+            return Object.assign({},store,{
+                themeName: action.data
             })
         default :
             return store

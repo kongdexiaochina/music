@@ -1,10 +1,16 @@
 import React, {Component,createRef,Fragment} from 'react';
 import {connect} from 'react-redux'
-import {getIsPlay,getProgress,getCurrentTime,getDuration,getActivateIndex,getPlayerIndex,getMenusData,getPlayLyric} from '../../store/action'
+import {
+    getIsPlay,getProgress,
+    getCurrentTime,getDuration,
+    getActivateIndex,getPlayerIndex,
+    getMenusData,getPlayLyric
+} from '../../store/action'
 import {NavLink,withRouter} from 'react-router-dom'
 import localStorage from '../../utility/localStorage'
-import {getIsMenusPlay, getSongRUrl} from '../../api/index'
+import {getIsMenusPlay, getSongRUrl,getSongLyric} from '../../api/index'
 import Prompt from "../content/Prompt";
+import lyricParser from "../../utility/parseLyric";
 const {setLocalStorage,getLocalStorage} = localStorage
 class SmallPlayer extends Component {
     constructor(props) {
@@ -23,7 +29,6 @@ class SmallPlayer extends Component {
     // 点击切换音频播放的状态
     handleClickToggle = () => {
         const {isPlay,getIsPlay} = this.props
-        console.log(isPlay)
         if (!isPlay) {
             getIsPlay(true)
             this.handlePlay()
@@ -34,7 +39,6 @@ class SmallPlayer extends Component {
     }
     // 当视频的时间改变的时候触发
     handleTimeupdate = () => {
-        console.log('视频正在播放');
         const audio = this.audioRef.current
         const {currentTime,lyric,getActivateIndex} = this.props
         // 当前播放的音频数值
@@ -83,7 +87,6 @@ class SmallPlayer extends Component {
         if (isPlay) {
             this.handlePlay()
         }
-        console.log('视频播放了')
     }
     // 模式播放视频
     async modePlayer (player, is) {
@@ -91,9 +94,11 @@ class SmallPlayer extends Component {
         try {
             await getIsMenusPlay(player.id)
             const result = await getSongRUrl(player.id)
+            const resultLyric = await getSongLyric(player.id)
             const url = result.data.data[0].url
             getMenusData({...player, url})
             setLocalStorage('player', player)
+            getPlayLyric(lyricParser(resultLyric.data.lrc.lyric))
             if (url && (!is)) {
                 const audio = this.audioRef.current
                 audio.load()
@@ -116,7 +121,6 @@ class SmallPlayer extends Component {
                }
             }
         } catch (e) {
-            console.log(e, '该歌曲,无版权权限')
             this.setState({
                 msg: '该歌曲,无版权权限'
             }, () => {
@@ -157,7 +161,6 @@ class SmallPlayer extends Component {
                     this.audioRef.current.load()
                     this.handlePlay()
                 } catch (e) {
-                    console.log(e, '该歌曲,无版权权限')
                     this.setState({
                         msg: '该歌曲,无版权权限'
                     }, () => {
@@ -225,7 +228,12 @@ export default withRouter(connect(
         playerList: state.playerList,
         playerIndex: state.playerIndex
     }),
-    {getIsPlay,getProgress,getCurrentTime,getDuration,getActivateIndex,getPlayerIndex,getMenusData,getPlayLyric}
+    {
+        getIsPlay,getProgress,
+        getCurrentTime,getDuration,
+        getActivateIndex,getPlayerIndex,
+        getMenusData,getPlayLyric
+    }
 )(SmallPlayer))
 
 

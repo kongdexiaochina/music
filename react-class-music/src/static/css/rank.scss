@@ -11,10 +11,11 @@
         >h3 {
             padding: 0.19rem 0;
             font-size: 0.43rem;
+            color: var(--themeFontColor);
         }
         >a {
             display: flex;
-            color: #666;
+            color: var(--themeFontColor);
             font-size: 0.35rem;
             margin-bottom: 0.27rem;
             >.pic {

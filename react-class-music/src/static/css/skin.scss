@@ -1,0 +1,32 @@
+.skin {
+  .header {
+    .left {
+      display: flex;
+      align-items: center;
+      p {
+        font-size: .35rem;
+        margin-left: .1rem;
+      }
+    }
+    border-bottom: 1px solid #EEEE;
+    color: #545454;
+  }
+  .skin_content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 0.4rem;
+    margin-top: .5rem;
+    .color {
+      width: 1.5rem;
+      margin: 0 .2rem .2rem;
+      div {
+        width: 100%;
+        height: 1rem;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+}

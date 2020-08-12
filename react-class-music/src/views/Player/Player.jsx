@@ -78,7 +78,6 @@ class Player extends Component {
             }
             cd()
         } catch (e) {
-            console.log(e, '该歌曲,无版权权限')
             this.setState({
                 msg: '该歌曲,无版权权限'
             }, () => {
@@ -247,7 +246,6 @@ class Player extends Component {
             currentTime,isPlayStatus,lyric,activateIndex,
             modeTypeArr, modeNum, getIsPlay
         } = this.props
-        // console.log(lyric)
         const {msg,isShow} = this.state
         return (
            <>

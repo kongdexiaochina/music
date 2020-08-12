@@ -64,8 +64,8 @@
             width: 94%;
             height: 1rem;
             color: #fff;
-            background-color: #1989fa;
-            border: 1px solid #1989fa;
+            background: var(--themeLinear);
+            border: 1px solid var(--themeColor);
             border-radius: 999px;
             font-size: .4rem;
             outline: none;
@@ -86,7 +86,7 @@
             }
             >.user_nickname {
                 font-size: 0.4rem;
-                color: #fff;
+                color: var(--themeColor);
                 font-weight: 600;
                 margin: 0.1rem 0;
             }
@@ -167,8 +167,8 @@
         width: 94%;
         height: 1rem;
         color: #fff;
-        background-color: #1989fa;
-        border: 1px solid #1989fa;
+        background: var(--themeLinear);
+        border: 1px solid var(--themeColor);
         border-radius: 999px;
         font-size: .4rem;
         outline: none;

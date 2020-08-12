@@ -3,7 +3,7 @@
     overflow: auto;
     // 头部
     .header {
-        background: radial-gradient(ellipse, #fff 0, #bbb 100%) !important;
+        background: var(--themeLinear) !important;
         height: 1.2rem;
         &>.left {
             display: flex;

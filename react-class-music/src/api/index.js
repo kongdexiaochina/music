@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // 设置请求代理路径
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://menus.qklhk.co'
 axios.defaults.withCredentials = true; //配置为true
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; // 判断是否为ajax请求
 

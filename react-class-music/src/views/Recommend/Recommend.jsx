@@ -25,7 +25,6 @@ class Recommend extends Component {
         const {id,name} = Url.parse(this.props.location.search,true).query
         if (id === 'daily') { // 每日推荐
             const resultRecommend = await getUserRecommend()
-            console.log(resultRecommend.data.data.dailySongs)
             this.setState({
                 songDetailsList: resultRecommend.data.data.dailySongs
             })
